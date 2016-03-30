@@ -392,13 +392,18 @@ class Pokemon(Entity):
             
         return self._state
         
+    @property
+    def unit_of_measurement(self):
+        """ Unit of measurement of this entity """
+        if self.type == 'player' or self.type == 'enemy':
+            return "WINS"
+        
     def choosepokemon(self, chosenpokemon=None):
         if chosenpokemon is None:
             chosenpokemon = random.choice(list(POKEMONDICTIONARY))
-        self.chosenpokemon = chosenpokemon
+        self.chosenpokemon = chosenpokemon.lower().strip(' \t\n\r')
         _LOGGER.info("POKEMON: chosenpokemon: %s", self.chosenpokemon)
         for key in POKEMONDICTIONARY:
-            if key.lower() == chosenpokemon.lower():
                 pokemonInfo = POKEMONDICTIONARY[key]
         
         if self.chosenpokemon not in self.person1.caughtpokemon:
@@ -897,7 +902,10 @@ class Pokemon(Entity):
         self.createattack()
             
         _LOGGER.info('POKEMON: attack calculated')
-        self.battlestate = self.attacker.pokemonname + " attacked " + self.victim.pokemonname + " with " + self.attackedwith + " doing " + str(self.damage) + " damage"
+        if self.attacker.person1.type == 'player':
+            self.battlestate = self.attacker.pokemonname + " attacked foe's " + self.victim.pokemonname + " with " + self.attackedwith + " doing " + str(self.damage) + " damage"
+        else:
+            self.battlestate = "Foe's " + self.attacker.pokemonname + " attacked " + self.victim.pokemonname + " with " + self.attackedwith + " doing " + str(self.damage) + " damage"
 
         self.update_ha_state()
 
@@ -909,7 +917,6 @@ class Move(object):
         _LOGGER.info("POKEMON: selected new Move: %s", move)
         # Finding the matching key in the dictionary, then assigning the list to a variable called moveInfo
         for key in MOVES_DICTIONARY:
-            if key.lower() == move.lower():
                 moveInfo = MOVES_DICTIONARY[key]
 
 
