@@ -404,6 +404,7 @@ class Pokemon(Entity):
         self.chosenpokemon = chosenpokemon.lower().strip(' \t\n\r')
         _LOGGER.info("POKEMON: chosenpokemon: %s", self.chosenpokemon)
         for key in POKEMONDICTIONARY:
+            if key.lower().strip(' \t\n\r') == self.chosenpokemon:
                 pokemonInfo = POKEMONDICTIONARY[key]
         
         if self.chosenpokemon not in self.person1.caughtpokemon:
@@ -917,6 +918,7 @@ class Move(object):
         _LOGGER.info("POKEMON: selected new Move: %s", move)
         # Finding the matching key in the dictionary, then assigning the list to a variable called moveInfo
         for key in MOVES_DICTIONARY:
+            if key.lower().strip(' \t\n\r') == move.lower().strip(' \t\n\r'):
                 moveInfo = MOVES_DICTIONARY[key]
 
 
