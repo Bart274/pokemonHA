@@ -1,0 +1,3 @@
+pokemon:
+  playername: Bart274
+  enemyname: GreenTurtwig
