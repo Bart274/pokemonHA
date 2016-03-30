@@ -15,3 +15,5 @@ Each 25 victories will give a trainer a badge. In this version only the original
 The pokedex will display the amount of unique pokemon a trainer has used.
 
 At the beginning of each battle all fainted pokemon will be replaced by new randomly choosen pokemon. The not fainted pokemon will go up one level and that will make their attacks stronger.
+
+Right now the 3 csv files need to manually placed in your .homeassistant folder. In the next version these will automatically be downloaded and placed in a subfolder `pokemon`
