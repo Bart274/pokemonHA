@@ -800,6 +800,10 @@ class Pokemon(Entity):
         if self.victim.health <= 0:
             self.victim.health = 'FNT'
             self.victim.fainted = True
+            if self.attacker.person1.type == 'player':
+                tempMsg += "\nFoe's " + self.victim.pokemonname + " fainted..."
+            else:
+                tempMsg += "\n" + self.victim.pokemonname + " fainted..."
         
     def update(self):
         """Get the latest data and updates the state."""
