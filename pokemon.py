@@ -9,6 +9,9 @@ import subprocess
 from datetime import timedelta
 import random
 import os
+import shutil
+import os.path
+import requests
 
 from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle
@@ -41,6 +44,7 @@ STAB = 1.5
 POKEMONDICTIONARY = {}
 TYPEDICTIONARY = {}
 MOVES_DICTIONARY = {}
+POKEMON_DIR = None
 
 def setup(hass, config):
     """ Set up the iCloud Scanner. """
@@ -48,7 +52,52 @@ def setup(hass, config):
     if config.get(DOMAIN) is None:
         return False
         
-    fin = open(os.path.join(os.getcwd(),"pokemon.csv"), 'r')
+    POKEMON_DIR = hass.config.path(DOMAIN)
+
+    if not os.path.exists(POKEMON_DIR):
+        os.makedirs(POKEMON_DIR)
+        
+    full_filename = "pokemon.csv"
+    file_path = os.path.join(POKEMON_DIR, full_filename)
+    if os.path.isfile(file_path) is False:
+        url = "https://raw.githubusercontent.com/Bart274/pokemonHA/master/pokemon.csv"
+        pokemoncsv = requests.get(url, stream=True)
+        if pokemoncsv.status_code == 200:
+            with open(file_path, 'wb') as opened_file:
+                pokemoncsv.raw.decode_content = True
+                shutil.copyfileobj(pokemoncsv.raw, opened_file)
+        else:
+            err = "An error happened when requesting the pokemon.csv!"
+            _LOGGER.error(err)
+            return False
+    full_filename = "pokemontypeadvantages.csv"
+    file_path = os.path.join(POKEMON_DIR, full_filename)
+    if os.path.isfile(file_path) is False:
+        url = "https://raw.githubusercontent.com/Bart274/pokemonHA/master/pokemontypeadvantages.csv"
+        pokemontypeadvantagescsv = requests.get(url, stream=True)
+        if pokemontypeadvantagescsv.status_code == 200:
+            with open(file_path, 'wb') as opened_file:
+                pokemontypeadvantagescsv.raw.decode_content = True
+                shutil.copyfileobj(pokemontypeadvantagescsv.raw, opened_file)
+        else:
+            err = "An error happened when requesting the pokemontypeadvantages.csv!"
+            _LOGGER.error(err)
+            return False
+    full_filename = "pokemonmoves.csv"
+    file_path = os.path.join(POKEMON_DIR, full_filename)
+    if os.path.isfile(file_path) is False:
+        url = "https://raw.githubusercontent.com/Bart274/pokemonHA/master/pokemonmoves.csv"
+        pokemonmovescsv = requests.get(url, stream=True)
+        if pokemonmovescsv.status_code == 200:
+            with open(file_path, 'wb') as opened_file:
+                pokemonmovescsv.raw.decode_content = True
+                shutil.copyfileobj(pokemonmovescsv.raw, opened_file)
+        else:
+            err = "An error happened when requesting the pokemonmoves.csv!"
+            _LOGGER.error(err)
+            return False
+        
+    fin = open(os.path.join(POKEMON_DIR,"pokemon.csv"), 'r')
     # Creating a dictionary with each Pokemon's name as a key
     for line in fin:
         line = line.strip()
@@ -63,7 +112,7 @@ def setup(hass, config):
         
     # Reading "Type Advantages.csv" file to determine type advantages and the damage modifier
     # Stores the line number in the csv as the key and a list giving information about type advantage for the value
-    fin = open(os.path.join(os.getcwd(),"pokemontypeadvantages.csv"), 'r')
+    fin = open(os.path.join(POKEMON_DIR,"pokemontypeadvantages.csv"), 'r')
     for line in fin:
         line = line.strip()
         typeList = line.split(",")
@@ -72,6 +121,14 @@ def setup(hass, config):
         # and the appropriate damage multiplier in the fourth
     fin.close()
 
+    fin = open(os.path.join(POKEMON_DIR,"pokemonmoves.csv"), 'r')
+    for line in fin:
+        line = line.strip()
+        movelist = line.split(",")
+        MOVES_DICTIONARY[movelist[1]] = movelist  # The name of the move is the key while the rest of the
+        # list is the value
+    fin.close()
+    
     pokemon_config = config[DOMAIN]
 
     # Get the username and password from the configuration
@@ -172,7 +229,7 @@ class Pokemon(Entity):
         self.lastmove = None
         self.attackedwith = None
         self.damage = 0
-        self.resetting = 0
+        self.resetting = 1
         self.victories = 0
         self.badges = 0
         self.pokedex = 0
@@ -182,7 +239,7 @@ class Pokemon(Entity):
         self.victim = None
         self.activepokemonplayer = None
         self.activepokemonenemy = None
-        self.battlestate = None
+        self.battlestate = "Battle beginning"
         self.pokemonplayer1 = pokemonplayer1
         if self.pokemonplayer1 is not None:
             self.pokemonplayer1.choosepokemon()
@@ -339,7 +396,7 @@ class Pokemon(Entity):
         if chosenpokemon is None:
             chosenpokemon = random.choice(list(POKEMONDICTIONARY))
         self.chosenpokemon = chosenpokemon
-        
+        _LOGGER.info("POKEMON: chosenpokemon: %s", self.chosenpokemon)
         for key in POKEMONDICTIONARY:
             if key.lower() == chosenpokemon.lower():
                 pokemonInfo = POKEMONDICTIONARY[key]
@@ -849,16 +906,7 @@ class Move(object):
     def __init__(self, move):
         moveInfo = []
         # Only reading through the file if no information is stored in the Moves Dictionary
-        if len(MOVES_DICTIONARY) == 0:
-            fin = open(os.path.join(os.getcwd(),"pokemonmoves.csv"), 'r')
-            for line in fin:
-                line = line.strip()
-                movelist = line.split(",")
-                MOVES_DICTIONARY[movelist[1]] = movelist  # The name of the move is the key while the rest of the
-                # list is the value
-
-            fin.close()
-
+        _LOGGER.info("POKEMON: selected new Move: %s", move)
         # Finding the matching key in the dictionary, then assigning the list to a variable called moveInfo
         for key in MOVES_DICTIONARY:
             if key.lower() == move.lower():
