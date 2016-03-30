@@ -1,4 +1,3 @@
-Nat,Pokemon,Type I,Type II,HP,Atk,Def,SpA,SpD,Spe,Move 1 ,Move 2,Move 3,Move 4
 1,Bulbasaur,Grass,Poison,45,49,49,65,65,45,Razor Leaf,Headbutt,Giga Drain,Vine Whip
 2,Ivysaur,Grass,Poison,60,62,63,80,80,60,Solarbeam,Fury Cutter,Leech Seed,Sunny Day
 3,Venusaur,Grass,Poison,80,82,83,100,100,80,Giga Drain,Tackle,Poisonpowder,Solarbeam
