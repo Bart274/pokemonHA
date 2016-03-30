@@ -1,3 +1,6 @@
+
+[![Join the chat at https://gitter.im/Bart274/pokemonHA](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Bart274/pokemonHA?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 # pokemonHA
 pokemon simulator for Home-Assistant.io
 
@@ -15,5 +18,3 @@ Each 25 victories will give a trainer a badge. In this version only the original
 The pokedex will display the amount of unique pokemon a trainer has used.
 
 At the beginning of each battle all fainted pokemon will be replaced by new randomly choosen pokemon. The not fainted pokemon will go up one level and that will make their attacks stronger.
-
-Right now the 3 csv files need to manually placed in your .homeassistant folder. In the next version these will automatically be downloaded and placed in a subfolder `pokemon`
