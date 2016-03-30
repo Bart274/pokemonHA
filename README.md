@@ -1,3 +1,6 @@
+
+[![Join the chat at https://gitter.im/Bart274/pokemonHA](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Bart274/pokemonHA?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 # pokemonHA
 pokemon simulator for Home-Assistant.io
 
