@@ -331,12 +331,21 @@ class Pokemon(Entity):
                 "pokedex": self.pokedex
             }
         elif self.type == 'pokemon':
-            return {
-                "name": self.pname,
-                "health": self.health,
-                "level": self.level,
-                "owner": self.person1.pname
-            }
+            if self.chosenpokemon is None:
+                return {
+                    "name": self.pname,
+                    "health": self.health,
+                    "level": self.level,
+                    "owner": self.person1.pname
+                }
+            else:
+                return {
+                    "name": self.pname,
+                    "health": self.health,
+                    "level": self.level,
+                    "owner": self.person1.pname,
+                    "entity_picture": "https://raw.githubusercontent.com/Bart274/pokemonHA/master/Sprites/" + self.chosenpokemon +".gif"
+                }
         else:
             if self.attacker is None:
                 tempattacker = None
@@ -378,7 +387,8 @@ class Pokemon(Entity):
             else:
                 return 'mdi:gamepad-variant'
         else:
-            return 'mdi:pokeball'
+            if self.chosenpokemon is None:
+                return 'mdi:pokeball'
     
     @property
     def state(self):
