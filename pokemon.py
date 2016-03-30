@@ -277,6 +277,8 @@ class Pokemon(Entity):
         if self.pokemonenemy6 is not None:
             self.pokemonenemy6.choosepokemon()
         
+        self.fainted = True
+        self.active = False
         self.chosenpokemon = None
         self.__id = None
         self.pokemonname = None
@@ -331,7 +333,7 @@ class Pokemon(Entity):
                 "pokedex": self.pokedex
             }
         elif self.type == 'pokemon':
-            if self.chosenpokemon is None:
+            if self.chosenpokemon is None or self.active is False:
                 return {
                     "name": self.pname,
                     "health": self.health,
@@ -371,6 +373,18 @@ class Pokemon(Entity):
                 "active pokemon enemy": tempape,
                 "action": self.battlestate
             }
+            
+    @property
+    def hidden(self):
+        """If device should be hidden."""
+        """ returns the friendlyname of the icloud tracker """
+        if self.type == 'pokemon':
+            if self.chosenpokemon is None:
+                return True
+            else:
+                return self.fainted
+        else:
+            return False
     
     @property
     def icon(self):
@@ -385,10 +399,13 @@ class Pokemon(Entity):
             elif self.battlestate == self.person2.pname + " defeated " + self.person1.pname:
                 return 'mdi:emoticon-sad'
             else:
-                return 'mdi:gamepad-variant'
+                return 'mdi:sword'
         else:
-            if self.chosenpokemon is None:
-                return 'mdi:pokeball'
+            if not self.active:
+                if self.chosenpokemon is None or self.fainted:
+                    return 'mdi:ghost'
+                elif not self.fainted:
+                    return 'mdi:pokeball'
     
     @property
     def state(self):
@@ -420,6 +437,9 @@ class Pokemon(Entity):
         if self.chosenpokemon not in self.person1.caughtpokemon:
                 self.person1.caughtpokemon.append(self.chosenpokemon)
                 self.person1.pokedex += 1
+                
+        self.fainted = False
+        self.active = False
 
         # ATTRIBUTES
         # Referring to the pokemonInfo list to fill in the rest of the attributes
@@ -565,7 +585,7 @@ class Pokemon(Entity):
         # Making sure battlHP doesn't fall below 0
         if self.battleHP <= 0:
             self.battleHP = 0
-        msg = self.pokemonname + " lost " + str(lostHP) + " HP!"
+        msg = self.pokemonname + " lost " + str(lostHP) + " HP! "
         return msg
 
     # Takes an int as input and returns a string with the pokemon gaining that much HP
@@ -641,17 +661,26 @@ class Pokemon(Entity):
         modifier *= random.uniform(0.85, 1.0)
 
         # Appending the useMove function to the output
-        tempMsg += self.attacker.useMove(move)
+        if self.attacker.person1.type == 'player':
+            tempMsg += self.attacker.useMove(move)
+        else:
+            tempMsg += "Foe's " + self.attacker.useMove(move)
 
         # ATK/DEF or SpATK/SpDEF or Status? Using the Pokemon damage formula
         # If the move is "Physical", the damage formula will take into account attack and defense
         if move.kind == "Physical":
             self.damage = int((((2*self.attacker.getLevel()) + 10)/250 * (self.attacker.battleATK/self.victim.battleDEF) * move.getPower() + 2) * modifier)
-            tempMsg += "\n" + self.victim.loseHP(self.damage)
+            if self.attacker.person1.type == 'player':
+                tempMsg += "\nFoe's " + self.victim.loseHP(self.damage)
+            else:
+                tempMsg += "\n" + self.victim.loseHP(self.damage)
         # If the move is "Special", the damage formula will take into account special attack and special defense
         elif move.kind == "Special":
             self.damage = int((((2*self.attacker.getLevel()) + 10)/250 * (self.attacker.battleSpATK/self.victim.battleSpDEF) * move.getPower() + 2) * modifier)
-            tempMsg += "\n" + self.victim.loseHP(self.damage)
+            if self.attacker.person1.type == 'player':
+                tempMsg += "\nFoe's " + self.victim.loseHP(self.damage)
+            else:
+                tempMsg += "\n" + self.victim.loseHP(self.damage)
 
         # Stat Changing moves
         else:
@@ -663,52 +692,82 @@ class Pokemon(Entity):
             if move.kind == "a-":
                 self.victim.atkStage -= 1
                 self.victim.battleATK = self.victim.originalATK * self.statMod(self.victim.atkStage)
-                tempMsg += "\n" + self.victim.pokemonname + "'s attack fell! "
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\nFoe's " + self.victim.pokemonname + "'s attack fell! "
+                else:
+                    tempMsg += "\n" + self.victim.pokemonname + "'s attack fell! "
 
             elif move.kind == "a+":
                 self.attacker.atkStage +=1
                 self.attacker.battleATK = self.attacker.originalATK * self.statMod(self.attacker.atkStage)
-                tempMsg += "\n" + self.attacker.pokemonname + "'s attack rose! "
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s attack rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s attack rose! "
 
             elif move.kind == "d+":
                 self.attacker.defStage +=1
                 self.attacker.battleDEF = self.attacker.originalDEF * self.statMod(self.attacker.defStage)
-                tempMsg += "\n" + self.attacker.pokemonname + "'s defense rose! "
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s defense rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s defense rose! "
 
             elif move.kind == "sa+":
                 self.attacker.spAtkStage +=1
                 self.attacker.battleSpATK = self.attacker.originalSpATK * self.statMod(self.attacker.spAtkStage)
-                tempMsg += "\n" + self.attacker.pokemonname + "'s special attack rose! "
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s special attack rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s special attack rose! "
 
             elif move.kind == "sd+":
                 self.attacker.spDefStage +=1
                 self.attacker.battleSpDef = self.attacker.originalSpDEF * self.statMod(self.attacker.spDefStage)
-                tempMsg += "\n" + self.attacker.pokemonname + "'s special defense rose! "
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s special defense rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s special defense rose! "
 
             elif move.kind == "s+":
                 self.attacker.speedStage +=1
                 self.attacker.battleSpeed = self.attacker.originalSpeed * self.statMod(self.attacker.speedStage)
-                tempMsg += "\n" + self.attacker.pokemonname + "'s speed fell! "
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s speed rose! "
+                else:
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s speed rose! "
 
             elif move.kind == "d-":
                 self.victim.defStage -=1
                 self.victim.battleDEF = self.victim.originalDEF * self.statMod(self.victim.defStage)
-                tempMsg += "\n" + self.victim.pokemonname + "'s defense fell! "
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\nFoe's " + self.victim.pokemonname + "'s defense fell! "
+                else:
+                    tempMsg += "\n" + self.victim.pokemonname + "'s defense fell! "
 
             elif move.kind == "sa-":
                 self.victim.spAtkStage -=1
                 self.victim.battleSpATK = self.victim.originalSpATK * self.statMod(self.victim.spAtkStage)
-                tempMsg += "\n" + self.victim.pokemonname + "'s special attack fell! "
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\nFoe's " + self.victim.pokemonname + "'s special attack fell! "
+                else:
+                    tempMsg += "\n" + self.victim.pokemonname + "'s special attack fell! "
 
             elif move.kind == "sd-":
                 self.victim.spDefStage -=1
                 self.victim.battleSpDEF = self.victim.originalSpDEF * self.statMod(self.victim.spDefStage)
-                tempMsg += "\n" + self.victim.pokemonname + "'s special defense fell! "
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\nFoe's " + self.victim.pokemonname + "'s special defense fell! "
+                else:
+                    tempMsg += "\n" + self.victim.pokemonname + "'s special defense fell! "
 
             elif move.kind == "s-":
                 self.victim.speedStage -=1
                 self.victim.battleSpeed = self.victim.originalSpeed * self.statMod(self.victim.speedStage)
-                tempMsg += "\n" + self.victim.pokemonname + "'s speed fell! "
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\nFoe's " + self.victim.pokemonname + "'s speed fell! "
+                else:
+                    tempMsg += "\n" + self.victim.pokemonname + "'s speed fell! "
 
         # Super effective, not very effective, or no effect?
         # Appending the result to tempMsg
@@ -719,14 +778,17 @@ class Pokemon(Entity):
             tempMsg += "\nIt's super effective!"
 
         elif modifier == 0.0:
-            tempMsg += "\nIt doesn't affect " + self.victim.pokemonname + "..."
+            if self.attacker.person1.type == 'player':
+                tempMsg += "\nIt doesn't affect foe's " + self.victim.pokemonname + "..."
+            else:
+                tempMsg += "\nIt doesn't affect " + self.victim.pokemonname + "..."
 
         # String containing useMove(), damage, and type effectiveness
         return tempMsg
 
 
     def useMove(self, move):
-        msg = self.pokemonname + " used " + move.name + "!"
+        msg = self.pokemonname + " used " + move.name + "! "
         return msg
         
     def createattack(self):
@@ -737,6 +799,7 @@ class Pokemon(Entity):
         self.victim.health -= self.damage
         if self.victim.health <= 0:
             self.victim.health = 'FNT'
+            self.victim.fainted = True
         
     def update(self):
         """Get the latest data and updates the state."""
@@ -810,6 +873,12 @@ class Pokemon(Entity):
             return
                 
         if self.activepokemonplayer is None or self.activepokemonplayer.health == 'FNT':
+            self.pokemonplayer1.active = False
+            self.pokemonplayer2.active = False
+            self.pokemonplayer3.active = False
+            self.pokemonplayer4.active = False
+            self.pokemonplayer5.active = False
+            self.pokemonplayer6.active = False
             if self.pokemonplayer1.health != 'FNT':
                 self.activepokemonplayer = self.pokemonplayer1
             elif self.pokemonplayer2.health != 'FNT':
@@ -825,10 +894,17 @@ class Pokemon(Entity):
             if self.activepokemonplayer.health != 'FNT':
                 self.battlestate = self.person1.pname + " chose " + self.activepokemonplayer.pokemonname
                 self.lastmove = None
+                self.activepokemonplayer.active = True
                 self.update_ha_state()
                 return
         
         if self.activepokemonenemy is None or self.activepokemonenemy.health == 'FNT':
+            self.pokemonenemy1.active = False
+            self.pokemonenemy2.active = False
+            self.pokemonenemy3.active = False
+            self.pokemonenemy4.active = False
+            self.pokemonenemy5.active = False
+            self.pokemonenemy6.active = False
             if self.pokemonenemy1.health != 'FNT':
                 self.activepokemonenemy = self.pokemonenemy1
             elif self.pokemonenemy2.health != 'FNT':
@@ -841,9 +917,10 @@ class Pokemon(Entity):
                 self.activepokemonenemy = self.pokemonenemy5
             else:
                 self.activepokemonenemy = self.pokemonenemy6
-            if self.activepokemonplayer.health != 'FNT':
-                self.battlestate = self.person2.pname + " chose " + self.activepokemonplayer.pokemonname
+            if self.activepokemonenemy.health != 'FNT':
+                self.battlestate = self.person2.pname + " chose " + self.activepokemonenemy.pokemonname
                 self.lastmove = None
+                self.activepokemonenemy.active = True
                 self.update_ha_state()
                 return
         
@@ -913,10 +990,10 @@ class Pokemon(Entity):
         self.createattack()
             
         _LOGGER.info('POKEMON: attack calculated')
-        if self.attacker.person1.type == 'player':
-            self.battlestate = self.attacker.pokemonname + " attacked foe's " + self.victim.pokemonname + " with " + self.attackedwith + " doing " + str(self.damage) + " damage"
-        else:
-            self.battlestate = "Foe's " + self.attacker.pokemonname + " attacked " + self.victim.pokemonname + " with " + self.attackedwith + " doing " + str(self.damage) + " damage"
+        # if self.attacker.person1.type == 'player':
+        #     self.battlestate = self.battlestate + "\n" + self.attacker.pokemonname + " attacked foe's " + self.victim.pokemonname + " with " + self.attackedwith + " doing " + str(self.damage) + " damage"
+        # else:
+        #     self.battlestate = self.battlestate + "\nFoe's " + self.attacker.pokemonname + " attacked " + self.victim.pokemonname + " with " + self.attackedwith + " doing " + str(self.damage) + " damage"
 
         self.update_ha_state()
 
