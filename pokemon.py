@@ -346,7 +346,7 @@ class Pokemon(Entity):
                     "health": self.health,
                     "level": self.level,
                     "owner": self.person1.pname,
-                    "entity_picture": "https://raw.githubusercontent.com/Bart274/pokemonHA/master/Sprites/" + self.chosenpokemon +".gif"
+                    "entity_picture": "https://raw.githubusercontent.com/Bart274/pokemonHA/master/Sprites/" + self.chosenpokemon.replace(' ','') +".gif"
                 }
         else:
             if self.attacker is None:
@@ -428,6 +428,7 @@ class Pokemon(Entity):
     def choosepokemon(self, chosenpokemon=None):
         if chosenpokemon is None:
             chosenpokemon = random.choice(list(POKEMONDICTIONARY))
+            self.level = 1
         self.chosenpokemon = chosenpokemon.lower().strip(' \t\n\r')
         _LOGGER.info("POKEMON: chosenpokemon: %s", self.chosenpokemon)
         for key in POKEMONDICTIONARY:
@@ -801,9 +802,9 @@ class Pokemon(Entity):
             self.victim.health = 'FNT'
             self.victim.fainted = True
             if self.attacker.person1.type == 'player':
-                tempMsg += "\nFoe's " + self.victim.pokemonname + " fainted..."
+                self.battlestate += "\nFoe's " + self.victim.pokemonname + " fainted..."
             else:
-                tempMsg += "\n" + self.victim.pokemonname + " fainted..."
+                self.battlestate += "\n" + self.victim.pokemonname + " fainted..."
         
     def update(self):
         """Get the latest data and updates the state."""
