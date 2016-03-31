@@ -495,6 +495,9 @@ class Pokemon(Entity):
             self.person1.pokedexcaught += 1
             self.person1.pokedex = str(round(self.person1.pokedexcaught / COMPLETEDLIST * 100, 2)) + '%'
         
+        if self.chosenpokemon not in self.person1.seenpokemon:
+            self.person1.seenpokemon.append(self.chosenpokemon)
+            self.person1.pokedexseen += 1
         if self.chosenpokemon not in self.person2.seenpokemon:
             self.person2.seenpokemon.append(self.chosenpokemon)
             self.person2.pokedexseen += 1
