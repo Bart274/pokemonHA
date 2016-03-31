@@ -25,16 +25,6 @@ DEFAULT_ENEMY = "Gary"
 
 DOMAIN = "pokemon"
 
-MOVES = {"tackle": range(18, 26),
-         "thundershock": range(10, 36),
-         "heal": range(10, 20)}
-
-MOVES_LOW_HEALTH = {"tackle": range(18, 26),
-                    "thundershock": range(10, 36),
-                    "heal": range(10, 20),
-                    "heal": range(10, 20),
-                    "heal": range(10, 20)}
-
 ENTITY_ID_FORMAT = DOMAIN + '.{}'
 
 POKEDEX = []
@@ -59,7 +49,9 @@ def setup(hass, config):
         
     full_filename = "pokemon.csv"
     file_path = os.path.join(POKEMON_DIR, full_filename)
-    if os.path.isfile(file_path) is False:
+    if os.path.isfile(file_path):
+        os.remove(file_path)
+    if not os.path.isfile(file_path):
         url = "https://raw.githubusercontent.com/Bart274/pokemonHA/master/pokemon.csv"
         pokemoncsv = requests.get(url, stream=True)
         if pokemoncsv.status_code == 200:
@@ -72,7 +64,9 @@ def setup(hass, config):
             return False
     full_filename = "pokemontypeadvantages.csv"
     file_path = os.path.join(POKEMON_DIR, full_filename)
-    if os.path.isfile(file_path) is False:
+    if os.path.isfile(file_path):
+        os.remove(file_path)
+    if not os.path.isfile(file_path):
         url = "https://raw.githubusercontent.com/Bart274/pokemonHA/master/pokemontypeadvantages.csv"
         pokemontypeadvantagescsv = requests.get(url, stream=True)
         if pokemontypeadvantagescsv.status_code == 200:
@@ -85,7 +79,9 @@ def setup(hass, config):
             return False
     full_filename = "pokemonmoves.csv"
     file_path = os.path.join(POKEMON_DIR, full_filename)
-    if os.path.isfile(file_path) is False:
+    if os.path.isfile(file_path):
+        os.remove(file_path)
+    if not os.path.isfile(file_path):
         url = "https://raw.githubusercontent.com/Bart274/pokemonHA/master/pokemonmoves.csv"
         pokemonmovescsv = requests.get(url, stream=True)
         if pokemonmovescsv.status_code == 200:
@@ -311,6 +307,7 @@ class Pokemon(Entity):
         self.spAtkStage = None
         self.spDefStage = None
         self.speedStage = None
+        self.generation = None
         
         if self.type == 'pokemon':
             self.entity_id = generate_entity_id(
@@ -327,25 +324,42 @@ class Pokemon(Entity):
         """ returns the friendlyname of the icloud tracker """
         if self.type == 'player' or self.type == 'enemy':
             return {
-                "name": self.pname,
-                "victories": self.victories,
-                "badges": self.badges,
-                "pokedex": self.pokedex
+                "Name": self.pname,
+                "Victories": self.victories,
+                "Badges": self.badges,
+                "Pokedex": self.pokedex
             }
         elif self.type == 'pokemon':
+            temptype = self.type1
+            if self.type2 is not None:
+                temptype += '/' + self.type2
             if self.chosenpokemon is None or self.active is False:
                 return {
-                    "name": self.pname,
-                    "health": self.health,
-                    "level": self.level,
-                    "owner": self.person1.pname
+                    "Name": self.pname,
+                    "Health": self.health,
+                    "Level": self.level,
+                    "Owner": self.person1.pname,
+                    "Generation": self.generation,
+                    "Type": temptype,
+                    "Attack": self.battleATK,
+                    "Defense": self.battleDEF,
+                    "Special Attack": self.battleSpATK,
+                    "Special Defense": self.battleSpDEF,
+                    "Speed": self.battleSpeed
                 }
             else:
                 return {
-                    "name": self.pname,
-                    "health": self.health,
-                    "level": self.level,
-                    "owner": self.person1.pname,
+                    "Name": self.pname,
+                    "Health": self.health,
+                    "Level": self.level,
+                    "Owner": self.person1.pname,
+                    "Generation": self.generation,
+                    "Type": temptype,
+                    "Attack": self.battleATK,
+                    "Defense": self.battleDEF,
+                    "Special Attack": self.battleSpATK,
+                    "Special Defense": self.battleSpDEF,
+                    "Speed": self.battleSpeed,
                     "entity_picture": "https://raw.githubusercontent.com/Bart274/pokemonHA/master/Sprites/" + self.chosenpokemon.replace(' ','') +".gif"
                 }
         else:
@@ -367,11 +381,11 @@ class Pokemon(Entity):
                 tempape = self.activepokemonenemy.pokemonname
             
             return {
-                "attacker": tempattacker,
-                "victim": tempvictim,
-                "active pokemon player": tempapp,
-                "active pokemon enemy": tempape,
-                "action": self.battlestate
+                "Attacker": tempattacker,
+                "Victim": tempvictim,
+                "Active pokemon player": tempapp,
+                "Active pokemon enemy": tempape,
+                "Action": self.battlestate
             }
             
     @property
@@ -484,6 +498,8 @@ class Pokemon(Entity):
         self.move3 = Move(pokemonInfo[12])
         self.move4 = Move(pokemonInfo[13])
 
+        self.generation = pokemonInfo[14]
+        
         # A list containing all the moves; used for error-checking later
         self.movelist = [self.move1.name.lower(), self.move2.name.lower(), self.move3.name.lower(), self.move4.name.lower()]
         
