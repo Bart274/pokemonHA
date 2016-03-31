@@ -29,7 +29,7 @@ DOMAIN = "pokemon"
 
 ENTITY_ID_FORMAT = DOMAIN + '.{}'
 
-COMPLETEDLIST = 151
+TOTALPOKEDEX = 721
 
 POKEDEX = []
 IV = 30
@@ -108,7 +108,7 @@ def setup(hass, config):
     for line in fin:
         line = line.strip()
         pokeList = line.split(",")
-        if int(pokeList[0]) <= COMPLETEDLIST and pokeList[1].strip(' \t\n\r') != '':
+        if pokeList[17] == 'yes' and pokeList[1].strip(' \t\n\r') != '' and pokeList[1].lower().strip(' \t\n\r') != 'pokemon':
             POKEMONDICTIONARY[pokeList[1]] = pokeList
             if int(pokeList[14]) <= 1:
                 POKEMONDICTIONARYGEN1[pokeList[1]] = pokeList
@@ -257,6 +257,7 @@ class Pokemon(Entity):
         self.caughtpokemon = []
         self.seenpokemon = []
         self.level = 1
+        self.won = False
         self.attacker = None
         self.victim = None
         self.activepokemonplayer = None
@@ -334,6 +335,8 @@ class Pokemon(Entity):
         self.spDefStage = None
         self.speedStage = None
         self.generation = None
+        self.height = None
+        self.weight = None
         
         if self.type == 'pokemon':
             self.entity_id = generate_entity_id(
@@ -373,7 +376,9 @@ class Pokemon(Entity):
                     "Defense": self.battleDEF,
                     "Special Attack": self.battleSpATK,
                     "Special Defense": self.battleSpDEF,
-                    "Speed": self.battleSpeed
+                    "Speed": self.battleSpeed,
+                    "Height": self.height,
+                    "Weight": self.weight
                 }
             else:
                 return {
@@ -388,6 +393,8 @@ class Pokemon(Entity):
                     "Special Attack": self.battleSpATK,
                     "Special Defense": self.battleSpDEF,
                     "Speed": self.battleSpeed,
+                    "Height": self.height,
+                    "Weight": self.weight,
                     "entity_picture": "https://raw.githubusercontent.com/Bart274/pokemonHA/master/Sprites/" + self.chosenpokemon.replace(' ','') +".gif"
                 }
         else:
@@ -493,7 +500,7 @@ class Pokemon(Entity):
         if self.chosenpokemon not in self.person1.caughtpokemon:
             self.person1.caughtpokemon.append(self.chosenpokemon)
             self.person1.pokedexcaught += 1
-            self.person1.pokedex = str(round(self.person1.pokedexcaught / COMPLETEDLIST * 100, 2)) + '%'
+            self.person1.pokedex = str(round(self.person1.pokedexcaught / TOTALPOKEDEX * 100, 2)) + '%'
         
         if self.chosenpokemon not in self.person1.seenpokemon:
             self.person1.seenpokemon.append(self.chosenpokemon)
@@ -504,6 +511,7 @@ class Pokemon(Entity):
                 
         self.fainted = False
         self.active = False
+        self.won = False
 
         # ATTRIBUTES
         # Referring to the pokemonInfo list to fill in the rest of the attributes
@@ -548,6 +556,9 @@ class Pokemon(Entity):
         self.move4 = Move(pokemonInfo[13])
 
         self.generation = pokemonInfo[14]
+        
+        self.height = int(pokemonInfo[15])
+        self.weight = int(pokemonInfo[16])
         
         # A list containing all the moves; used for error-checking later
         self.movelist = [self.move1.name.lower(), self.move2.name.lower(), self.move3.name.lower(), self.move4.name.lower()]
@@ -870,6 +881,8 @@ class Pokemon(Entity):
                 self.battlestate += "\nFoe's " + self.victim.pokemonname + " fainted..."
             else:
                 self.battlestate += "\n" + self.victim.pokemonname + " fainted..."
+            self.attacker.won = True
+            self.attacker.level += 1
         
     def update(self):
         """Get the latest data and updates the state."""
@@ -889,51 +902,51 @@ class Pokemon(Entity):
             self.resetting -= 1
             if self.resetting == 0:
                 self.battlestate = "Battle beginning"
-                if self.pokemonplayer1.health == 'FNT':
+                if not self.pokemonplayer1.won:
                     self.pokemonplayer1.choosepokemon()
                 else:
                     self.pokemonplayer1.choosepokemon(self.pokemonplayer1.chosenpokemon)
-                if self.pokemonplayer2.health == 'FNT':
+                if not self.pokemonplayer2.won:
                     self.pokemonplayer2.choosepokemon()
                 else:
                     self.pokemonplayer2.choosepokemon(self.pokemonplayer2.chosenpokemon)
-                if self.pokemonplayer3.health == 'FNT':
+                if not self.pokemonplayer3.won:
                     self.pokemonplayer3.choosepokemon()
                 else:
                     self.pokemonplayer3.choosepokemon(self.pokemonplayer3.chosenpokemon)
-                if self.pokemonplayer4.health == 'FNT':
+                if not self.pokemonplayer4.won:
                     self.pokemonplayer4.choosepokemon()
                 else:
                     self.pokemonplayer4.choosepokemon(self.pokemonplayer4.chosenpokemon)
-                if self.pokemonplayer5.health == 'FNT':
+                if not self.pokemonplayer5.won:
                     self.pokemonplayer5.choosepokemon()
                 else:
                     self.pokemonplayer5.choosepokemon(self.pokemonplayer5.chosenpokemon)
-                if self.pokemonplayer6.health == 'FNT':
+                if not self.pokemonplayer6.won:
                     self.pokemonplayer6.choosepokemon()
                 else:
                     self.pokemonplayer6.choosepokemon(self.pokemonplayer6.chosenpokemon)
-                if self.pokemonenemy1.health == 'FNT':
+                if not self.pokemonenemy1.won:
                     self.pokemonenemy1.choosepokemon()
                 else:
                     self.pokemonenemy1.choosepokemon(self.pokemonenemy1.chosenpokemon)
-                if self.pokemonenemy2.health == 'FNT':
+                if not self.pokemonenemy2.won:
                     self.pokemonenemy2.choosepokemon()
                 else:
                     self.pokemonenemy2.choosepokemon(self.pokemonenemy2.chosenpokemon)
-                if self.pokemonenemy3.health == 'FNT':
+                if not self.pokemonenemy3.won:
                     self.pokemonenemy3.choosepokemon()
                 else:
                     self.pokemonenemy3.choosepokemon(self.pokemonenemy3.chosenpokemon)
-                if self.pokemonenemy4.health == 'FNT':
+                if not self.pokemonenemy4.won:
                     self.pokemonenemy4.choosepokemon()
                 else:
                     self.pokemonenemy4.choosepokemon(self.pokemonenemy4.chosenpokemon)
-                if self.pokemonenemy5.health == 'FNT':
+                if not self.pokemonenemy5.won:
                     self.pokemonenemy5.choosepokemon()
                 else:
                     self.pokemonenemy5.choosepokemon(self.pokemonenemy5.chosenpokemon)
-                if self.pokemonenemy6.health == 'FNT':
+                if not self.pokemonenemy6.won:
                     self.pokemonenemy6.choosepokemon()
                 else:
                     self.pokemonenemy6.choosepokemon(self.pokemonenemy6.chosenpokemon)
@@ -1001,19 +1014,6 @@ class Pokemon(Entity):
             if self.person1.victories % 25 == 0:
                 self.person1.badges += 1
             self.resetting = 5
-                
-            if self.pokemonplayer1.health != 'FNT':
-                self.pokemonplayer1.level += 1
-            if self.pokemonplayer2.health != 'FNT':
-                self.pokemonplayer2.level += 1
-            if self.pokemonplayer3.health != 'FNT':
-                self.pokemonplayer3.level += 1
-            if self.pokemonplayer4.health != 'FNT':
-                self.pokemonplayer4.level += 1
-            if self.pokemonplayer5.health != 'FNT':
-                self.pokemonplayer5.level += 1
-            if self.pokemonplayer6.health != 'FNT':
-                self.pokemonplayer6.level += 1
             self.update_ha_state()
             return
         
@@ -1023,19 +1023,6 @@ class Pokemon(Entity):
             if self.person2.victories % 25 == 0:
                 self.person2.badges += 1
             self.resetting = 5
-                
-            if self.pokemonenemy1.health != 'FNT':
-                self.pokemonenemy1.level += 1
-            if self.pokemonenemy2.health != 'FNT':
-                self.pokemonenemy2.level += 1
-            if self.pokemonenemy3.health != 'FNT':
-                self.pokemonenemy3.level += 1
-            if self.pokemonenemy4.health != 'FNT':
-                self.pokemonenemy4.level += 1
-            if self.pokemonenemy5.health != 'FNT':
-                self.pokemonenemy5.level += 1
-            if self.pokemonenemy6.health != 'FNT':
-                self.pokemonenemy6.level += 1
             self.update_ha_state()    
             return
             

@@ -1,721 +1,722 @@
-1,Bulbasaur,Grass,Poison,45,49,49,65,65,45,Razor Leaf,Headbutt,Giga Drain,Vine Whip,1
-2,Ivysaur,Grass,Poison,60,62,63,80,80,60,Solarbeam,Fury Cutter,Leech Seed,Sunny Day,1
-3,Venusaur,Grass,Poison,80,82,83,100,100,80,Giga Drain,Tackle,Poisonpowder,Solarbeam,1
-4,Charmander,Fire,,39,52,43,60,50,65,Flamethrower,Slash,Dragonbreath,Ember,1
-5,Charmeleon,Fire,,58,64,58,80,65,80,Fire Blast,Strength,Dig,Smokescreen,1
-6,Charizard,Fire,Flying,78,84,78,109,85,100,Fire Punch,Fly,Dragonbreath,Flamethrower,1
-7,Squirtle,Water,,44,48,65,60,54,43,Surf,Bite,Blizzard,Growl,1
-8,Wartortle,Water,,59,63,80,65,80,58,Waterfall,Icy Wind,Dig,Rapid Spin,1
-9,Blastoise,Water,,79,83,100,85,105,78,Hydro Pump,Rapid Spin,Earthquake,Surf,1
-10,Caterpie,Bug,,45,30,35,20,20,45,Tackle,String Shot,Tackle,String Shot,1
-11,Metapod,Bug,,50,20,55,25,25,30,Tackle,Harden,Tackle,Harden,1
-12,Butterfree,Bug,Flying,60,45,50,80,80,70,Gust,Psychic,Hyper Beam,Stun Spore,1
-13,Weedle,Bug,Poison,40,35,30,20,20,50,Poison Sting,String Shot,Poison Sting,String Shot,1
-14,Kakuna,Bug,Poison,45,25,50,25,25,35,Tackle,Harden,Tackle,Harden,1
-15,Beedrill,Bug,Poison,65,80,40,40,80,75,Twineedle,Sludge Bomb,Pursuit,Focus Energy,1
-16,Pidgey,Normal,Flying,40,45,40,35,35,56,Fly,Return,Steel Wing,Sand-attack,1
-17,Pidgeotto,Normal,Flying,63,60,55,50,50,71,Fly,Swift,Steel Wing,Aerial Ace,1
-18,Pidgeot,Normal,Flying,83,80,75,70,70,91,Fly,Swift,Hyper Beam,Aerial Ace,1
-19,Rattata,Normal,,30,56,35,25,35,72,Super Fang,Headbutt,Shadow Ball,Focus Energy,1
-20,Raticate,Normal,,55,81,60,50,70,97,Super Fang,Hyper Fang,Pursuit,Scary Face,1
-21,Spearow,Normal,Flying,40,60,30,31,31,70,Drill Peck,Frustration,Steel Wing,Growl,1
-22,Fearow,Normal,Flying,65,90,65,61,61,100,Drill Peck,Hyper Beam,Pursuit,Fly,1
-23,Ekans,Poison,,30,60,44,40,54,55,Sludge Bomb,Bite,Dig,Wrap,1
-24,Arbok,Poison,,60,85,69,65,79,80,Sludge Bomb,Earthquake,Strength,Dig,1
-25,Pikachu,Electric,,35,55,30,50,40,90,Thunderbolt,Surf,Iron Tail,Thunder Wave,1
-26,Raichu,Electric,,60,90,55,90,80,100,Thunder,Quick Attack,Spark,Body Slam,1
-27,Sandshrew,Ground,,50,75,85,20,30,40,Earthquake,Fury Swipes,Defense Curl,Fury Cutter,1
-28,Sandslash,Ground,,75,100,110,45,55,65,Earthquake,Slash,Rollout,Fury Swipes,1
-29,NidoranF,Poison,,55,47,52,40,40,41,Headbutt,Iron Tail,Blizzard,Poison Sting,1
-30,Nidorina,Poison,,70,62,67,55,55,56,Strength,Bite,Blizzard,Poison Sting,1
-31,Nidoqueen,Poison,Ground,90,82,87,75,85,76,Body Slam,Earthquake,Ice Punch,Poison Sting,1
-32,NidoranM,Poison,,55,47,52,40,40,41,Headbutt,Iron Tail,Blizzard,Poison Sting,1,,,,,,,,,,,,,1
-33,Nidorino,Poison,,61,72,57,55,55,65,Strength,Double Kick,Thunder,Horn Attack,1
-34,Nidoking,Poison,Ground,81,92,77,85,75,85,Thunder,Earthquake,Horn Attack,Mud-Slap,1
-35,Clefairy,Normal,,70,45,48,60,65,35,Strength,Psychic,Growl,Tackle,1
-36,Clefable,Normal,,95,70,73,85,90,60,Strength,Headbutt,Ice Punch,Psychic,1
-37,Vulpix,Fire,,38,41,40,50,65,65,Flamethrower,Dig,Ember,Quick Attack,1
-38,Ninetales,Fire,,73,76,75,81,100,100,Fire Blast,Overheat,Dig,Quick Attack,1
-39,Jigglypuff,Normal,,115,45,20,45,25,20,Body Slam,Rollout,Defense Curl,Double-Edge,1
-40,Wigglytuff,Normal,,140,70,45,75,50,45,Double-Edge,Fire Punch,Rollout,Body Slam,1
-41,Zubat,Poison,Flying,40,45,35,30,40,55,Wing Attack,Giga Drain,Air Cutter,Bite,1
-42,Golbat,Poison,Flying,75,80,70,65,75,90,Crunch,Aerial Ace,Wing Attack,Giga Drain,1
-43,Oddish,Grass,Poison,45,50,55,75,65,30,Giga Drain,Sludge Bomb,Acid,Solarbeam,1
-44,Gloom,Grass,Poison,60,65,70,85,75,40,Solarbeam,Sludge Bomb,Acid,Giga Drain,1
-45,Vileplume,Grass,Poison,75,80,85,100,90,50,Petal Dance,Acid,Solarbeam,Giga Drain,1
-46,Paras,Bug,Grass,35,70,55,45,55,25,Giga Drain,Slash,Fury Cutter,Growth,1
-47,Parasect,Bug,Grass,60,95,80,60,80,30,Giga Drain,Slash,Fury Cutter,Growth,1
-48,Venonat,Bug,Poison,60,55,50,40,55,45,Sludge Bomb,Psychic,Tackle,Growl,1
-49,Venomoth,Bug,Poison,70,65,60,90,75,90,Sludge Bomb,Psychic,Psybeam,Leech Life,1
-50,Diglett,Ground,,10,55,25,35,45,95,Earthquake,Slash,Growl,Dig,1
-51,Dugtrio,Ground,,35,80,50,50,70,120,Earthquake,Slash,Dig,Growl,1
-52,Meowth,Normal,,40,45,35,40,40,90,Slash,Faint Attack,Shadow Ball,Bite,1
-53,Persian,Normal,,65,70,60,65,65,115,Headbutt,Slash,Faint Attack,Shadow Ball,1
-54,Psyduck,Water,,50,52,48,65,50,55,Dig,Confusion,Surf,Scratch,1
-55,Golduck,Water,,80,82,78,95,80,85,Hydro Pump,Psychic,Dig,Surf,1
-56,Mankey,Fighting,,40,80,35,35,45,70,Cross Chop,Strength,Karate Chop,Rock Smash,1
-57,Primeape,Fighting,,65,105,60,60,70,95,Cross Chop,Strength,Karate Chop,Rock Smash,1
-58,Growlithe,Fire,,55,70,45,70,50,60,Ember,Bite,Dig,Tackle,1
-59,Arcanine,Fire,,90,110,80,100,80,95,Flame Wheel,Extremespeed,Flamethrower,Dig,1
-60,Poliwag,Water,,40,50,40,40,40,90,Water Gun,Body Slam,Surf,Tackle,1
-61,Poliwhirl,Water,,65,65,65,50,50,90,Surf,Body Slam,Tackle,Water Gun,1
-62,Poliwrath,Water,Fighting,90,85,95,70,90,70,Dynamicpunch,Hydro Pump,Mach Punch,Body Slam,1
-63,Abra,Psychic,,25,20,15,105,55,90,Confusion,Psybeam,Reflect,Thunderpunch,1
-64,Kadabra,Psychic,,40,35,30,120,70,105,Psychic,Psybeam,Reflect,Thunderpunch,1
-65,Alakazam,Psychic,,55,50,45,135,85,120,Psychic,Ice Punch,Thunder,Shadow Ball,1
-66,Machop,Fighting,,70,80,50,35,35,35,Strength,Rock Smash,Cross Chop,Dig,1
-67,Machoke,Fighting,,80,100,70,50,60,45,Strength,Rock Smash,Cross Chop,Dig,1
-68,Machamp,Fighting,,90,130,80,65,85,55,Thunderpunch,Fire Punch,Strength,Cross Chop,1
-69,Bellsprout,Grass,Poison,50,75,35,70,30,40,Giga Drain,Sludge Bomb,Razor Leaf,Acid,1
-70,Weepinbell,Grass,Poison,65,90,50,85,45,55,Giga Drain,Sludge Bomb,Razor Leaf,Acid,1
-71,Victreebel,Grass,Poison,80,105,65,100,60,70,Solarbeam,Sludge Bomb,Giga Drain,Razor Leaf,1
-72,Tentacool,Water,Poison,40,40,35,50,100,70,Surf,Sludge Bomb,Blizzard,Bubblebeam,1
-73,Tentacruel,Water,Poison,80,70,65,80,120,100,Surf,Sludge Bomb,Blizzard,Bubblebeam,1
-74,Geodude,Rock,Ground,40,80,100,30,30,20,Earthquake,Rollout,Rock Slide,Rock Smash,1
-75,Graveler,Rock,Ground,55,95,115,45,45,35,Earthquake,Rollout,Rock Slide,Rock Smash,1
-76,Golem,Rock,Ground,80,110,130,55,65,45,Earthquake,Rollout,Rock Slide,Rock Smash,1
-77,Ponyta,Fire,,50,85,55,65,65,90,Fire Blast,Headbutt,Flamethrower,Stomp,1
-78,Rapidash,Fire,,65,100,70,80,80,105,Fire Blast,Headbutt,Flamethrower,Stomp,1
-79,Slowpoke,Water,Psychic,90,65,65,40,40,15,Surf,Psychic,Earthquake,Ice Beam,1
-80,Slowbro,Water,Psychic,95,75,110,100,80,30,Surf,Psychic,Earthquake,Ice Beam,1
-81,Magnemite,Electric,Steel,25,35,70,95,55,45,Thunder,Swift,Thunderbolt,Shock Wave,1
-82,Magneton,Electric,Steel,50,60,95,120,70,70,Thunder,Swift,Thunderbolt,Shock Wave,1
-83,Farfetch'd,Normal,Flying,52,65,55,58,62,60,Slash,Fly,Steel Wing,Wing Attack,1
-84,Doduo,Normal,Flying,35,85,45,35,35,75,Drill Peck,Tri Attack,Steel Wing,Pursuit,1
-85,Dodrio,Normal,Flying,60,110,70,60,60,100,Drill Peck,Tri Attack,Steel Wing,Pursuit,1
-86,Seel,Water,,65,45,55,45,70,45,Surf,Ice Beam,Headbutt,Aurora Beam,1
-87,Dewgong,Water,Ice,90,70,80,70,95,70,Surf,Ice Beam,Headbutt,Aurora Beam,1
-88,Grimer,Poison,,80,80,50,40,50,25,Sludge Bomb,Sludge,Acid,Dynamicpunch,1
-89,Muk,Poison,,105,105,75,65,100,50,Sludge Bomb,Sludge,Acid,Dynamicpunch,1
-90,Shellder,Water,,30,65,100,45,25,40,Surf,Ice Beam,Swift,Aurora Beam,1
-91,Cloyster,Water,Ice,50,90,180,85,45,70,Surf,Ice Beam,Swift,Aurora Beam,1
-92,Gastly,Ghost,Poison,30,35,30,100,35,80,Shadow Ball,Psychic,Thief,Sludge Bomb,1
-93,Haunter,Ghost,Poison,45,50,45,115,55,95,Shadow Ball,Psychic,Thief,Sludge Bomb,1
-94,Gengar,Ghost,Poison,60,65,60,130,75,110,Shadow Ball,Psychic,Thief,Sludge Bomb,1
-95,Onix,Rock,Ground,35,45,160,30,45,70,Earthquake,Rock Throw,Strength,Tackle,1
-96,Drowzee,Psychic,,60,48,45,43,90,42,Psychic,Headbutt,Body Slam ,Confusion,1
-97,Hypno,Psychic,,85,73,70,73,115,67,Psychic,Headbutt,Body Slam,Confusion,1
-98,Krabby,Water,,30,105,90,25,25,50,Crabhammer,Strength,Blizzard,Surf,1
-99,Kingler,Water,,55,130,115,50,50,75,Crabhammer,Strength,Blizzard,Surf,1
-100,Voltorb,Electric,,40,30,50,55,55,100,Thunder,Thunderbolt,Shock Wave,Swift,1
-101,Electrode,Electric,,60,50,70,80,80,140,Thunder,Thunderbolt,Shock Wave,Swift,1
-102,Exeggcute,Grass,Psychic,60,40,80,60,45,40,Psychic,Giga Drain,Egg Bomb,Confusion,1
-103,Exeggutor,Grass,Psychic,95,95,85,125,65,55,Psychic,Giga Drain,Egg Bomb,Confusion,1
-104,Cubone,Ground,,50,50,95,40,50,35,Bonemerang,Headbutt,Icy Wind,Dig,1
-105,Marowak,Ground,,60,80,110,50,80,45,Bonemerang,Headbutt,Icy Wind,Dig,1
-106,Hitmonlee,Fighting,,50,120,53,35,110,87,Hi Jump Kick,Mega Kick,Double Kick,Strength,1
-107,Hitmonchan,Fighting,,50,105,79,35,110,76,Mach Punch,Strength,Ice Punch,Fire Punch,1
-108,Lickitung,Normal,,90,55,75,60,75,30,Hyper Beam,Shadow Ball,Surf,Growl,1
-109,Koffing,Poison,,40,65,95,60,45,35,Sludge Bomb,Fire Blast,Zap Cannon,Selfdestruct,1
-110,Weezing,Poison,,65,90,120,85,70,60,Sludge Bomb,Fire Blast,Zap Cannon,Selfdestruct,1
-111,Rhyhorn,Ground,Rock,80,85,95,30,30,25,Earthquake,Rollout,Iron Tail,Dig,1
-112,Rhydon,Ground,Rock,105,130,120,45,45,40,Earthquake,Rollout,Iron Tail,Dig,1
-113,Chansey,Normal,,250,5,5,35,105,50,Egg Bomb,Blizzard,Growl,Body Slam,1
-114,Tangela,Grass,,65,55,115,100,40,60,Giga Drain,Thief,Solarbeam,Sleep Powder,1
-115,Kangaskhan,Normal,,105,95,80,40,80,90,Dizzy Punch,Bite,Surf,Earthquake,1
-116,Horsea,Water,,30,40,70,70,25,60,Hydro Pump,Blizzard,Surf,Swift,1
-117,Seadra,Water,,55,65,95,95,45,85,Hydro Pump,Blizzard,Surf,Dragonbreath,1
-118,Goldeen,Water,,45,67,60,35,50,63,Surf,Horn Attack,Waterfall,Bubblebeam,1
-119,Seaking,Water,,80,92,65,65,80,68,Surf,Horn Attack,Waterfall,Bubblebeam,1
-120,Staryu,Water,,30,45,55,70,55,85,Psychic,Hydro Pump,Thunder,Rapid Spin,1
-121,Starmie,Water,Psychic,60,75,85,100,85,115,Psychic,Hydro Pump,Thunder,Rapid Spin,1
-122,Mr. Mime,Psychic,,40,45,65,100,120,90,Psybeam,Psychic,Shadow Ball,Reflect,1
-123,Scyther,Bug,Flying,70,110,80,55,80,105,Wing Attack,Pursuit,Slash,Swift,1
-124,Jynx,Ice,Psychic,65,50,35,115,95,95,Ice Punch,Psychic,Ice Beam,Lick,1
-125,Electabuzz,Electric,,65,83,57,95,85,105,Thunderpunch,Swift,Thunderbolt,Thunder Wave,1
-126,Magmar,Fire,,65,95,57,100,85,93,Fire Punch,Flamethrower,Thunderpunch,Brick Break,1
-127,Pinsir,Bug,,65,125,100,55,70,85,Fury Cutter,Vicegrip,Submission,Earthquake,1
-128,Tauros,Normal,,75,100,95,40,70,110,Take Down,Pursuit,Rock Smash,Body Slam,1
-129,Magikarp,Water,,20,10,55,15,20,80,Tackle,Flail,Tackle,Flail,1
-130,Gyarados,Water,Flying,95,125,79,60,100,81,Waterfall,Dragonbreath,Surf,Earthquake,1
-131,Lapras,Water,Ice,130,85,80,85,95,60,Waterfall,Surf,Ice Beam,Thunderbolt,1
-132,Ditto,Normal,,48,48,48,48,48,48,Tackle,Tackle,Tackle,Tackle,1
-133,Eevee,Normal,,55,55,50,45,65,55,Take Down,Iron Tail,Shadow Ball,Growl,1
-134,Vaporeon,Water,,130,65,60,110,95,65,Waterfall,Surf,Ice Beam,Quick Attack,1
-135,Jolteon,Electric,,65,65,60,110,95,130,Thunderbolt,Pin Missile,Double Kick,Quick Attack,1
-136,Flareon,Fire,,65,130,60,95,110,65,Fire Blast,Flamethrower,Flame Wheel,Quick Attack,1
-137,Porygon,Normal,,65,60,70,85,75,40,Tri Attack,Blizzard,Tackle,Growl,1
-138,Omanyte,Rock,Water,35,40,100,90,55,35,Surf,Ancientpower,Blizzard,Spike Cannon,1
-139,Omastar,Rock,Water,70,60,125,115,70,55,Surf,Ancientpower,Blizzard,Spike Cannon,1
-140,Kabuto,Rock,Water,30,80,90,55,45,55,Rollout,Giga Drain,Blizzard,Surf,1
-141,Kabutops,Rock,Water,60,115,105,65,70,80,Rollout,Giga Drain,Blizzard,Surf,1
-142,Aerodactyl,Rock,Flying,80,105,65,60,75,130,Ancientpower,Steel Wing,Rock Slide,Fly,1
-143,Snorlax,Normal,,160,110,65,65,110,30,Headbutt,Fire Punch,Thunderpunch,Body Slam,1
-144,Articuno,Ice,Flying,90,85,100,95,125,85,Blizzard,Aerial Ace,Ice Beam,Fly,1
-145,Zapdos,Electric,Flying,90,90,85,125,90,100,Thunder,Thunderbolt,Aerial Ace,Fly,1
-146,Moltres,Fire,Flying,90,100,90,125,85,90,Fire Blast,Flamethrower,Aerial Ace,Fly,1
-147,Dratini,Dragon,,41,64,45,50,50,50,Dragonbreath,Outrage,Thunderbolt,Headbutt,1
-148,Dragonair,Dragon,,61,84,65,70,70,70,Dragonbreath,Fire Blast,Thunder Wave,Headbutt,1
-149,Dragonite,Dragon,Flying,91,134,95,100,100,80,Twister,Wing Attack,Thunder,Hyper Beam,1
-150,Mewtwo,Psychic,,106,110,90,154,90,130,Psychic,Ice Beam,Fire Blast,Thunder,1
-151,Mew,Psychic,,100,100,100,100,100,100,Psychic,Flamethrower,Shadow Ball,Ice Beam,1
-152,,,,,,,,,,,,,,2
-153,,,,,,,,,,,,,,2
-154,,,,,,,,,,,,,,2
-155,,,,,,,,,,,,,,2
-156,,,,,,,,,,,,,,2
-157,,,,,,,,,,,,,,2
-158,,,,,,,,,,,,,,2
-159,,,,,,,,,,,,,,2
-160,,,,,,,,,,,,,,2
-161,,,,,,,,,,,,,,2
-162,,,,,,,,,,,,,,2
-163,,,,,,,,,,,,,,2
-164,,,,,,,,,,,,,,2
-165,,,,,,,,,,,,,,2
-166,,,,,,,,,,,,,,2
-167,,,,,,,,,,,,,,2
-168,,,,,,,,,,,,,,2
-169,,,,,,,,,,,,,,2
-170,,,,,,,,,,,,,,2
-171,,,,,,,,,,,,,,2
-172,,,,,,,,,,,,,,2
-173,,,,,,,,,,,,,,2
-174,,,,,,,,,,,,,,2
-175,,,,,,,,,,,,,,2
-176,,,,,,,,,,,,,,2
-177,,,,,,,,,,,,,,2
-178,,,,,,,,,,,,,,2
-179,,,,,,,,,,,,,,2
-180,,,,,,,,,,,,,,2
-181,,,,,,,,,,,,,,2
-182,,,,,,,,,,,,,,2
-183,,,,,,,,,,,,,,2
-184,,,,,,,,,,,,,,2
-185,,,,,,,,,,,,,,2
-186,,,,,,,,,,,,,,2
-187,,,,,,,,,,,,,,2
-188,,,,,,,,,,,,,,2
-189,,,,,,,,,,,,,,2
-190,,,,,,,,,,,,,,2
-191,,,,,,,,,,,,,,2
-192,,,,,,,,,,,,,,2
-193,,,,,,,,,,,,,,2
-194,,,,,,,,,,,,,,2
-195,,,,,,,,,,,,,,2
-196,,,,,,,,,,,,,,2
-197,,,,,,,,,,,,,,2
-198,,,,,,,,,,,,,,2
-199,,,,,,,,,,,,,,2
-200,,,,,,,,,,,,,,2
-201,,,,,,,,,,,,,,2
-202,,,,,,,,,,,,,,2
-203,,,,,,,,,,,,,,2
-204,,,,,,,,,,,,,,2
-205,,,,,,,,,,,,,,2
-206,,,,,,,,,,,,,,2
-207,,,,,,,,,,,,,,2
-208,,,,,,,,,,,,,,2
-209,,,,,,,,,,,,,,2
-210,,,,,,,,,,,,,,2
-211,,,,,,,,,,,,,,2
-212,,,,,,,,,,,,,,2
-213,,,,,,,,,,,,,,2
-214,,,,,,,,,,,,,,2
-215,,,,,,,,,,,,,,2
-216,,,,,,,,,,,,,,2
-217,,,,,,,,,,,,,,2
-218,,,,,,,,,,,,,,2
-219,,,,,,,,,,,,,,2
-220,,,,,,,,,,,,,,2
-221,,,,,,,,,,,,,,2
-222,,,,,,,,,,,,,,2
-223,,,,,,,,,,,,,,2
-224,,,,,,,,,,,,,,2
-225,,,,,,,,,,,,,,2
-226,,,,,,,,,,,,,,2
-227,,,,,,,,,,,,,,2
-228,,,,,,,,,,,,,,2
-229,,,,,,,,,,,,,,2
-230,,,,,,,,,,,,,,2
-231,,,,,,,,,,,,,,2
-232,,,,,,,,,,,,,,2
-233,,,,,,,,,,,,,,2
-234,,,,,,,,,,,,,,2
-235,,,,,,,,,,,,,,2
-236,,,,,,,,,,,,,,2
-237,,,,,,,,,,,,,,2
-238,,,,,,,,,,,,,,2
-239,,,,,,,,,,,,,,2
-240,,,,,,,,,,,,,,2
-241,,,,,,,,,,,,,,2
-242,,,,,,,,,,,,,,2
-243,,,,,,,,,,,,,,2
-244,,,,,,,,,,,,,,2
-245,,,,,,,,,,,,,,2
-246,,,,,,,,,,,,,,2
-247,,,,,,,,,,,,,,2
-248,,,,,,,,,,,,,,2
-249,,,,,,,,,,,,,,2
-250,,,,,,,,,,,,,,2
-251,,,,,,,,,,,,,,2
-252,,,,,,,,,,,,,,3
-253,,,,,,,,,,,,,,3
-254,,,,,,,,,,,,,,3
-255,,,,,,,,,,,,,,3
-256,,,,,,,,,,,,,,3
-257,,,,,,,,,,,,,,3
-258,,,,,,,,,,,,,,3
-259,,,,,,,,,,,,,,3
-260,,,,,,,,,,,,,,3
-261,,,,,,,,,,,,,,3
-262,,,,,,,,,,,,,,3
-263,,,,,,,,,,,,,,3
-264,,,,,,,,,,,,,,3
-265,,,,,,,,,,,,,,3
-266,,,,,,,,,,,,,,3
-267,,,,,,,,,,,,,,3
-268,,,,,,,,,,,,,,3
-269,,,,,,,,,,,,,,3
-270,,,,,,,,,,,,,,3
-271,,,,,,,,,,,,,,3
-272,,,,,,,,,,,,,,3
-273,,,,,,,,,,,,,,3
-274,,,,,,,,,,,,,,3
-275,,,,,,,,,,,,,,3
-276,,,,,,,,,,,,,,3
-277,,,,,,,,,,,,,,3
-278,,,,,,,,,,,,,,3
-279,,,,,,,,,,,,,,3
-280,,,,,,,,,,,,,,3
-281,,,,,,,,,,,,,,3
-282,,,,,,,,,,,,,,3
-283,,,,,,,,,,,,,,3
-284,,,,,,,,,,,,,,3
-285,,,,,,,,,,,,,,3
-286,,,,,,,,,,,,,,3
-287,,,,,,,,,,,,,,3
-288,,,,,,,,,,,,,,3
-289,,,,,,,,,,,,,,3
-290,,,,,,,,,,,,,,3
-291,,,,,,,,,,,,,,3
-292,,,,,,,,,,,,,,3
-293,,,,,,,,,,,,,,3
-294,,,,,,,,,,,,,,3
-295,,,,,,,,,,,,,,3
-296,,,,,,,,,,,,,,3
-297,,,,,,,,,,,,,,3
-298,,,,,,,,,,,,,,3
-299,,,,,,,,,,,,,,3
-300,,,,,,,,,,,,,,3
-301,,,,,,,,,,,,,,3
-302,,,,,,,,,,,,,,3
-303,,,,,,,,,,,,,,3
-304,,,,,,,,,,,,,,3
-305,,,,,,,,,,,,,,3
-306,,,,,,,,,,,,,,3
-307,,,,,,,,,,,,,,3
-308,,,,,,,,,,,,,,3
-309,,,,,,,,,,,,,,3
-310,,,,,,,,,,,,,,3
-311,,,,,,,,,,,,,,3
-312,,,,,,,,,,,,,,3
-313,,,,,,,,,,,,,,3
-314,,,,,,,,,,,,,,3
-315,,,,,,,,,,,,,,3
-316,,,,,,,,,,,,,,3
-317,,,,,,,,,,,,,,3
-318,,,,,,,,,,,,,,3
-319,,,,,,,,,,,,,,3
-320,,,,,,,,,,,,,,3
-321,,,,,,,,,,,,,,3
-322,,,,,,,,,,,,,,3
-323,,,,,,,,,,,,,,3
-324,,,,,,,,,,,,,,3
-325,,,,,,,,,,,,,,3
-326,,,,,,,,,,,,,,3
-327,,,,,,,,,,,,,,3
-328,,,,,,,,,,,,,,3
-329,,,,,,,,,,,,,,3
-330,,,,,,,,,,,,,,3
-331,,,,,,,,,,,,,,3
-332,,,,,,,,,,,,,,3
-333,,,,,,,,,,,,,,3
-334,,,,,,,,,,,,,,3
-335,,,,,,,,,,,,,,3
-336,,,,,,,,,,,,,,3
-337,,,,,,,,,,,,,,3
-338,,,,,,,,,,,,,,3
-339,,,,,,,,,,,,,,3
-340,,,,,,,,,,,,,,3
-341,,,,,,,,,,,,,,3
-342,,,,,,,,,,,,,,3
-343,,,,,,,,,,,,,,3
-344,,,,,,,,,,,,,,3
-345,,,,,,,,,,,,,,3
-346,,,,,,,,,,,,,,3
-347,,,,,,,,,,,,,,3
-348,,,,,,,,,,,,,,3
-349,,,,,,,,,,,,,,3
-350,,,,,,,,,,,,,,3
-351,,,,,,,,,,,,,,3
-352,,,,,,,,,,,,,,3
-353,,,,,,,,,,,,,,3
-354,,,,,,,,,,,,,,3
-355,,,,,,,,,,,,,,3
-356,,,,,,,,,,,,,,3
-357,,,,,,,,,,,,,,3
-358,,,,,,,,,,,,,,3
-359,,,,,,,,,,,,,,3
-360,,,,,,,,,,,,,,3
-361,,,,,,,,,,,,,,3
-362,,,,,,,,,,,,,,3
-363,,,,,,,,,,,,,,3
-364,,,,,,,,,,,,,,3
-365,,,,,,,,,,,,,,3
-366,,,,,,,,,,,,,,3
-367,,,,,,,,,,,,,,3
-368,,,,,,,,,,,,,,3
-369,,,,,,,,,,,,,,3
-370,,,,,,,,,,,,,,3
-371,,,,,,,,,,,,,,3
-372,,,,,,,,,,,,,,3
-373,,,,,,,,,,,,,,3
-374,,,,,,,,,,,,,,3
-375,,,,,,,,,,,,,,3
-376,,,,,,,,,,,,,,3
-377,,,,,,,,,,,,,,3
-378,,,,,,,,,,,,,,3
-379,,,,,,,,,,,,,,3
-380,,,,,,,,,,,,,,3
-381,,,,,,,,,,,,,,3
-382,,,,,,,,,,,,,,3
-383,,,,,,,,,,,,,,3
-384,,,,,,,,,,,,,,3
-385,,,,,,,,,,,,,,3
-386,,,,,,,,,,,,,,3
-387,,,,,,,,,,,,,,3
-388,,,,,,,,,,,,,,3
-389,,,,,,,,,,,,,,3
-390,,,,,,,,,,,,,,3
-391,,,,,,,,,,,,,,3
-392,,,,,,,,,,,,,,3
-393,,,,,,,,,,,,,,3
-394,,,,,,,,,,,,,,3
-395,,,,,,,,,,,,,,3
-396,,,,,,,,,,,,,,3
-397,,,,,,,,,,,,,,3
-398,,,,,,,,,,,,,,3
-399,,,,,,,,,,,,,,3
-400,,,,,,,,,,,,,,3
-401,,,,,,,,,,,,,,3
-402,,,,,,,,,,,,,,3
-403,,,,,,,,,,,,,,3
-404,,,,,,,,,,,,,,3
-405,,,,,,,,,,,,,,3
-406,,,,,,,,,,,,,,3
-407,,,,,,,,,,,,,,3
-408,,,,,,,,,,,,,,3
-409,,,,,,,,,,,,,,3
-410,,,,,,,,,,,,,,3
-411,,,,,,,,,,,,,,3
-412,,,,,,,,,,,,,,3
-413,,,,,,,,,,,,,,3
-414,,,,,,,,,,,,,,3
-415,,,,,,,,,,,,,,3
-416,,,,,,,,,,,,,,3
-417,,,,,,,,,,,,,,3
-418,,,,,,,,,,,,,,3
-419,,,,,,,,,,,,,,3
-420,,,,,,,,,,,,,,3
-421,,,,,,,,,,,,,,3
-422,,,,,,,,,,,,,,3
-423,,,,,,,,,,,,,,3
-424,,,,,,,,,,,,,,3
-425,,,,,,,,,,,,,,3
-426,,,,,,,,,,,,,,3
-427,,,,,,,,,,,,,,3
-428,,,,,,,,,,,,,,3
-429,,,,,,,,,,,,,,3
-430,,,,,,,,,,,,,,3
-431,,,,,,,,,,,,,,3
-432,,,,,,,,,,,,,,3
-433,,,,,,,,,,,,,,3
-434,,,,,,,,,,,,,,3
-435,,,,,,,,,,,,,,3
-436,,,,,,,,,,,,,,3
-437,,,,,,,,,,,,,,3
-438,,,,,,,,,,,,,,3
-439,,,,,,,,,,,,,,3
-440,,,,,,,,,,,,,,4
-441,,,,,,,,,,,,,,4
-442,,,,,,,,,,,,,,4
-443,,,,,,,,,,,,,,4
-444,,,,,,,,,,,,,,4
-445,,,,,,,,,,,,,,4
-446,,,,,,,,,,,,,,4
-447,,,,,,,,,,,,,,4
-448,,,,,,,,,,,,,,4
-449,,,,,,,,,,,,,,4
-450,,,,,,,,,,,,,,4
-451,,,,,,,,,,,,,,4
-452,,,,,,,,,,,,,,4
-453,,,,,,,,,,,,,,4
-454,,,,,,,,,,,,,,4
-455,,,,,,,,,,,,,,4
-456,,,,,,,,,,,,,,4
-457,,,,,,,,,,,,,,4
-458,,,,,,,,,,,,,,4
-459,,,,,,,,,,,,,,4
-460,,,,,,,,,,,,,,4
-461,,,,,,,,,,,,,,4
-462,,,,,,,,,,,,,,4
-463,,,,,,,,,,,,,,4
-464,,,,,,,,,,,,,,4
-465,,,,,,,,,,,,,,4
-466,,,,,,,,,,,,,,4
-467,,,,,,,,,,,,,,4
-468,,,,,,,,,,,,,,4
-469,,,,,,,,,,,,,,4
-470,,,,,,,,,,,,,,4
-471,,,,,,,,,,,,,,4
-472,,,,,,,,,,,,,,4
-473,,,,,,,,,,,,,,4
-474,,,,,,,,,,,,,,4
-475,,,,,,,,,,,,,,4
-476,,,,,,,,,,,,,,4
-477,,,,,,,,,,,,,,4
-478,,,,,,,,,,,,,,4
-479,,,,,,,,,,,,,,4
-480,,,,,,,,,,,,,,4
-481,,,,,,,,,,,,,,4
-482,,,,,,,,,,,,,,4
-483,,,,,,,,,,,,,,4
-484,,,,,,,,,,,,,,4
-485,,,,,,,,,,,,,,4
-486,,,,,,,,,,,,,,4
-487,,,,,,,,,,,,,,4
-488,,,,,,,,,,,,,,4
-489,,,,,,,,,,,,,,4
-490,,,,,,,,,,,,,,4
-491,,,,,,,,,,,,,,4
-492,,,,,,,,,,,,,,4
-493,,,,,,,,,,,,,,4
-494,,,,,,,,,,,,,,4
-495,,,,,,,,,,,,,,4
-496,,,,,,,,,,,,,,4
-497,,,,,,,,,,,,,,4
-498,,,,,,,,,,,,,,4
-499,,,,,,,,,,,,,,4
-500,,,,,,,,,,,,,,4
-501,,,,,,,,,,,,,,4
-502,,,,,,,,,,,,,,4
-503,,,,,,,,,,,,,,4
-504,,,,,,,,,,,,,,4
-505,,,,,,,,,,,,,,4
-506,,,,,,,,,,,,,,4
-507,,,,,,,,,,,,,,4
-508,,,,,,,,,,,,,,5
-509,,,,,,,,,,,,,,5
-510,,,,,,,,,,,,,,5
-511,,,,,,,,,,,,,,5
-512,,,,,,,,,,,,,,5
-513,,,,,,,,,,,,,,5
-514,,,,,,,,,,,,,,5
-515,,,,,,,,,,,,,,5
-516,,,,,,,,,,,,,,5
-517,,,,,,,,,,,,,,5
-518,,,,,,,,,,,,,,5
-519,,,,,,,,,,,,,,5
-520,,,,,,,,,,,,,,5
-521,,,,,,,,,,,,,,5
-522,,,,,,,,,,,,,,5
-523,,,,,,,,,,,,,,5
-524,,,,,,,,,,,,,,5
-525,,,,,,,,,,,,,,5
-526,,,,,,,,,,,,,,5
-527,,,,,,,,,,,,,,5
-528,,,,,,,,,,,,,,5
-529,,,,,,,,,,,,,,5
-530,,,,,,,,,,,,,,5
-531,,,,,,,,,,,,,,5
-532,,,,,,,,,,,,,,5
-533,,,,,,,,,,,,,,5
-534,,,,,,,,,,,,,,5
-535,,,,,,,,,,,,,,5
-536,,,,,,,,,,,,,,5
-537,,,,,,,,,,,,,,5
-538,,,,,,,,,,,,,,5
-539,,,,,,,,,,,,,,5
-540,,,,,,,,,,,,,,5
-541,,,,,,,,,,,,,,5
-542,,,,,,,,,,,,,,5
-543,,,,,,,,,,,,,,5
-544,,,,,,,,,,,,,,5
-545,,,,,,,,,,,,,,5
-546,,,,,,,,,,,,,,5
-547,,,,,,,,,,,,,,5
-548,,,,,,,,,,,,,,5
-549,,,,,,,,,,,,,,5
-550,,,,,,,,,,,,,,5
-551,,,,,,,,,,,,,,5
-552,,,,,,,,,,,,,,5
-553,,,,,,,,,,,,,,5
-554,,,,,,,,,,,,,,5
-555,,,,,,,,,,,,,,5
-556,,,,,,,,,,,,,,5
-557,,,,,,,,,,,,,,5
-558,,,,,,,,,,,,,,5
-559,,,,,,,,,,,,,,5
-560,,,,,,,,,,,,,,5
-561,,,,,,,,,,,,,,5
-562,,,,,,,,,,,,,,5
-563,,,,,,,,,,,,,,5
-564,,,,,,,,,,,,,,5
-565,,,,,,,,,,,,,,5
-566,,,,,,,,,,,,,,5
-567,,,,,,,,,,,,,,5
-568,,,,,,,,,,,,,,5
-569,,,,,,,,,,,,,,5
-570,,,,,,,,,,,,,,5
-571,,,,,,,,,,,,,,5
-572,,,,,,,,,,,,,,5
-573,,,,,,,,,,,,,,5
-574,,,,,,,,,,,,,,5
-575,,,,,,,,,,,,,,5
-576,,,,,,,,,,,,,,5
-577,,,,,,,,,,,,,,5
-578,,,,,,,,,,,,,,5
-579,,,,,,,,,,,,,,5
-580,,,,,,,,,,,,,,5
-581,,,,,,,,,,,,,,5
-582,,,,,,,,,,,,,,5
-583,,,,,,,,,,,,,,5
-584,,,,,,,,,,,,,,5
-585,,,,,,,,,,,,,,5
-586,,,,,,,,,,,,,,5
-587,,,,,,,,,,,,,,5
-588,,,,,,,,,,,,,,5
-589,,,,,,,,,,,,,,5
-590,,,,,,,,,,,,,,5
-591,,,,,,,,,,,,,,5
-592,,,,,,,,,,,,,,5
-593,,,,,,,,,,,,,,5
-594,,,,,,,,,,,,,,5
-595,,,,,,,,,,,,,,5
-596,,,,,,,,,,,,,,5
-597,,,,,,,,,,,,,,5
-598,,,,,,,,,,,,,,5
-599,,,,,,,,,,,,,,5
-600,,,,,,,,,,,,,,5
-601,,,,,,,,,,,,,,5
-602,,,,,,,,,,,,,,5
-603,,,,,,,,,,,,,,5
-604,,,,,,,,,,,,,,5
-605,,,,,,,,,,,,,,5
-606,,,,,,,,,,,,,,5
-607,,,,,,,,,,,,,,5
-608,,,,,,,,,,,,,,5
-609,,,,,,,,,,,,,,5
-610,,,,,,,,,,,,,,5
-611,,,,,,,,,,,,,,5
-612,,,,,,,,,,,,,,5
-613,,,,,,,,,,,,,,5
-614,,,,,,,,,,,,,,5
-615,,,,,,,,,,,,,,5
-616,,,,,,,,,,,,,,5
-617,,,,,,,,,,,,,,5
-618,,,,,,,,,,,,,,5
-619,,,,,,,,,,,,,,5
-620,,,,,,,,,,,,,,5
-621,,,,,,,,,,,,,,5
-622,,,,,,,,,,,,,,5
-623,,,,,,,,,,,,,,5
-624,,,,,,,,,,,,,,5
-625,,,,,,,,,,,,,,5
-626,,,,,,,,,,,,,,5
-627,,,,,,,,,,,,,,5
-628,,,,,,,,,,,,,,5
-629,,,,,,,,,,,,,,5
-630,,,,,,,,,,,,,,5
-631,,,,,,,,,,,,,,5
-632,,,,,,,,,,,,,,5
-633,,,,,,,,,,,,,,5
-634,,,,,,,,,,,,,,5
-635,,,,,,,,,,,,,,5
-636,,,,,,,,,,,,,,5
-637,,,,,,,,,,,,,,5
-638,,,,,,,,,,,,,,5
-639,,,,,,,,,,,,,,5
-640,,,,,,,,,,,,,,5
-641,,,,,,,,,,,,,,5
-642,,,,,,,,,,,,,,5
-643,,,,,,,,,,,,,,5
-644,,,,,,,,,,,,,,5
-645,,,,,,,,,,,,,,5
-646,,,,,,,,,,,,,,5
-647,,,,,,,,,,,,,,5
-648,,,,,,,,,,,,,,5
-649,,,,,,,,,,,,,,5
-650,,,,,,,,,,,,,,6
-651,,,,,,,,,,,,,,6
-652,,,,,,,,,,,,,,6
-653,,,,,,,,,,,,,,6
-654,,,,,,,,,,,,,,6
-655,,,,,,,,,,,,,,6
-656,,,,,,,,,,,,,,6
-657,,,,,,,,,,,,,,6
-658,,,,,,,,,,,,,,6
-659,,,,,,,,,,,,,,6
-660,,,,,,,,,,,,,,6
-661,,,,,,,,,,,,,,6
-662,,,,,,,,,,,,,,6
-663,,,,,,,,,,,,,,6
-664,,,,,,,,,,,,,,6
-665,,,,,,,,,,,,,,6
-666,,,,,,,,,,,,,,6
-667,,,,,,,,,,,,,,6
-668,,,,,,,,,,,,,,6
-669,,,,,,,,,,,,,,6
-670,,,,,,,,,,,,,,6
-671,,,,,,,,,,,,,,6
-672,,,,,,,,,,,,,,6
-673,,,,,,,,,,,,,,6
-674,,,,,,,,,,,,,,6
-675,,,,,,,,,,,,,,6
-676,,,,,,,,,,,,,,6
-677,,,,,,,,,,,,,,6
-678,,,,,,,,,,,,,,6
-679,,,,,,,,,,,,,,6
-680,,,,,,,,,,,,,,6
-681,,,,,,,,,,,,,,6
-682,,,,,,,,,,,,,,6
-683,,,,,,,,,,,,,,6
-684,,,,,,,,,,,,,,6
-685,,,,,,,,,,,,,,6
-686,,,,,,,,,,,,,,6
-687,,,,,,,,,,,,,,6
-688,,,,,,,,,,,,,,6
-689,,,,,,,,,,,,,,6
-690,,,,,,,,,,,,,,6
-691,,,,,,,,,,,,,,6
-692,,,,,,,,,,,,,,6
-693,,,,,,,,,,,,,,6
-694,,,,,,,,,,,,,,6
-695,,,,,,,,,,,,,,6
-696,,,,,,,,,,,,,,6
-697,,,,,,,,,,,,,,6
-698,,,,,,,,,,,,,,6
-699,,,,,,,,,,,,,,6
-700,,,,,,,,,,,,,,6
-701,,,,,,,,,,,,,,6
-702,,,,,,,,,,,,,,6
-703,,,,,,,,,,,,,,6
-704,,,,,,,,,,,,,,6
-705,,,,,,,,,,,,,,6
-706,,,,,,,,,,,,,,6
-707,,,,,,,,,,,,,,6
-708,,,,,,,,,,,,,,6
-709,,,,,,,,,,,,,,6
-710,,,,,,,,,,,,,,6
-711,,,,,,,,,,,,,,6
-712,,,,,,,,,,,,,,6
-713,,,,,,,,,,,,,,6
-714,,,,,,,,,,,,,,6
-715,,,,,,,,,,,,,,6
-716,,,,,,,,,,,,,,6
-717,,,,,,,,,,,,,,6
-718,,,,,,,,,,,,,,6
-719,,,,,,,,,,,,,,6
-720,,,,,,,,,,,,,,6
-721,,,,,,,,,,,,,,6
+Nat,Pokemon,Type I,Type II,HP,Atk,Def,SpA,SpD,Spe,Move 1 ,Move 2,Move 3,Move 4,Generation,Height,Weight,Complete
+1,Bulbasaur,Grass,Poison,45,49,49,65,65,45,Razor Leaf,Headbutt,Giga Drain,Vine Whip,1,7,69,yes
+2,Ivysaur,Grass,Poison,60,62,63,80,80,60,Solarbeam,Fury Cutter,Leech Seed,Sunny Day,1,10,130,yes
+3,Venusaur,Grass,Poison,80,82,83,100,100,80,Giga Drain,Tackle,Poisonpowder,Solarbeam,1,20,1000,yes
+4,Charmander,Fire,,39,52,43,60,50,65,Flamethrower,Slash,Dragonbreath,Ember,1,6,85,yes
+5,Charmeleon,Fire,,58,64,58,80,65,80,Fire Blast,Strength,Dig,Smokescreen,1,11,190,yes
+6,Charizard,Fire,Flying,78,84,78,109,85,100,Fire Punch,Fly,Dragonbreath,Flamethrower,1,17,905,yes
+7,Squirtle,Water,,44,48,65,60,54,43,Surf,Bite,Blizzard,Growl,1,5,90,yes
+8,Wartortle,Water,,59,63,80,65,80,58,Waterfall,Icy Wind,Dig,Rapid Spin,1,10,225,yes
+9,Blastoise,Water,,79,83,100,85,105,78,Hydro Pump,Rapid Spin,Earthquake,Surf,1,16,855,yes
+10,Caterpie,Bug,,45,30,35,20,20,45,Tackle,String Shot,Tackle,String Shot,1,3,29,yes
+11,Metapod,Bug,,50,20,55,25,25,30,Tackle,Harden,Tackle,Harden,1,7,99,yes
+12,Butterfree,Bug,Flying,60,45,50,80,80,70,Gust,Psychic,Hyper Beam,Stun Spore,1,11,320,yes
+13,Weedle,Bug,Poison,40,35,30,20,20,50,Poison Sting,String Shot,Poison Sting,String Shot,1,3,32,yes
+14,Kakuna,Bug,Poison,45,25,50,25,25,35,Tackle,Harden,Tackle,Harden,1,6,100,yes
+15,Beedrill,Bug,Poison,65,80,40,40,80,75,Twineedle,Sludge Bomb,Pursuit,Focus Energy,1,10,295,yes
+16,Pidgey,Normal,Flying,40,45,40,35,35,56,Fly,Return,Steel Wing,Sand-attack,1,3,18,yes
+17,Pidgeotto,Normal,Flying,63,60,55,50,50,71,Fly,Swift,Steel Wing,Aerial Ace,1,11,300,yes
+18,Pidgeot,Normal,Flying,83,80,75,70,70,91,Fly,Swift,Hyper Beam,Aerial Ace,1,15,395,yes
+19,Rattata,Normal,,30,56,35,25,35,72,Super Fang,Headbutt,Shadow Ball,Focus Energy,1,3,35,yes
+20,Raticate,Normal,,55,81,60,50,70,97,Super Fang,Hyper Fang,Pursuit,Scary Face,1,7,185,yes
+21,Spearow,Normal,Flying,40,60,30,31,31,70,Drill Peck,Frustration,Steel Wing,Growl,1,3,20,yes
+22,Fearow,Normal,Flying,65,90,65,61,61,100,Drill Peck,Hyper Beam,Pursuit,Fly,1,12,380,yes
+23,Ekans,Poison,,30,60,44,40,54,55,Sludge Bomb,Bite,Dig,Wrap,1,20,69,yes
+24,Arbok,Poison,,60,85,69,65,79,80,Sludge Bomb,Earthquake,Strength,Dig,1,35,650,yes
+25,Pikachu,Electric,,35,55,30,50,40,90,Thunderbolt,Surf,Iron Tail,Thunder Wave,1,4,60,yes
+26,Raichu,Electric,,60,90,55,90,80,100,Thunder,Quick Attack,Spark,Body Slam,1,8,300,yes
+27,Sandshrew,Ground,,50,75,85,20,30,40,Earthquake,Fury Swipes,Defense Curl,Fury Cutter,1,6,120,yes
+28,Sandslash,Ground,,75,100,110,45,55,65,Earthquake,Slash,Rollout,Fury Swipes,1,10,295,yes
+29,NidoranF,Poison,,55,47,52,40,40,41,Headbutt,Iron Tail,Blizzard,Poison Sting,1,4,70,yes
+30,Nidorina,Poison,,70,62,67,55,55,56,Strength,Bite,Blizzard,Poison Sting,1,8,200,yes
+31,Nidoqueen,Poison,Ground,90,82,87,75,85,76,Body Slam,Earthquake,Ice Punch,Poison Sting,1,13,600,yes
+32,NidoranM,Poison,,55,47,52,40,40,41,Headbutt,Iron Tail,Blizzard,Poison Sting,1,5,90,yes
+33,Nidorino,Poison,,61,72,57,55,55,65,Strength,Double Kick,Thunder,Horn Attack,1,9,195,yes
+34,Nidoking,Poison,Ground,81,92,77,85,75,85,Thunder,Earthquake,Horn Attack,Mud-Slap,1,14,620,yes
+35,Clefairy,Normal,,70,45,48,60,65,35,Strength,Psychic,Growl,Tackle,1,6,75,yes
+36,Clefable,Normal,,95,70,73,85,90,60,Strength,Headbutt,Ice Punch,Psychic,1,13,400,yes
+37,Vulpix,Fire,,38,41,40,50,65,65,Flamethrower,Dig,Ember,Quick Attack,1,6,99,yes
+38,Ninetales,Fire,,73,76,75,81,100,100,Fire Blast,Overheat,Dig,Quick Attack,1,11,199,yes
+39,Jigglypuff,Normal,,115,45,20,45,25,20,Body Slam,Rollout,Defense Curl,Double-Edge,1,5,55,yes
+40,Wigglytuff,Normal,,140,70,45,75,50,45,Double-Edge,Fire Punch,Rollout,Body Slam,1,10,120,yes
+41,Zubat,Poison,Flying,40,45,35,30,40,55,Wing Attack,Giga Drain,Air Cutter,Bite,1,8,75,yes
+42,Golbat,Poison,Flying,75,80,70,65,75,90,Crunch,Aerial Ace,Wing Attack,Giga Drain,1,16,550,yes
+43,Oddish,Grass,Poison,45,50,55,75,65,30,Giga Drain,Sludge Bomb,Acid,Solarbeam,1,5,54,yes
+44,Gloom,Grass,Poison,60,65,70,85,75,40,Solarbeam,Sludge Bomb,Acid,Giga Drain,1,8,86,yes
+45,Vileplume,Grass,Poison,75,80,85,100,90,50,Petal Dance,Acid,Solarbeam,Giga Drain,1,12,186,yes
+46,Paras,Bug,Grass,35,70,55,45,55,25,Giga Drain,Slash,Fury Cutter,Growth,1,3,54,yes
+47,Parasect,Bug,Grass,60,95,80,60,80,30,Giga Drain,Slash,Fury Cutter,Growth,1,10,295,yes
+48,Venonat,Bug,Poison,60,55,50,40,55,45,Sludge Bomb,Psychic,Tackle,Growl,1,10,300,yes
+49,Venomoth,Bug,Poison,70,65,60,90,75,90,Sludge Bomb,Psychic,Psybeam,Leech Life,1,15,125,yes
+50,Diglett,Ground,,10,55,25,35,45,95,Earthquake,Slash,Growl,Dig,1,2,8,yes
+51,Dugtrio,Ground,,35,80,50,50,70,120,Earthquake,Slash,Dig,Growl,1,7,333,yes
+52,Meowth,Normal,,40,45,35,40,40,90,Slash,Faint Attack,Shadow Ball,Bite,1,4,42,yes
+53,Persian,Normal,,65,70,60,65,65,115,Headbutt,Slash,Faint Attack,Shadow Ball,1,10,320,yes
+54,Psyduck,Water,,50,52,48,65,50,55,Dig,Confusion,Surf,Scratch,1,8,196,yes
+55,Golduck,Water,,80,82,78,95,80,85,Hydro Pump,Psychic,Dig,Surf,1,17,766,yes
+56,Mankey,Fighting,,40,80,35,35,45,70,Cross Chop,Strength,Karate Chop,Rock Smash,1,5,280,yes
+57,Primeape,Fighting,,65,105,60,60,70,95,Cross Chop,Strength,Karate Chop,Rock Smash,1,10,320,yes
+58,Growlithe,Fire,,55,70,45,70,50,60,Ember,Bite,Dig,Tackle,1,7,190,yes
+59,Arcanine,Fire,,90,110,80,100,80,95,Flame Wheel,Extremespeed,Flamethrower,Dig,1,19,1550,yes
+60,Poliwag,Water,,40,50,40,40,40,90,Water Gun,Body Slam,Surf,Tackle,1,6,124,yes
+61,Poliwhirl,Water,,65,65,65,50,50,90,Surf,Body Slam,Tackle,Water Gun,1,10,200,yes
+62,Poliwrath,Water,Fighting,90,85,95,70,90,70,Dynamicpunch,Hydro Pump,Mach Punch,Body Slam,1,13,540,yes
+63,Abra,Psychic,,25,20,15,105,55,90,Confusion,Psybeam,Reflect,Thunderpunch,1,9,195,yes
+64,Kadabra,Psychic,,40,35,30,120,70,105,Psychic,Psybeam,Reflect,Thunderpunch,1,13,565,yes
+65,Alakazam,Psychic,,55,50,45,135,85,120,Psychic,Ice Punch,Thunder,Shadow Ball,1,15,480,yes
+66,Machop,Fighting,,70,80,50,35,35,35,Strength,Rock Smash,Cross Chop,Dig,1,8,195,yes
+67,Machoke,Fighting,,80,100,70,50,60,45,Strength,Rock Smash,Cross Chop,Dig,1,15,705,yes
+68,Machamp,Fighting,,90,130,80,65,85,55,Thunderpunch,Fire Punch,Strength,Cross Chop,1,16,1300,yes
+69,Bellsprout,Grass,Poison,50,75,35,70,30,40,Giga Drain,Sludge Bomb,Razor Leaf,Acid,1,7,40,yes
+70,Weepinbell,Grass,Poison,65,90,50,85,45,55,Giga Drain,Sludge Bomb,Razor Leaf,Acid,1,10,64,yes
+71,Victreebel,Grass,Poison,80,105,65,100,60,70,Solarbeam,Sludge Bomb,Giga Drain,Razor Leaf,1,17,155,yes
+72,Tentacool,Water,Poison,40,40,35,50,100,70,Surf,Sludge Bomb,Blizzard,Bubblebeam,1,9,455,yes
+73,Tentacruel,Water,Poison,80,70,65,80,120,100,Surf,Sludge Bomb,Blizzard,Bubblebeam,1,16,550,yes
+74,Geodude,Rock,Ground,40,80,100,30,30,20,Earthquake,Rollout,Rock Slide,Rock Smash,1,4,200,yes
+75,Graveler,Rock,Ground,55,95,115,45,45,35,Earthquake,Rollout,Rock Slide,Rock Smash,1,10,1050,yes
+76,Golem,Rock,Ground,80,110,130,55,65,45,Earthquake,Rollout,Rock Slide,Rock Smash,1,14,3000,yes
+77,Ponyta,Fire,,50,85,55,65,65,90,Fire Blast,Headbutt,Flamethrower,Stomp,1,10,300,yes
+78,Rapidash,Fire,,65,100,70,80,80,105,Fire Blast,Headbutt,Flamethrower,Stomp,1,17,950,yes
+79,Slowpoke,Water,Psychic,90,65,65,40,40,15,Surf,Psychic,Earthquake,Ice Beam,1,12,360,yes
+80,Slowbro,Water,Psychic,95,75,110,100,80,30,Surf,Psychic,Earthquake,Ice Beam,1,16,785,yes
+81,Magnemite,Electric,Steel,25,35,70,95,55,45,Thunder,Swift,Thunderbolt,Shock Wave,1,3,60,yes
+82,Magneton,Electric,Steel,50,60,95,120,70,70,Thunder,Swift,Thunderbolt,Shock Wave,1,10,600,yes
+83,Farfetch'd,Normal,Flying,52,65,55,58,62,60,Slash,Fly,Steel Wing,Wing Attack,1,8,150,yes
+84,Doduo,Normal,Flying,35,85,45,35,35,75,Drill Peck,Tri Attack,Steel Wing,Pursuit,1,14,392,yes
+85,Dodrio,Normal,Flying,60,110,70,60,60,100,Drill Peck,Tri Attack,Steel Wing,Pursuit,1,18,852,yes
+86,Seel,Water,,65,45,55,45,70,45,Surf,Ice Beam,Headbutt,Aurora Beam,1,11,900,yes
+87,Dewgong,Water,Ice,90,70,80,70,95,70,Surf,Ice Beam,Headbutt,Aurora Beam,1,17,1200,yes
+88,Grimer,Poison,,80,80,50,40,50,25,Sludge Bomb,Sludge,Acid,Dynamicpunch,1,9,300,yes
+89,Muk,Poison,,105,105,75,65,100,50,Sludge Bomb,Sludge,Acid,Dynamicpunch,1,12,300,yes
+90,Shellder,Water,,30,65,100,45,25,40,Surf,Ice Beam,Swift,Aurora Beam,1,3,40,yes
+91,Cloyster,Water,Ice,50,90,180,85,45,70,Surf,Ice Beam,Swift,Aurora Beam,1,15,1325,yes
+92,Gastly,Ghost,Poison,30,35,30,100,35,80,Shadow Ball,Psychic,Thief,Sludge Bomb,1,13,1,yes
+93,Haunter,Ghost,Poison,45,50,45,115,55,95,Shadow Ball,Psychic,Thief,Sludge Bomb,1,16,1,yes
+94,Gengar,Ghost,Poison,60,65,60,130,75,110,Shadow Ball,Psychic,Thief,Sludge Bomb,1,15,405,yes
+95,Onix,Rock,Ground,35,45,160,30,45,70,Earthquake,Rock Throw,Strength,Tackle,1,88,2100,yes
+96,Drowzee,Psychic,,60,48,45,43,90,42,Psychic,Headbutt,Body Slam ,Confusion,1,10,324,yes
+97,Hypno,Psychic,,85,73,70,73,115,67,Psychic,Headbutt,Body Slam,Confusion,1,16,756,yes
+98,Krabby,Water,,30,105,90,25,25,50,Crabhammer,Strength,Blizzard,Surf,1,4,65,yes
+99,Kingler,Water,,55,130,115,50,50,75,Crabhammer,Strength,Blizzard,Surf,1,13,600,yes
+100,Voltorb,Electric,,40,30,50,55,55,100,Thunder,Thunderbolt,Shock Wave,Swift,1,5,104,yes
+101,Electrode,Electric,,60,50,70,80,80,140,Thunder,Thunderbolt,Shock Wave,Swift,1,12,666,yes
+102,Exeggcute,Grass,Psychic,60,40,80,60,45,40,Psychic,Giga Drain,Egg Bomb,Confusion,1,4,25,yes
+103,Exeggutor,Grass,Psychic,95,95,85,125,65,55,Psychic,Giga Drain,Egg Bomb,Confusion,1,20,1200,yes
+104,Cubone,Ground,,50,50,95,40,50,35,Bonemerang,Headbutt,Icy Wind,Dig,1,4,65,yes
+105,Marowak,Ground,,60,80,110,50,80,45,Bonemerang,Headbutt,Icy Wind,Dig,1,10,450,yes
+106,Hitmonlee,Fighting,,50,120,53,35,110,87,Hi Jump Kick,Mega Kick,Double Kick,Strength,1,15,498,yes
+107,Hitmonchan,Fighting,,50,105,79,35,110,76,Mach Punch,Strength,Ice Punch,Fire Punch,1,14,502,yes
+108,Lickitung,Normal,,90,55,75,60,75,30,Hyper Beam,Shadow Ball,Surf,Growl,1,12,655,yes
+109,Koffing,Poison,,40,65,95,60,45,35,Sludge Bomb,Fire Blast,Zap Cannon,Selfdestruct,1,6,10,yes
+110,Weezing,Poison,,65,90,120,85,70,60,Sludge Bomb,Fire Blast,Zap Cannon,Selfdestruct,1,12,95,yes
+111,Rhyhorn,Ground,Rock,80,85,95,30,30,25,Earthquake,Rollout,Iron Tail,Dig,1,10,1150,yes
+112,Rhydon,Ground,Rock,105,130,120,45,45,40,Earthquake,Rollout,Iron Tail,Dig,1,19,1200,yes
+113,Chansey,Normal,,250,5,5,35,105,50,Egg Bomb,Blizzard,Growl,Body Slam,1,11,346,yes
+114,Tangela,Grass,,65,55,115,100,40,60,Giga Drain,Thief,Solarbeam,Sleep Powder,1,10,350,yes
+115,Kangaskhan,Normal,,105,95,80,40,80,90,Dizzy Punch,Bite,Surf,Earthquake,1,22,800,yes
+116,Horsea,Water,,30,40,70,70,25,60,Hydro Pump,Blizzard,Surf,Swift,1,4,80,yes
+117,Seadra,Water,,55,65,95,95,45,85,Hydro Pump,Blizzard,Surf,Dragonbreath,1,12,250,yes
+118,Goldeen,Water,,45,67,60,35,50,63,Surf,Horn Attack,Waterfall,Bubblebeam,1,6,150,yes
+119,Seaking,Water,,80,92,65,65,80,68,Surf,Horn Attack,Waterfall,Bubblebeam,1,13,390,yes
+120,Staryu,Water,,30,45,55,70,55,85,Psychic,Hydro Pump,Thunder,Rapid Spin,1,8,345,yes
+121,Starmie,Water,Psychic,60,75,85,100,85,115,Psychic,Hydro Pump,Thunder,Rapid Spin,1,11,800,yes
+122,Mr. Mime,Psychic,,40,45,65,100,120,90,Psybeam,Psychic,Shadow Ball,Reflect,1,13,545,yes
+123,Scyther,Bug,Flying,70,110,80,55,80,105,Wing Attack,Pursuit,Slash,Swift,1,15,560,yes
+124,Jynx,Ice,Psychic,65,50,35,115,95,95,Ice Punch,Psychic,Ice Beam,Lick,1,14,406,yes
+125,Electabuzz,Electric,,65,83,57,95,85,105,Thunderpunch,Swift,Thunderbolt,Thunder Wave,1,11,300,yes
+126,Magmar,Fire,,65,95,57,100,85,93,Fire Punch,Flamethrower,Thunderpunch,Brick Break,1,13,445,yes
+127,Pinsir,Bug,,65,125,100,55,70,85,Fury Cutter,Vicegrip,Submission,Earthquake,1,15,550,yes
+128,Tauros,Normal,,75,100,95,40,70,110,Take Down,Pursuit,Rock Smash,Body Slam,1,14,884,yes
+129,Magikarp,Water,,20,10,55,15,20,80,Tackle,Flail,Tackle,Flail,1,9,100,yes
+130,Gyarados,Water,Flying,95,125,79,60,100,81,Waterfall,Dragonbreath,Surf,Earthquake,1,65,2350,yes
+131,Lapras,Water,Ice,130,85,80,85,95,60,Waterfall,Surf,Ice Beam,Thunderbolt,1,25,2200,yes
+132,Ditto,Normal,,48,48,48,48,48,48,Tackle,Tackle,Tackle,Tackle,1,3,40,yes
+133,Eevee,Normal,,55,55,50,45,65,55,Take Down,Iron Tail,Shadow Ball,Growl,1,3,65,yes
+134,Vaporeon,Water,,130,65,60,110,95,65,Waterfall,Surf,Ice Beam,Quick Attack,1,10,290,yes
+135,Jolteon,Electric,,65,65,60,110,95,130,Thunderbolt,Pin Missile,Double Kick,Quick Attack,1,8,245,yes
+136,Flareon,Fire,,65,130,60,95,110,65,Fire Blast,Flamethrower,Flame Wheel,Quick Attack,1,9,250,yes
+137,Porygon,Normal,,65,60,70,85,75,40,Tri Attack,Blizzard,Tackle,Growl,1,8,365,yes
+138,Omanyte,Rock,Water,35,40,100,90,55,35,Surf,Ancientpower,Blizzard,Spike Cannon,1,4,75,yes
+139,Omastar,Rock,Water,70,60,125,115,70,55,Surf,Ancientpower,Blizzard,Spike Cannon,1,10,350,yes
+140,Kabuto,Rock,Water,30,80,90,55,45,55,Rollout,Giga Drain,Blizzard,Surf,1,5,115,yes
+141,Kabutops,Rock,Water,60,115,105,65,70,80,Rollout,Giga Drain,Blizzard,Surf,1,13,405,yes
+142,Aerodactyl,Rock,Flying,80,105,65,60,75,130,Ancientpower,Steel Wing,Rock Slide,Fly,1,18,590,yes
+143,Snorlax,Normal,,160,110,65,65,110,30,Headbutt,Fire Punch,Thunderpunch,Body Slam,1,21,4600,yes
+144,Articuno,Ice,Flying,90,85,100,95,125,85,Blizzard,Aerial Ace,Ice Beam,Fly,1,17,554,yes
+145,Zapdos,Electric,Flying,90,90,85,125,90,100,Thunder,Thunderbolt,Aerial Ace,Fly,1,16,526,yes
+146,Moltres,Fire,Flying,90,100,90,125,85,90,Fire Blast,Flamethrower,Aerial Ace,Fly,1,20,600,yes
+147,Dratini,Dragon,,41,64,45,50,50,50,Dragonbreath,Outrage,Thunderbolt,Headbutt,1,18,33,yes
+148,Dragonair,Dragon,,61,84,65,70,70,70,Dragonbreath,Fire Blast,Thunder Wave,Headbutt,1,40,165,yes
+149,Dragonite,Dragon,Flying,91,134,95,100,100,80,Twister,Wing Attack,Thunder,Hyper Beam,1,22,2100,yes
+150,Mewtwo,Psychic,,106,110,90,154,90,130,Psychic,Ice Beam,Fire Blast,Thunder,1,20,1220,yes
+151,Mew,Psychic,,100,100,100,100,100,100,Psychic,Flamethrower,Shadow Ball,Ice Beam,1,4,40,yes
+152,chikorita,,,,,,,,,,,,,,2,9,64,no
+153,bayleef,,,,,,,,,,,,,,2,12,158,no
+154,meganium,,,,,,,,,,,,,,2,18,1005,no
+155,cyndaquil,,,,,,,,,,,,,,2,5,79,no
+156,quilava,,,,,,,,,,,,,,2,9,190,no
+157,typhlosion,,,,,,,,,,,,,,2,17,795,no
+158,totodile,,,,,,,,,,,,,,2,6,95,no
+159,croconaw,,,,,,,,,,,,,,2,11,250,no
+160,feraligatr,,,,,,,,,,,,,,2,23,888,no
+161,sentret,,,,,,,,,,,,,,2,8,60,no
+162,furret,,,,,,,,,,,,,,2,18,325,no
+163,hoothoot,,,,,,,,,,,,,,2,7,212,52,218,1
+164,noctowl,,,,,,,,,,,,,,2,16,408,155,219,1
+165,ledyba,,,,,,,,,,,,,,2,10,108,53,220,1
+166,ledian,,,,,,,,,,,,,,2,14,356,137,221,1
+167,spinarak,,,,,,,,,,,,,,2,5,85,50,222,1
+168,ariados,,,,,,,,,,,,,,2,11,335,137,223,1
+169,crobat,,,,,,,,,,,,,,2,18,750,241,58,1
+170,chinchou,,,,,,,,,,,,,,2,5,120,66,224,1
+171,lanturn,,,,,,,,,,,,,,2,12,225,161,225,1
+172,pichu,,,,,,,,,,,,,,2,3,20,41,31,1
+173,cleffa,,,,,,,,,,,,,,2,3,30,44,48,1
+174,igglybuff,,,,,,,,,,,,,,2,3,10,42,53,1
+175,togepi,,,,,,,,,,,,,,2,3,15,49,226,1
+176,togetic,,,,,,,,,,,,,,2,6,32,142,227,1
+177,natu,,,,,,,,,,,,,,2,2,20,64,229,1
+178,xatu,,,,,,,,,,,,,,2,15,150,165,230,1
+179,mareep,,,,,,,,,,,,,,2,6,78,56,231,1
+180,flaaffy,,,,,,,,,,,,,,2,8,133,128,232,1
+181,ampharos,,,,,,,,,,,,,,2,14,615,230,233,1
+182,bellossom,,,,,,,,,,,,,,2,4,58,221,62,1
+183,marill,,,,,,,,,,,,,,2,4,85,88,236,1
+184,azumarill,,,,,,,,,,,,,,2,8,285,189,237,1
+185,sudowoodo,,,,,,,,,,,,,,2,12,380,144,239,1
+186,politoed,,,,,,,,,,,,,,2,11,339,225,80,1
+187,hoppip,,,,,,,,,,,,,,2,4,5,50,240,1
+188,skiploom,,,,,,,,,,,,,,2,6,10,119,241,1
+189,jumpluff,,,,,,,,,,,,,,2,8,30,207,242,1
+190,aipom,,,,,,,,,,,,,,2,8,115,72,243,1
+191,sunkern,,,,,,,,,,,,,,2,3,18,36,245,1
+192,sunflora,,,,,,,,,,,,,,2,8,85,149,246,1
+193,yanma,,,,,,,,,,,,,,2,12,380,78,247,1
+194,wooper,,,,,,,,,,,,,,2,4,85,42,249,1
+195,quagsire,,,,,,,,,,,,,,2,14,750,151,250,1
+196,espeon,,,,,,,,,,,,,,2,9,265,184,181,1
+197,umbreon,,,,,,,,,,,,,,2,10,270,184,182,1
+198,murkrow,,,,,,,,,,,,,,2,5,21,81,251,1
+199,slowking,,,,,,,,,,,,,,2,20,795,172,101,1
+200,misdreavus,,,,,,,,,,,,,,2,7,10,87,253,1
+201,unown,,,,,,,,,,,,,,2,5,50,118,255,1
+202,wobbuffet,,,,,,,,,,,,,,2,13,285,142,257,1
+203,girafarig,,,,,,,,,,,,,,2,15,415,159,258,1
+204,pineco,,,,,,,,,,,,,,2,6,72,58,259,1
+205,forretress,,,,,,,,,,,,,,2,12,1258,163,260,1
+206,dunsparce,,,,,,,,,,,,,,2,15,140,145,261,1
+207,gligar,,,,,,,,,,,,,,2,11,648,86,262,1
+208,steelix,,,,,,,,,,,,,,2,92,4000,179,119,1
+209,snubbull,,,,,,,,,,,,,,2,6,78,60,264,1
+210,granbull,,,,,,,,,,,,,,2,14,487,158,265,1
+211,qwilfish,,,,,,,,,,,,,,2,5,39,86,266,1
+212,scizor,,,,,,,,,,,,,,2,18,1180,175,159,1
+213,shuckle,,,,,,,,,,,,,,2,6,205,177,267,1
+214,heracross,,,,,,,,,,,,,,2,15,540,175,268,1
+215,sneasel,,,,,,,,,,,,,,2,9,280,86,270,1
+216,teddiursa,,,,,,,,,,,,,,2,6,88,66,272,1
+217,ursaring,,,,,,,,,,,,,,2,18,1258,175,273,1
+218,slugma,,,,,,,,,,,,,,2,7,350,50,274,1
+219,magcargo,,,,,,,,,,,,,,2,8,550,144,275,1
+220,swinub,,,,,,,,,,,,,,2,4,65,50,276,1
+221,piloswine,,,,,,,,,,,,,,2,11,558,158,277,1
+222,corsola,,,,,,,,,,,,,,2,6,50,133,279,1
+223,remoraid,,,,,,,,,,,,,,2,6,120,60,280,1
+224,octillery,,,,,,,,,,,,,,2,9,285,168,281,1
+225,delibird,,,,,,,,,,,,,,2,9,160,116,282,1
+226,mantine,,,,,,,,,,,,,,2,21,2200,163,284,1
+227,skarmory,,,,,,,,,,,,,,2,17,505,163,285,1
+228,houndour,,,,,,,,,,,,,,2,6,108,66,286,1
+229,houndoom,,,,,,,,,,,,,,2,14,350,175,287,1
+230,kingdra,,,,,,,,,,,,,,2,18,1520,243,151,1
+231,phanpy,,,,,,,,,,,,,,2,5,335,66,289,1
+232,donphan,,,,,,,,,,,,,,2,11,1200,175,290,1
+233,porygon2,,,,,,,,,,,,,,2,6,325,180,187,1
+234,stantler,,,,,,,,,,,,,,2,14,712,163,291,1
+235,smeargle,,,,,,,,,,,,,,2,12,580,88,292,1
+236,tyrogue,,,,,,,,,,,,,,2,7,210,42,131,1
+237,hitmontop,,,,,,,,,,,,,,2,14,480,159,134,1
+238,smoochum,,,,,,,,,,,,,,2,4,60,61,161,1
+239,elekid,,,,,,,,,,,,,,2,6,235,72,163,1
+240,magby,,,,,,,,,,,,,,2,7,214,73,166,1
+241,miltank,,,,,,,,,,,,,,2,12,755,172,293,1
+242,blissey,,,,,,,,,,,,,,2,15,468,608,144,1
+243,raikou,,,,,,,,,,,,,,2,19,1780,261,294,1
+244,entei,,,,,,,,,,,,,,2,21,1980,261,295,1
+245,suicune,,,,,,,,,,,,,,2,20,1870,261,296,1
+246,larvitar,,,,,,,,,,,,,,2,6,720,60,297,1
+247,pupitar,,,,,,,,,,,,,,2,12,1520,144,298,1
+248,tyranitar,,,,,,,,,,,,,,2,20,2020,270,299,1
+249,lugia,,,,,,,,,,,,,,2,52,2160,306,301,1
+250,ho-oh,,,,,,,,,,,,,,2,38,1990,306,302,1
+251,celebi,,,,,,,,,,,,,,2,6,50,270,303,1
+252,treecko,,,,,,,,,,,,,,3,5,50,62,304,1
+253,grovyle,,,,,,,,,,,,,,3,9,216,142,305,1
+254,sceptile,,,,,,,,,,,,,,3,17,522,239,306,1
+255,torchic,,,,,,,,,,,,,,3,4,25,62,308,1
+256,combusken,,,,,,,,,,,,,,3,9,195,142,309,1
+257,blaziken,,,,,,,,,,,,,,3,19,520,239,310,1
+258,mudkip,,,,,,,,,,,,,,3,4,76,62,312,1
+259,marshtomp,,,,,,,,,,,,,,3,7,280,142,313,1
+260,swampert,,,,,,,,,,,,,,3,15,819,241,314,1
+261,poochyena,,,,,,,,,,,,,,3,5,136,44,316,1
+262,mightyena,,,,,,,,,,,,,,3,10,370,147,317,1
+263,zigzagoon,,,,,,,,,,,,,,3,4,175,48,318,1
+264,linoone,,,,,,,,,,,,,,3,5,325,147,319,1
+265,wurmple,,,,,,,,,,,,,,3,3,36,39,320,1
+266,silcoon,,,,,,,,,,,,,,3,6,100,72,321,1
+267,beautifly,,,,,,,,,,,,,,3,10,284,178,322,1
+268,cascoon,,,,,,,,,,,,,,3,7,115,41,323,1
+269,dustox,,,,,,,,,,,,,,3,12,316,135,324,1
+270,lotad,,,,,,,,,,,,,,3,5,26,44,325,1
+271,lombre,,,,,,,,,,,,,,3,12,325,119,326,1
+272,ludicolo,,,,,,,,,,,,,,3,15,550,216,327,1
+273,seedot,,,,,,,,,,,,,,3,5,40,44,328,1
+274,nuzleaf,,,,,,,,,,,,,,3,10,280,119,329,1
+275,shiftry,,,,,,,,,,,,,,3,13,596,216,330,1
+276,taillow,,,,,,,,,,,,,,3,3,23,54,331,1
+277,swellow,,,,,,,,,,,,,,3,7,198,151,332,1
+278,wingull,,,,,,,,,,,,,,3,6,95,54,333,1
+279,pelipper,,,,,,,,,,,,,,3,12,280,151,334,1
+280,ralts,,,,,,,,,,,,,,3,4,66,40,335,1
+281,kirlia,,,,,,,,,,,,,,3,8,202,97,336,1
+282,gardevoir,,,,,,,,,,,,,,3,16,484,233,337,1
+283,surskit,,,,,,,,,,,,,,3,5,17,54,341,1
+284,masquerain,,,,,,,,,,,,,,3,8,36,145,342,1
+285,shroomish,,,,,,,,,,,,,,3,4,45,59,343,1
+286,breloom,,,,,,,,,,,,,,3,12,392,161,344,1
+287,slakoth,,,,,,,,,,,,,,3,8,240,56,345,1
+288,vigoroth,,,,,,,,,,,,,,3,14,465,154,346,1
+289,slaking,,,,,,,,,,,,,,3,20,1305,252,347,1
+290,nincada,,,,,,,,,,,,,,3,5,55,53,348,1
+291,ninjask,,,,,,,,,,,,,,3,8,120,160,349,1
+292,shedinja,,,,,,,,,,,,,,3,8,12,83,350,1
+293,whismur,,,,,,,,,,,,,,3,6,163,48,351,1
+294,loudred,,,,,,,,,,,,,,3,10,405,126,352,1
+295,exploud,,,,,,,,,,,,,,3,15,840,221,353,1
+296,makuhita,,,,,,,,,,,,,,3,10,864,47,354,1
+297,hariyama,,,,,,,,,,,,,,3,23,2538,166,355,1
+298,azurill,,,,,,,,,,,,,,3,2,20,38,235,1
+299,nosepass,,,,,,,,,,,,,,3,10,970,75,356,1
+300,skitty,,,,,,,,,,,,,,3,6,110,52,358,1
+301,delcatty,,,,,,,,,,,,,,3,11,326,133,359,1
+302,sableye,,,,,,,,,,,,,,3,5,110,133,360,1
+303,mawile,,,,,,,,,,,,,,3,6,115,133,362,1
+304,aron,,,,,,,,,,,,,,3,4,600,66,364,1
+305,lairon,,,,,,,,,,,,,,3,9,1200,151,365,1
+306,aggron,,,,,,,,,,,,,,3,21,3600,239,366,1
+307,meditite,,,,,,,,,,,,,,3,6,112,56,368,1
+308,medicham,,,,,,,,,,,,,,3,13,315,144,369,1
+309,electrike,,,,,,,,,,,,,,3,6,152,59,371,1
+310,manectric,,,,,,,,,,,,,,3,15,402,166,372,1
+311,plusle,,,,,,,,,,,,,,3,4,42,142,374,1
+312,minun,,,,,,,,,,,,,,3,4,42,142,375,1
+313,volbeat,,,,,,,,,,,,,,3,7,177,140,376,1
+314,illumise,,,,,,,,,,,,,,3,6,177,140,377,1
+315,roselia,,,,,,,,,,,,,,3,3,20,140,379,1
+316,gulpin,,,,,,,,,,,,,,3,4,103,60,381,1
+317,swalot,,,,,,,,,,,,,,3,17,800,163,382,1
+318,carvanha,,,,,,,,,,,,,,3,8,208,61,383,1
+319,sharpedo,,,,,,,,,,,,,,3,18,888,161,384,1
+320,wailmer,,,,,,,,,,,,,,3,20,1300,80,386,1
+321,wailord,,,,,,,,,,,,,,3,145,3980,175,387,1
+322,numel,,,,,,,,,,,,,,3,7,240,61,388,1
+323,camerupt,,,,,,,,,,,,,,3,19,2200,161,389,1
+324,torkoal,,,,,,,,,,,,,,3,5,804,165,391,1
+325,spoink,,,,,,,,,,,,,,3,7,306,66,392,1
+326,grumpig,,,,,,,,,,,,,,3,9,715,165,393,1
+327,spinda,,,,,,,,,,,,,,3,11,50,126,394,1
+328,trapinch,,,,,,,,,,,,,,3,7,150,58,395,1
+329,vibrava,,,,,,,,,,,,,,3,11,153,119,396,1
+330,flygon,,,,,,,,,,,,,,3,20,820,234,397,1
+331,cacnea,,,,,,,,,,,,,,3,4,513,67,398,1
+332,cacturne,,,,,,,,,,,,,,3,13,774,166,399,1
+333,swablu,,,,,,,,,,,,,,3,4,12,62,400,1
+334,altaria,,,,,,,,,,,,,,3,11,206,172,401,1
+335,zangoose,,,,,,,,,,,,,,3,13,403,160,403,1
+336,seviper,,,,,,,,,,,,,,3,27,525,160,404,1
+337,lunatone,,,,,,,,,,,,,,3,10,1680,154,405,1
+338,solrock,,,,,,,,,,,,,,3,12,1540,154,406,1
+339,barboach,,,,,,,,,,,,,,3,4,19,58,407,1
+340,whiscash,,,,,,,,,,,,,,3,9,236,164,408,1
+341,corphish,,,,,,,,,,,,,,3,6,115,62,409,1
+342,crawdaunt,,,,,,,,,,,,,,3,11,328,164,410,1
+343,baltoy,,,,,,,,,,,,,,3,5,215,60,411,1
+344,claydol,,,,,,,,,,,,,,3,15,1080,175,412,1
+345,lileep,,,,,,,,,,,,,,3,10,238,71,413,1
+346,cradily,,,,,,,,,,,,,,3,15,604,173,414,1
+347,anorith,,,,,,,,,,,,,,3,7,125,71,415,1
+348,armaldo,,,,,,,,,,,,,,3,15,682,173,416,1
+349,feebas,,,,,,,,,,,,,,3,6,74,40,417,1
+350,milotic,,,,,,,,,,,,,,3,62,1620,189,418,1
+351,castform,,,,,,,,,,,,,,3,3,8,147,419,1
+352,kecleon,,,,,,,,,,,,,,3,10,220,154,423,1
+353,shuppet,,,,,,,,,,,,,,3,6,23,59,424,1
+354,banette,,,,,,,,,,,,,,3,11,125,159,425,1
+355,duskull,,,,,,,,,,,,,,3,8,150,59,427,1
+356,dusclops,,,,,,,,,,,,,,3,16,306,159,428,1
+357,tropius,,,,,,,,,,,,,,3,20,1000,161,430,1
+358,chimecho,,,,,,,,,,,,,,3,6,10,149,432,1
+359,absol,,,,,,,,,,,,,,3,12,470,163,433,1
+360,wynaut,,,,,,,,,,,,,,3,6,140,52,256,1
+361,snorunt,,,,,,,,,,,,,,3,7,168,60,435,1
+362,glalie,,,,,,,,,,,,,,3,15,2565,168,436,1
+363,spheal,,,,,,,,,,,,,,3,8,395,58,439,1
+364,sealeo,,,,,,,,,,,,,,3,11,876,144,440,1
+365,walrein,,,,,,,,,,,,,,3,14,1506,239,441,1
+366,clamperl,,,,,,,,,,,,,,3,4,525,69,442,1
+367,huntail,,,,,,,,,,,,,,3,17,270,170,443,1
+368,gorebyss,,,,,,,,,,,,,,3,18,226,170,444,1
+369,relicanth,,,,,,,,,,,,,,3,10,234,170,445,1
+370,luvdisc,,,,,,,,,,,,,,3,6,87,116,446,1
+371,bagon,,,,,,,,,,,,,,3,6,421,60,447,1
+372,shelgon,,,,,,,,,,,,,,3,11,1105,147,448,1
+373,salamence,,,,,,,,,,,,,,3,15,1026,270,449,1
+374,beldum,,,,,,,,,,,,,,3,6,952,60,451,1
+375,metang,,,,,,,,,,,,,,3,12,2025,147,452,1
+376,metagross,,,,,,,,,,,,,,3,16,5500,270,453,1
+377,regirock,,,,,,,,,,,,,,3,17,2300,261,455,1
+378,regice,,,,,,,,,,,,,,3,18,1750,261,456,1
+379,registeel,,,,,,,,,,,,,,3,19,2050,261,457,1
+380,latias,,,,,,,,,,,,,,3,14,400,270,458,1
+381,latios,,,,,,,,,,,,,,3,20,600,270,460,1
+382,kyogre,,,,,,,,,,,,,,3,45,3520,302,462,1
+383,groudon,,,,,,,,,,,,,,3,35,9500,302,464,1
+384,rayquaza,,,,,,,,,,,,,,3,70,2065,306,466,1
+385,jirachi,,,,,,,,,,,,,,3,3,11,270,468,1
+386,deoxys-normal,,,,,,,,,,,,,,3,17,608,270,469,1
+387,turtwig,,,,,,,,,,,,,,3,4,102,64,473,1
+388,grotle,,,,,,,,,,,,,,3,11,970,142,474,1
+389,torterra,,,,,,,,,,,,,,3,22,3100,236,475,1
+390,chimchar,,,,,,,,,,,,,,3,5,62,62,476,1
+391,monferno,,,,,,,,,,,,,,3,9,220,142,477,1
+392,infernape,,,,,,,,,,,,,,3,12,550,240,478,1
+393,piplup,,,,,,,,,,,,,,3,4,52,63,479,1
+394,prinplup,,,,,,,,,,,,,,3,8,230,142,480,1
+395,empoleon,,,,,,,,,,,,,,3,17,845,239,481,1
+396,starly,,,,,,,,,,,,,,3,3,20,49,482,1
+397,staravia,,,,,,,,,,,,,,3,6,155,119,483,1
+398,staraptor,,,,,,,,,,,,,,3,12,249,218,484,1
+399,bidoof,,,,,,,,,,,,,,3,5,200,50,485,1
+400,bibarel,,,,,,,,,,,,,,3,10,315,144,486,1
+401,kricketot,,,,,,,,,,,,,,3,3,22,39,487,1
+402,kricketune,,,,,,,,,,,,,,3,10,255,134,488,1
+403,shinx,,,,,,,,,,,,,,3,5,95,53,489,1
+404,luxio,,,,,,,,,,,,,,3,9,305,127,490,1
+405,luxray,,,,,,,,,,,,,,3,14,420,235,491,1
+406,budew,,,,,,,,,,,,,,3,2,12,56,378,1
+407,roserade,,,,,,,,,,,,,,3,9,145,232,380,1
+408,cranidos,,,,,,,,,,,,,,3,9,315,70,492,1
+409,rampardos,,,,,,,,,,,,,,3,16,1025,173,493,1
+410,shieldon,,,,,,,,,,,,,,3,5,570,70,494,1
+411,bastiodon,,,,,,,,,,,,,,3,13,1495,173,495,1
+412,burmy,,,,,,,,,,,,,,3,2,34,45,496,1
+413,wormadam-plant,,,,,,,,,,,,,,3,5,65,148,497,1
+414,mothim,,,,,,,,,,,,,,3,9,233,148,500,1
+415,combee,,,,,,,,,,,,,,3,3,55,49,501,1
+416,vespiquen,,,,,,,,,,,,,,3,12,385,166,502,1
+417,pachirisu,,,,,,,,,,,,,,3,4,39,142,503,1
+418,buizel,,,,,,,,,,,,,,3,7,295,66,504,1
+419,floatzel,,,,,,,,,,,,,,3,11,335,173,505,1
+420,cherubi,,,,,,,,,,,,,,3,4,33,55,506,1
+421,cherrim,,,,,,,,,,,,,,3,5,93,158,507,1
+422,shellos,,,,,,,,,,,,,,3,3,63,65,508,1
+423,gastrodon,,,,,,,,,,,,,,3,9,299,166,509,1
+424,ambipom,,,,,,,,,,,,,,3,12,203,169,244,1
+425,drifloon,,,,,,,,,,,,,,3,4,12,70,510,1
+426,drifblim,,,,,,,,,,,,,,3,12,150,174,511,1
+427,buneary,,,,,,,,,,,,,,3,4,55,70,512,1
+428,lopunny,,,,,,,,,,,,,,3,12,333,168,513,1
+429,mismagius,,,,,,,,,,,,,,3,9,44,173,254,1
+430,honchkrow,,,,,,,,,,,,,,3,9,273,177,252,1
+431,glameow,,,,,,,,,,,,,,3,5,39,62,515,1
+432,purugly,,,,,,,,,,,,,,3,10,438,158,516,1
+433,chingling,,,,,,,,,,,,,,3,2,6,57,431,1
+434,stunky,,,,,,,,,,,,,,3,4,192,66,517,1
+435,skuntank,,,,,,,,,,,,,,3,10,380,168,518,1
+436,bronzor,,,,,,,,,,,,,,3,5,605,60,519,1
+437,bronzong,,,,,,,,,,,,,,3,13,1870,175,520,1
+438,bonsly,,,,,,,,,,,,,,3,5,150,58,238,1
+439,mime-jr,,,,,,,,,,,,,,3,6,130,62,156,1
+440,happiny,,,,,,,,,,,,,,4,6,244,110,142,1
+441,chatot,,,,,,,,,,,,,,4,5,19,144,521,1
+442,spiritomb,,,,,,,,,,,,,,4,10,1080,170,522,1
+443,gible,,,,,,,,,,,,,,4,7,205,60,523,1
+444,gabite,,,,,,,,,,,,,,4,14,560,144,524,1
+445,garchomp,,,,,,,,,,,,,,4,19,950,270,525,1
+446,munchlax,,,,,,,,,,,,,,4,6,1050,78,195,1
+447,riolu,,,,,,,,,,,,,,4,7,202,57,527,1
+448,lucario,,,,,,,,,,,,,,4,12,540,184,528,1
+449,hippopotas,,,,,,,,,,,,,,4,8,495,66,530,1
+450,hippowdon,,,,,,,,,,,,,,4,20,3000,184,531,1
+451,skorupi,,,,,,,,,,,,,,4,8,120,66,532,1
+452,drapion,,,,,,,,,,,,,,4,13,615,175,533,1
+453,croagunk,,,,,,,,,,,,,,4,7,230,60,534,1
+454,toxicroak,,,,,,,,,,,,,,4,13,444,172,535,1
+455,carnivine,,,,,,,,,,,,,,4,14,270,159,536,1
+456,finneon,,,,,,,,,,,,,,4,4,70,66,537,1
+457,lumineon,,,,,,,,,,,,,,4,12,240,161,538,1
+458,mantyke,,,,,,,,,,,,,,4,10,650,69,283,1
+459,snover,,,,,,,,,,,,,,4,10,505,67,539,1
+460,abomasnow,,,,,,,,,,,,,,4,22,1355,173,540,1
+461,weavile,,,,,,,,,,,,,,4,11,340,179,271,1
+462,magnezone,,,,,,,,,,,,,,4,12,1800,241,104,1
+463,lickilicky,,,,,,,,,,,,,,4,17,1400,180,136,1
+464,rhyperior,,,,,,,,,,,,,,4,24,2828,241,141,1
+465,tangrowth,,,,,,,,,,,,,,4,20,1286,187,146,1
+466,electivire,,,,,,,,,,,,,,4,18,1386,243,165,1
+467,magmortar,,,,,,,,,,,,,,4,16,680,243,168,1
+468,togekiss,,,,,,,,,,,,,,4,15,380,245,228,1
+469,yanmega,,,,,,,,,,,,,,4,19,515,180,248,1
+470,leafeon,,,,,,,,,,,,,,4,10,255,184,183,1
+471,glaceon,,,,,,,,,,,,,,4,8,259,184,184,1
+472,gliscor,,,,,,,,,,,,,,4,20,425,179,263,1
+473,mamoswine,,,,,,,,,,,,,,4,25,2910,239,278,1
+474,porygon-z,,,,,,,,,,,,,,4,9,340,241,188,1
+475,gallade,,,,,,,,,,,,,,4,16,520,233,339,1
+476,probopass,,,,,,,,,,,,,,4,14,3400,184,357,1
+477,dusknoir,,,,,,,,,,,,,,4,22,1066,236,429,1
+478,froslass,,,,,,,,,,,,,,4,13,266,168,438,1
+479,rotom,,,,,,,,,,,,,,4,3,3,154,542,1
+480,uxie,,,,,,,,,,,,,,4,3,3,261,548,1
+481,mesprit,,,,,,,,,,,,,,4,3,3,261,549,1
+482,azelf,,,,,,,,,,,,,,4,3,3,261,550,1
+483,dialga,,,,,,,,,,,,,,4,54,6830,306,551,1
+484,palkia,,,,,,,,,,,,,,4,42,3360,306,552,1
+485,heatran,,,,,,,,,,,,,,4,17,4300,270,553,1
+486,regigigas,,,,,,,,,,,,,,4,37,4200,302,554,1
+487,giratina-altered,,,,,,,,,,,,,,4,45,7500,306,555,1
+488,cresselia,,,,,,,,,,,,,,4,15,856,270,557,1
+489,phione,,,,,,,,,,,,,,4,4,31,216,558,1
+490,manaphy,,,,,,,,,,,,,,4,3,14,270,559,1
+491,darkrai,,,,,,,,,,,,,,4,15,505,270,560,1
+492,shaymin-land,,,,,,,,,,,,,,4,2,21,270,561,1
+493,arceus,,,,,,,,,,,,,,4,32,3200,324,563,1
+494,victini,,,,,,,,,,,,,,4,4,40,270,564,1
+495,snivy,,,,,,,,,,,,,,5,6,81,62,565,1
+496,servine,,,,,,,,,,,,,,5,8,160,145,566,1
+497,serperior,,,,,,,,,,,,,,5,33,630,238,567,1
+498,tepig,,,,,,,,,,,,,,5,5,99,62,568,1
+499,pignite,,,,,,,,,,,,,,5,10,555,146,569,1
+500,emboar,,,,,,,,,,,,,,5,16,1500,238,570,1
+501,oshawott,,,,,,,,,,,,,,5,5,59,62,571,1
+502,dewott,,,,,,,,,,,,,,5,8,245,145,572,1
+503,samurott,,,,,,,,,,,,,,5,15,946,238,573,1
+504,patrat,,,,,,,,,,,,,,5,5,116,51,574,1
+505,watchog,,,,,,,,,,,,,,5,11,270,147,575,1
+506,lillipup,,,,,,,,,,,,,,5,4,41,55,576,1
+507,herdier,,,,,,,,,,,,,,5,9,147,130,577,1
+508,stoutland,,,,,,,,,,,,,,5,12,610,225,578,1
+509,purrloin,,,,,,,,,,,,,,5,4,101,56,579,1
+510,liepard,,,,,,,,,,,,,,5,11,375,156,580,1
+511,pansage,,,,,,,,,,,,,,5,6,105,63,581,1
+512,simisage,,,,,,,,,,,,,,5,11,305,174,582,1
+513,pansear,,,,,,,,,,,,,,5,6,110,63,583,1
+514,simisear,,,,,,,,,,,,,,5,10,280,174,584,1
+515,panpour,,,,,,,,,,,,,,5,6,135,63,585,1
+516,simipour,,,,,,,,,,,,,,5,10,290,174,586,1
+517,munna,,,,,,,,,,,,,,5,6,233,58,587,1
+518,musharna,,,,,,,,,,,,,,5,11,605,170,588,1
+519,pidove,,,,,,,,,,,,,,5,3,21,53,589,1
+520,tranquill,,,,,,,,,,,,,,5,6,150,125,590,1
+521,unfezant,,,,,,,,,,,,,,5,12,290,220,591,1
+522,blitzle,,,,,,,,,,,,,,5,8,298,59,592,1
+523,zebstrika,,,,,,,,,,,,,,5,16,795,174,593,1
+524,roggenrola,,,,,,,,,,,,,,5,4,180,56,594,1
+525,boldore,,,,,,,,,,,,,,5,9,1020,137,595,1
+526,gigalith,,,,,,,,,,,,,,5,17,2600,232,596,1
+527,woobat,,,,,,,,,,,,,,5,4,21,63,597,1
+528,swoobat,,,,,,,,,,,,,,5,9,105,149,598,1
+529,drilbur,,,,,,,,,,,,,,5,3,85,66,599,1
+530,excadrill,,,,,,,,,,,,,,5,7,404,178,600,1
+531,audino,,,,,,,,,,,,,,5,11,310,390,601,1
+532,timburr,,,,,,,,,,,,,,5,6,125,61,603,1
+533,gurdurr,,,,,,,,,,,,,,5,12,400,142,604,1
+534,conkeldurr,,,,,,,,,,,,,,5,14,870,227,605,1
+535,tympole,,,,,,,,,,,,,,5,5,45,59,606,1
+536,palpitoad,,,,,,,,,,,,,,5,8,170,134,607,1
+537,seismitoad,,,,,,,,,,,,,,5,15,620,229,608,1
+538,throh,,,,,,,,,,,,,,5,13,555,163,609,1
+539,sawk,,,,,,,,,,,,,,5,14,510,163,610,1
+540,sewaddle,,,,,,,,,,,,,,5,3,25,62,611,1
+541,swadloon,,,,,,,,,,,,,,5,5,73,133,612,1
+542,leavanny,,,,,,,,,,,,,,5,12,205,225,613,1
+543,venipede,,,,,,,,,,,,,,5,4,53,52,614,1
+544,whirlipede,,,,,,,,,,,,,,5,12,585,126,615,1
+545,scolipede,,,,,,,,,,,,,,5,25,2005,218,616,1
+546,cottonee,,,,,,,,,,,,,,5,3,6,56,617,1
+547,whimsicott,,,,,,,,,,,,,,5,7,66,168,618,1
+548,petilil,,,,,,,,,,,,,,5,5,66,56,619,1
+549,lilligant,,,,,,,,,,,,,,5,11,163,168,620,1
+550,basculin-red-striped,,,,,,,,,,,,,,5,10,180,161,621,1
+551,sandile,,,,,,,,,,,,,,5,7,152,58,623,1
+552,krokorok,,,,,,,,,,,,,,5,10,334,123,624,1
+553,krookodile,,,,,,,,,,,,,,5,15,963,234,625,1
+554,darumaka,,,,,,,,,,,,,,5,6,375,63,626,1
+555,darmanitan-standard,,,,,,,,,,,,,,5,13,929,168,627,1
+556,maractus,,,,,,,,,,,,,,5,10,280,161,629,1
+557,dwebble,,,,,,,,,,,,,,5,3,145,65,630,1
+558,crustle,,,,,,,,,,,,,,5,14,2000,166,631,1
+559,scraggy,,,,,,,,,,,,,,5,6,118,70,632,1
+560,scrafty,,,,,,,,,,,,,,5,11,300,171,633,1
+561,sigilyph,,,,,,,,,,,,,,5,14,140,172,634,1
+562,yamask,,,,,,,,,,,,,,5,5,15,61,635,1
+563,cofagrigus,,,,,,,,,,,,,,5,17,765,169,636,1
+564,tirtouga,,,,,,,,,,,,,,5,7,165,71,637,1
+565,carracosta,,,,,,,,,,,,,,5,12,810,173,638,1
+566,archen,,,,,,,,,,,,,,5,5,95,71,639,1
+567,archeops,,,,,,,,,,,,,,5,14,320,177,640,1
+568,trubbish,,,,,,,,,,,,,,5,6,310,66,641,1
+569,garbodor,,,,,,,,,,,,,,5,19,1073,166,642,1
+570,zorua,,,,,,,,,,,,,,5,7,125,66,643,1
+571,zoroark,,,,,,,,,,,,,,5,16,811,179,644,1
+572,minccino,,,,,,,,,,,,,,5,4,58,60,645,1
+573,cinccino,,,,,,,,,,,,,,5,5,75,165,646,1
+574,gothita,,,,,,,,,,,,,,5,4,58,58,647,1
+575,gothorita,,,,,,,,,,,,,,5,7,180,137,648,1
+576,gothitelle,,,,,,,,,,,,,,5,15,440,221,649,1
+577,solosis,,,,,,,,,,,,,,5,3,10,58,650,1
+578,duosion,,,,,,,,,,,,,,5,6,80,130,651,1
+579,reuniclus,,,,,,,,,,,,,,5,10,201,221,652,1
+580,ducklett,,,,,,,,,,,,,,5,5,55,61,653,1
+581,swanna,,,,,,,,,,,,,,5,13,242,166,654,1
+582,vanillite,,,,,,,,,,,,,,5,4,57,61,655,1
+583,vanillish,,,,,,,,,,,,,,5,11,410,138,656,1
+584,vanilluxe,,,,,,,,,,,,,,5,13,575,241,657,1
+585,deerling,,,,,,,,,,,,,,5,6,195,67,658,1
+586,sawsbuck,,,,,,,,,,,,,,5,19,925,166,659,1
+587,emolga,,,,,,,,,,,,,,5,4,50,150,660,1
+588,karrablast,,,,,,,,,,,,,,5,5,59,63,661,1
+589,escavalier,,,,,,,,,,,,,,5,10,330,173,662,1
+590,foongus,,,,,,,,,,,,,,5,2,10,59,663,1
+591,amoonguss,,,,,,,,,,,,,,5,6,105,162,664,1
+592,frillish,,,,,,,,,,,,,,5,12,330,67,665,1
+593,jellicent,,,,,,,,,,,,,,5,22,1350,168,666,1
+594,alomomola,,,,,,,,,,,,,,5,12,316,165,667,1
+595,joltik,,,,,,,,,,,,,,5,1,6,64,668,1
+596,galvantula,,,,,,,,,,,,,,5,8,143,165,669,1
+597,ferroseed,,,,,,,,,,,,,,5,6,188,61,670,1
+598,ferrothorn,,,,,,,,,,,,,,5,10,1100,171,671,1
+599,klink,,,,,,,,,,,,,,5,3,210,60,672,1
+600,klang,,,,,,,,,,,,,,5,6,510,154,673,1
+601,klinklang,,,,,,,,,,,,,,5,6,810,234,674,1
+602,tynamo,,,,,,,,,,,,,,5,2,3,55,675,1
+603,eelektrik,,,,,,,,,,,,,,5,12,220,142,676,1
+604,eelektross,,,,,,,,,,,,,,5,21,805,232,677,1
+605,elgyem,,,,,,,,,,,,,,5,5,90,67,678,1
+606,beheeyem,,,,,,,,,,,,,,5,10,345,170,679,1
+607,litwick,,,,,,,,,,,,,,5,3,31,55,680,1
+608,lampent,,,,,,,,,,,,,,5,6,130,130,681,1
+609,chandelure,,,,,,,,,,,,,,5,10,343,234,682,1
+610,axew,,,,,,,,,,,,,,5,6,180,64,683,1
+611,fraxure,,,,,,,,,,,,,,5,10,360,144,684,1
+612,haxorus,,,,,,,,,,,,,,5,18,1055,243,685,1
+613,cubchoo,,,,,,,,,,,,,,5,5,85,61,686,1
+614,beartic,,,,,,,,,,,,,,5,26,2600,170,687,1
+615,cryogonal,,,,,,,,,,,,,,5,11,1480,170,688,1
+616,shelmet,,,,,,,,,,,,,,5,4,77,61,689,1
+617,accelgor,,,,,,,,,,,,,,5,8,253,173,690,1
+618,stunfisk,,,,,,,,,,,,,,5,7,110,165,691,1
+619,mienfoo,,,,,,,,,,,,,,5,9,200,70,692,1
+620,mienshao,,,,,,,,,,,,,,5,14,355,179,693,1
+621,druddigon,,,,,,,,,,,,,,5,16,1390,170,694,1
+622,golett,,,,,,,,,,,,,,5,10,920,61,695,1
+623,golurk,,,,,,,,,,,,,,5,28,3300,169,696,1
+624,pawniard,,,,,,,,,,,,,,5,5,102,68,697,1
+625,bisharp,,,,,,,,,,,,,,5,16,700,172,698,1
+626,bouffalant,,,,,,,,,,,,,,5,16,946,172,699,1
+627,rufflet,,,,,,,,,,,,,,5,5,105,70,700,1
+628,braviary,,,,,,,,,,,,,,5,15,410,179,701,1
+629,vullaby,,,,,,,,,,,,,,5,5,90,74,702,1
+630,mandibuzz,,,,,,,,,,,,,,5,12,395,179,703,1
+631,heatmor,,,,,,,,,,,,,,5,14,580,169,704,1
+632,durant,,,,,,,,,,,,,,5,3,330,169,705,1
+633,deino,,,,,,,,,,,,,,5,8,173,60,706,1
+634,zweilous,,,,,,,,,,,,,,5,14,500,147,707,1
+635,hydreigon,,,,,,,,,,,,,,5,18,1600,270,708,1
+636,larvesta,,,,,,,,,,,,,,5,11,288,72,709,1
+637,volcarona,,,,,,,,,,,,,,5,16,460,248,710,1
+638,cobalion,,,,,,,,,,,,,,5,21,2500,261,711,1
+639,terrakion,,,,,,,,,,,,,,5,19,2600,261,712,1
+640,virizion,,,,,,,,,,,,,,5,20,2000,261,713,1
+641,tornadus-incarnate,,,,,,,,,,,,,,5,15,630,261,714,1
+642,thundurus-incarnate,,,,,,,,,,,,,,5,15,610,261,716,1
+643,reshiram,,,,,,,,,,,,,,5,32,3300,306,718,1
+644,zekrom,,,,,,,,,,,,,,5,29,3450,306,719,1
+645,landorus-incarnate,,,,,,,,,,,,,,5,15,680,270,720,1
+646,kyurem,,,,,,,,,,,,,,5,30,3250,297,722,1
+647,keldeo-ordinary,,,,,,,,,,,,,,5,14,485,261,725,1
+648,meloetta-aria,,,,,,,,,,,,,,5,6,65,270,727,1
+649,genesect,,,,,,,,,,,,,,5,15,825,270,729,1
+650,chespin,,,,,,,,,,,,,,6,4,90,63,730,1
+651,quilladin,,,,,,,,,,,,,,6,7,290,142,731,1
+652,chesnaught,,,,,,,,,,,,,,6,16,900,239,732,1
+653,fennekin,,,,,,,,,,,,,,6,4,94,61,733,1
+654,braixen,,,,,,,,,,,,,,6,10,145,143,734,1
+655,delphox,,,,,,,,,,,,,,6,15,390,240,735,1
+656,froakie,,,,,,,,,,,,,,6,3,70,63,736,1
+657,frogadier,,,,,,,,,,,,,,6,6,109,142,737,1
+658,greninja,,,,,,,,,,,,,,6,15,400,239,738,1
+659,bunnelby,,,,,,,,,,,,,,6,4,50,47,739,1
+660,diggersby,,,,,,,,,,,,,,6,10,424,148,740,1
+661,fletchling,,,,,,,,,,,,,,6,3,17,56,741,1
+662,fletchinder,,,,,,,,,,,,,,6,7,160,134,742,1
+663,talonflame,,,,,,,,,,,,,,6,12,245,175,743,1
+664,scatterbug,,,,,,,,,,,,,,6,3,25,40,744,1
+665,spewpa,,,,,,,,,,,,,,6,3,84,75,745,1
+666,vivillon,,,,,,,,,,,,,,6,12,170,185,746,1
+667,litleo,,,,,,,,,,,,,,6,6,135,74,747,1
+668,pyroar,,,,,,,,,,,,,,6,15,815,177,748,1
+669,flabebe,,,,,,,,,,,,,,6,1,1,61,749,1
+670,floette,,,,,,,,,,,,,,6,2,9,130,750,1
+671,florges,,,,,,,,,,,,,,6,11,100,248,752,1
+672,skiddo,,,,,,,,,,,,,,6,9,310,70,753,1
+673,gogoat,,,,,,,,,,,,,,6,17,910,186,754,1
+674,pancham,,,,,,,,,,,,,,6,6,80,70,755,1
+675,pangoro,,,,,,,,,,,,,,6,21,1360,173,756,1
+676,furfrou,,,,,,,,,,,,,,6,12,280,165,757,1
+677,espurr,,,,,,,,,,,,,,6,3,35,71,758,1
+678,meowstic-male,,,,,,,,,,,,,,6,6,85,163,759,1
+679,honedge,,,,,,,,,,,,,,6,8,20,65,761,1
+680,doublade,,,,,,,,,,,,,,6,8,45,157,762,1
+681,aegislash-shield,,,,,,,,,,,,,,6,17,530,234,763,1
+682,spritzee,,,,,,,,,,,,,,6,2,5,68,765,1
+683,aromatisse,,,,,,,,,,,,,,6,8,155,162,766,1
+684,swirlix,,,,,,,,,,,,,,6,4,35,68,767,1
+685,slurpuff,,,,,,,,,,,,,,6,8,50,168,768,1
+686,inkay,,,,,,,,,,,,,,6,4,35,58,769,1
+687,malamar,,,,,,,,,,,,,,6,15,470,169,770,1
+688,binacle,,,,,,,,,,,,,,6,5,310,61,771,1
+689,barbaracle,,,,,,,,,,,,,,6,13,960,175,772,1
+690,skrelp,,,,,,,,,,,,,,6,5,73,64,773,1
+691,dragalge,,,,,,,,,,,,,,6,18,815,173,774,1
+692,clauncher,,,,,,,,,,,,,,6,5,83,66,775,1
+693,clawitzer,,,,,,,,,,,,,,6,13,353,100,776,1
+694,helioptile,,,,,,,,,,,,,,6,5,60,58,777,1
+695,heliolisk,,,,,,,,,,,,,,6,10,210,168,778,1
+696,tyrunt,,,,,,,,,,,,,,6,8,260,72,779,1
+697,tyrantrum,,,,,,,,,,,,,,6,25,2700,182,780,1
+698,amaura,,,,,,,,,,,,,,6,13,252,72,781,1
+699,aurorus,,,,,,,,,,,,,,6,27,2250,104,782,1
+700,sylveon,,,,,,,,,,,,,,6,10,235,184,185,1
+701,hawlucha,,,,,,,,,,,,,,6,8,215,175,783,1
+702,dedenne,,,,,,,,,,,,,,6,2,22,151,784,1
+703,carbink,,,,,,,,,,,,,,6,3,57,100,785,1
+704,goomy,,,,,,,,,,,,,,6,3,28,60,786,1
+705,sliggoo,,,,,,,,,,,,,,6,8,175,158,787,1
+706,goodra,,,,,,,,,,,,,,6,20,1505,270,788,1
+707,klefki,,,,,,,,,,,,,,6,2,30,165,789,1
+708,phantump,,,,,,,,,,,,,,6,4,70,62,790,1
+709,trevenant,,,,,,,,,,,,,,6,15,710,166,791,1
+710,pumpkaboo-average,,,,,,,,,,,,,,6,4,50,67,793,1
+711,gourgeist-average,,,,,,,,,,,,,,6,9,125,173,797,1
+712,bergmite,,,,,,,,,,,,,,6,10,995,61,800,1
+713,avalugg,,,,,,,,,,,,,,6,20,5050,180,801,1
+714,noibat,,,,,,,,,,,,,,6,5,80,49,802,1
+715,noivern,,,,,,,,,,,,,,6,15,850,187,803,1
+716,xerneas,,,,,,,,,,,,,,6,30,2150,306,804,1
+717,yveltal,,,,,,,,,,,,,,6,58,2030,306,805,1
+718,zygarde,,,,,,,,,,,,,,6,50,3050,270,806,1
+719,diancie,,,,,,,,,,,,,,6,7,88,270,807,1
+720,hoopa,,,,,,,,,,,,,,6,5,90,270,809,1
+721,volcanion,,,,,,,,,,,,,,6,17,1950,270,811,1
