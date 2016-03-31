@@ -45,6 +45,7 @@ POKEMONDICTIONARYGEN6 = {}
 TYPEDICTIONARY = {}
 MOVES_DICTIONARY = {}
 POKEMON_DIR = None
+PICTURE_DIR = None
 
 def setup(hass, config):
     """ Set up the iCloud Scanner. """
@@ -56,6 +57,11 @@ def setup(hass, config):
 
     if not os.path.exists(POKEMON_DIR):
         os.makedirs(POKEMON_DIR)
+        
+    PICTURE_DIR = os.path.join(hass.config.path('www'), DOMAIN)
+
+    if not os.path.exists(PICTURE_DIR):
+        os.makedirs(PICTURE_DIR)
         
     full_filename = "pokemon.csv"
     file_path = os.path.join(POKEMON_DIR, full_filename)
@@ -381,6 +387,13 @@ class Pokemon(Entity):
                     "Weight": self.weight
                 }
             else:
+                tempentitypicture = "/local/"
+                full_filename = self.chosenpokemon.replace(' ','') +".gif"
+                file_path = os.path.join(PICTURE_DIR, full_filename)
+                if os.path.isfile(file_path):
+                    tempentitypicture += full_filename
+                else:
+                    tempentitypicture += "missingpicture.jpg"
                 return {
                     "Name": self.pname,
                     "Health": self.health,
@@ -395,7 +408,7 @@ class Pokemon(Entity):
                     "Speed": self.battleSpeed,
                     "Height": self.height,
                     "Weight": self.weight,
-                    "entity_picture": "https://raw.githubusercontent.com/Bart274/pokemonHA/master/Sprites/" + self.chosenpokemon.replace(' ','') +".gif"
+                    "entity_picture": tempentitypicture
                 }
         else:
             if self.attacker is None:
@@ -512,6 +525,20 @@ class Pokemon(Entity):
         self.fainted = False
         self.active = False
         self.won = False
+        
+        "https://raw.githubusercontent.com/Bart274/pokemonHA/master/Sprites/"
+        if PICTURE_DIR is None:
+            PICTURE_DIR = os.path.join(hass.config.path('www'), DOMAIN)
+
+        full_filename = self.chosenpokemon.replace(' ','') +".gif"
+        file_path = os.path.join(PICTURE_DIR, full_filename)
+        if not os.path.isfile(file_path):
+            url = "https://raw.githubusercontent.com/Bart274/pokemonHA/master/Sprites/" + full_filename
+            picture = requests.get(url, stream=True)
+            if picture.status_code == 200:
+                with open(file_path, 'wb') as opened_file:
+                    picture.raw.decode_content = True
+                    shutil.copyfileobj(picture.raw, opened_file)
 
         # ATTRIBUTES
         # Referring to the pokemonInfo list to fill in the rest of the attributes
