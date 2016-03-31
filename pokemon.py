@@ -45,7 +45,6 @@ POKEMONDICTIONARYGEN6 = {}
 TYPEDICTIONARY = {}
 MOVES_DICTIONARY = {}
 POKEMON_DIR = None
-PICTURE_DIR = None
 
 def setup(hass, config):
     """ Set up the iCloud Scanner. """
@@ -58,10 +57,10 @@ def setup(hass, config):
     if not os.path.exists(POKEMON_DIR):
         os.makedirs(POKEMON_DIR)
         
-    PICTURE_DIR = os.path.join(hass.config.path('www'), DOMAIN)
+    picture_dir = os.path.join(hass.config.path('www'), DOMAIN)
 
-    if not os.path.exists(PICTURE_DIR):
-        os.makedirs(PICTURE_DIR)
+    if not os.path.exists(picture_dir):
+        os.makedirs(picture_dir)
         
     full_filename = "pokemon.csv"
     file_path = os.path.join(POKEMON_DIR, full_filename)
@@ -160,49 +159,49 @@ def setup(hass, config):
     playername = pokemon_config.get('playername', DEFAULT_NAME)
     enemyname = pokemon_config.get('enemyname', DEFAULT_ENEMY)
         
-    player = Pokemon(hass, 'player', playername)
+    player = Pokemon(hass, 'player', playername, picture_dir)
     player.update_ha_state()
         
-    enemy = Pokemon(hass, 'enemy', enemyname)
+    enemy = Pokemon(hass, 'enemy', enemyname, picture_dir)
     enemy.update_ha_state()
         
-    pokemonplayer1 = Pokemon(hass, 'pokemon', '1', player, enemy)
+    pokemonplayer1 = Pokemon(hass, 'pokemon', '1', picture_dir, player, enemy)
     pokemonplayer1.update_ha_state()
         
-    pokemonplayer2 = Pokemon(hass, 'pokemon', '2', player, enemy)
+    pokemonplayer2 = Pokemon(hass, 'pokemon', '2', picture_dir, player, enemy)
     pokemonplayer2.update_ha_state()
        
-    pokemonplayer3 = Pokemon(hass, 'pokemon', '3', player, enemy)
+    pokemonplayer3 = Pokemon(hass, 'pokemon', '3', picture_dir, player, enemy)
     pokemonplayer3.update_ha_state()
         
-    pokemonplayer4 = Pokemon(hass, 'pokemon', '4', player, enemy)
+    pokemonplayer4 = Pokemon(hass, 'pokemon', '4', picture_dir, player, enemy)
     pokemonplayer4.update_ha_state()
         
-    pokemonplayer5 = Pokemon(hass, 'pokemon', '5', player, enemy)
+    pokemonplayer5 = Pokemon(hass, 'pokemon', '5', picture_dir, player, enemy)
     pokemonplayer5.update_ha_state()
         
-    pokemonplayer6 = Pokemon(hass, 'pokemon', '6', player, enemy)
+    pokemonplayer6 = Pokemon(hass, 'pokemon', '6', picture_dir, player, enemy)
     pokemonplayer6.update_ha_state()
         
-    pokemonenemy1 = Pokemon(hass, 'pokemon', '1', enemy, player)
+    pokemonenemy1 = Pokemon(hass, 'pokemon', '1', picture_dir, enemy, player)
     pokemonenemy1.update_ha_state()
         
-    pokemonenemy2 = Pokemon(hass, 'pokemon', '2', enemy, player)
+    pokemonenemy2 = Pokemon(hass, 'pokemon', '2', picture_dir, enemy, player)
     pokemonenemy2.update_ha_state()
         
-    pokemonenemy3 = Pokemon(hass, 'pokemon', '3', enemy, player)
+    pokemonenemy3 = Pokemon(hass, 'pokemon', '3', picture_dir, enemy, player)
     pokemonenemy3.update_ha_state()
         
-    pokemonenemy4 = Pokemon(hass, 'pokemon', '4', enemy, player)
+    pokemonenemy4 = Pokemon(hass, 'pokemon', '4', picture_dir, enemy, player)
     pokemonenemy4.update_ha_state()
         
-    pokemonenemy5 = Pokemon(hass, 'pokemon', '5', enemy, player)
+    pokemonenemy5 = Pokemon(hass, 'pokemon', '5', picture_dir, enemy, player)
     pokemonenemy5.update_ha_state()
         
-    pokemonenemy6 = Pokemon(hass, 'pokemon', '6', enemy, player)
+    pokemonenemy6 = Pokemon(hass, 'pokemon', '6', picture_dir, enemy, player)
     pokemonenemy6.update_ha_state()
         
-    pokemonbattle = Pokemon(hass, 'battle', 'battle', player, enemy,
+    pokemonbattle = Pokemon(hass, 'battle', 'battle', picture_dir, player, enemy,
                             pokemonplayer1, pokemonplayer2, pokemonplayer3,
                             pokemonplayer4, pokemonplayer5, pokemonplayer6,
                             pokemonenemy1, pokemonenemy2, pokemonenemy3,
@@ -236,11 +235,12 @@ def setup(hass, config):
     return True
 
 class Pokemon(Entity):
-    def __init__(self, hass, type, name, person1=None, person2=None,
-                 pokemonplayer1=None, pokemonplayer2=None, pokemonplayer3=None,
-                 pokemonplayer4=None, pokemonplayer5=None, pokemonplayer6=None,
-                 pokemonenemy1=None, pokemonenemy2=None, pokemonenemy3=None,
-                 pokemonenemy4=None, pokemonenemy5=None, pokemonenemy6=None):
+    def __init__(self, hass, type, name, picture_dir, person1=None,
+                 person2=None, pokemonplayer1=None, pokemonplayer2=None,
+                 pokemonplayer3=None, pokemonplayer4=None, pokemonplayer5=None,
+                 pokemonplayer6=None, pokemonenemy1=None, pokemonenemy2=None,
+                 pokemonenemy3=None, pokemonenemy4=None, pokemonenemy5=None,
+                 pokemonenemy6=None):
         self.hass = hass
         self.type = type
         if type == 'pokemon':
@@ -249,6 +249,7 @@ class Pokemon(Entity):
             self.pname = name
         self.person1 = person1
         self.person2 = person2
+        self.picture_dir = picture_dir
         self.health = 100
         self._state = None
         self.lastmove = None
@@ -387,9 +388,9 @@ class Pokemon(Entity):
                     "Weight": self.weight
                 }
             else:
-                tempentitypicture = "/local/"
+                tempentitypicture = "/local/" + DOMAIN + "/"
                 full_filename = self.chosenpokemon.replace(' ','') +".gif"
-                file_path = os.path.join(PICTURE_DIR, full_filename)
+                file_path = os.path.join(self.picture_dir, full_filename)
                 if os.path.isfile(file_path):
                     tempentitypicture += full_filename
                 else:
@@ -526,12 +527,8 @@ class Pokemon(Entity):
         self.active = False
         self.won = False
         
-        "https://raw.githubusercontent.com/Bart274/pokemonHA/master/Sprites/"
-        if PICTURE_DIR is None:
-            PICTURE_DIR = os.path.join(hass.config.path('www'), DOMAIN)
-
         full_filename = self.chosenpokemon.replace(' ','') +".gif"
-        file_path = os.path.join(PICTURE_DIR, full_filename)
+        file_path = os.path.join(self.picture_dir, full_filename)
         if not os.path.isfile(file_path):
             url = "https://raw.githubusercontent.com/Bart274/pokemonHA/master/Sprites/" + full_filename
             picture = requests.get(url, stream=True)
