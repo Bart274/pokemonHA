@@ -32,6 +32,12 @@ IV = 30
 EV = 85
 STAB = 1.5
 POKEMONDICTIONARY = {}
+POKEMONDICTIONARYGEN1 = {}
+POKEMONDICTIONARYGEN2 = {}
+POKEMONDICTIONARYGEN3 = {}
+POKEMONDICTIONARYGEN4 = {}
+POKEMONDICTIONARYGEN5 = {}
+POKEMONDICTIONARYGEN6 = {}
 TYPEDICTIONARY = {}
 MOVES_DICTIONARY = {}
 POKEMON_DIR = None
@@ -331,7 +337,7 @@ class Pokemon(Entity):
             }
         elif self.type == 'pokemon':
             temptype = self.type1
-            if self.type2 is not None:
+            if self.type2.strip(' \t\n\r') != '':
                 temptype += '/' + self.type2
             if self.chosenpokemon is None or self.active is False:
                 return {
