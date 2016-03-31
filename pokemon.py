@@ -13,6 +13,8 @@ import shutil
 import os.path
 import requests
 
+from math import floor
+
 from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle
 from homeassistant.helpers.event import track_utc_time_change
@@ -26,6 +28,8 @@ DEFAULT_ENEMY = "Gary"
 DOMAIN = "pokemon"
 
 ENTITY_ID_FORMAT = DOMAIN + '.{}'
+
+COMPLETEDLIST = 151
 
 POKEDEX = []
 IV = 30
@@ -104,7 +108,20 @@ def setup(hass, config):
     for line in fin:
         line = line.strip()
         pokeList = line.split(",")
-        POKEMONDICTIONARY[pokeList[1]] = pokeList
+        if int(pokeList[0]) <= COMPLETEDLIST and pokeList[1].strip(' \t\n\r') != '':
+            POKEMONDICTIONARY[pokeList[1]] = pokeList
+            if int(pokeList[14]) <= 1:
+                POKEMONDICTIONARYGEN1[pokeList[1]] = pokeList
+            if int(pokeList[14]) <= 2:
+                POKEMONDICTIONARYGEN2[pokeList[1]] = pokeList
+            if int(pokeList[14]) <= 3:
+                POKEMONDICTIONARYGEN3[pokeList[1]] = pokeList
+            if int(pokeList[14]) <= 4:
+                POKEMONDICTIONARYGEN4[pokeList[1]] = pokeList
+            if int(pokeList[14]) <= 5:
+                POKEMONDICTIONARYGEN5[pokeList[1]] = pokeList
+            if int(pokeList[14]) <= 6:
+                POKEMONDICTIONARYGEN6[pokeList[1]] = pokeList
     fin.close()
 
     # Taking the keys from above, turning them into a list, and sorting them
@@ -143,40 +160,40 @@ def setup(hass, config):
     enemy = Pokemon(hass, 'enemy', enemyname)
     enemy.update_ha_state()
         
-    pokemonplayer1 = Pokemon(hass, 'pokemon', '1', player)
+    pokemonplayer1 = Pokemon(hass, 'pokemon', '1', player, enemy)
     pokemonplayer1.update_ha_state()
         
-    pokemonplayer2 = Pokemon(hass, 'pokemon', '2', player)
+    pokemonplayer2 = Pokemon(hass, 'pokemon', '2', player, enemy)
     pokemonplayer2.update_ha_state()
        
-    pokemonplayer3 = Pokemon(hass, 'pokemon', '3', player)
+    pokemonplayer3 = Pokemon(hass, 'pokemon', '3', player, enemy)
     pokemonplayer3.update_ha_state()
         
-    pokemonplayer4 = Pokemon(hass, 'pokemon', '4', player)
+    pokemonplayer4 = Pokemon(hass, 'pokemon', '4', player, enemy)
     pokemonplayer4.update_ha_state()
         
-    pokemonplayer5 = Pokemon(hass, 'pokemon', '5', player)
+    pokemonplayer5 = Pokemon(hass, 'pokemon', '5', player, enemy)
     pokemonplayer5.update_ha_state()
         
-    pokemonplayer6 = Pokemon(hass, 'pokemon', '6', player)
+    pokemonplayer6 = Pokemon(hass, 'pokemon', '6', player, enemy)
     pokemonplayer6.update_ha_state()
         
-    pokemonenemy1 = Pokemon(hass, 'pokemon', '1', enemy)
+    pokemonenemy1 = Pokemon(hass, 'pokemon', '1', enemy, player)
     pokemonenemy1.update_ha_state()
         
-    pokemonenemy2 = Pokemon(hass, 'pokemon', '2', enemy)
+    pokemonenemy2 = Pokemon(hass, 'pokemon', '2', enemy, player)
     pokemonenemy2.update_ha_state()
         
-    pokemonenemy3 = Pokemon(hass, 'pokemon', '3', enemy)
+    pokemonenemy3 = Pokemon(hass, 'pokemon', '3', enemy, player)
     pokemonenemy3.update_ha_state()
         
-    pokemonenemy4 = Pokemon(hass, 'pokemon', '4', enemy)
+    pokemonenemy4 = Pokemon(hass, 'pokemon', '4', enemy, player)
     pokemonenemy4.update_ha_state()
         
-    pokemonenemy5 = Pokemon(hass, 'pokemon', '5', enemy)
+    pokemonenemy5 = Pokemon(hass, 'pokemon', '5', enemy, player)
     pokemonenemy5.update_ha_state()
         
-    pokemonenemy6 = Pokemon(hass, 'pokemon', '6', enemy)
+    pokemonenemy6 = Pokemon(hass, 'pokemon', '6', enemy, player)
     pokemonenemy6.update_ha_state()
         
     pokemonbattle = Pokemon(hass, 'battle', 'battle', player, enemy,
@@ -235,7 +252,10 @@ class Pokemon(Entity):
         self.victories = 0
         self.badges = 0
         self.pokedex = 0
+        self.pokedexcaught = 0
+        self.pokedexseen = 0
         self.caughtpokemon = []
+        self.seenpokemon = []
         self.level = 1
         self.attacker = None
         self.victim = None
@@ -333,11 +353,13 @@ class Pokemon(Entity):
                 "Name": self.pname,
                 "Victories": self.victories,
                 "Badges": self.badges,
-                "Pokedex": self.pokedex
+                "Pokedex completed": self.pokedex,
+                "Pokemon caught": self.pokedexcaught,
+                "Pokemon seen": self.pokedexseen
             }
         elif self.type == 'pokemon':
             temptype = self.type1
-            if self.type2.strip(' \t\n\r') != '':
+            if self.type2 is not None and self.type2.strip(' \t\n\r') != '':
                 temptype += '/' + self.type2
             if self.chosenpokemon is None or self.active is False:
                 return {
@@ -447,7 +469,20 @@ class Pokemon(Entity):
         
     def choosepokemon(self, chosenpokemon=None):
         if chosenpokemon is None:
-            chosenpokemon = random.choice(list(POKEMONDICTIONARY))
+            if floor(self.person1.badges / 8) == 0:
+                chosenpokemon = random.choice(list(POKEMONDICTIONARYGEN1))
+            elif floor(self.person1.badges / 8) == 1:
+                chosenpokemon = random.choice(list(POKEMONDICTIONARYGEN2))
+            elif floor(self.person1.badges / 8) == 2:
+                chosenpokemon = random.choice(list(POKEMONDICTIONARYGEN3))
+            elif floor(self.person1.badges / 8) == 3:
+                chosenpokemon = random.choice(list(POKEMONDICTIONARYGEN4))
+            elif floor(self.person1.badges / 8) == 4:
+                chosenpokemon = random.choice(list(POKEMONDICTIONARYGEN5))
+            elif floor(self.person1.badges / 8) == 5:
+                chosenpokemon = random.choice(list(POKEMONDICTIONARYGEN6))
+            else:
+                chosenpokemon = random.choice(list(POKEMONDICTIONARY))
             self.level = 1
         self.chosenpokemon = chosenpokemon.lower().strip(' \t\n\r')
         _LOGGER.info("POKEMON: chosenpokemon: %s", self.chosenpokemon)
@@ -456,8 +491,13 @@ class Pokemon(Entity):
                 pokemonInfo = POKEMONDICTIONARY[key]
         
         if self.chosenpokemon not in self.person1.caughtpokemon:
-                self.person1.caughtpokemon.append(self.chosenpokemon)
-                self.person1.pokedex += 1
+            self.person1.caughtpokemon.append(self.chosenpokemon)
+            self.person1.pokedexcaught += 1
+            self.person1.pokedex = str(round(self.person1.pokedexcaught / COMPLETEDLIST * 100, 2)) + '%'
+        
+        if self.chosenpokemon not in self.person2.seenpokemon:
+            self.person2.seenpokemon.append(self.chosenpokemon)
+            self.person2.pokedexseen += 1
                 
         self.fainted = False
         self.active = False
