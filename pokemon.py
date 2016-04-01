@@ -273,39 +273,51 @@ class Pokemon(Entity):
         self.pokemonplayer1 = pokemonplayer1
         if self.pokemonplayer1 is not None:
             self.pokemonplayer1.choosepokemon()
+            self.pokemonplayer1.won = True
         self.pokemonplayer2 = pokemonplayer2
         if self.pokemonplayer2 is not None:
             self.pokemonplayer2.choosepokemon()
+            self.pokemonplayer2.won = True
         self.pokemonplayer3 = pokemonplayer3
         if self.pokemonplayer3 is not None:
             self.pokemonplayer3.choosepokemon()
+            self.pokemonplayer3.won = True
         self.pokemonplayer4 = pokemonplayer4
         if self.pokemonplayer4 is not None:
             self.pokemonplayer4.choosepokemon()
+            self.pokemonplayer4.won = True
         self.pokemonplayer5 = pokemonplayer5
         if self.pokemonplayer5 is not None:
             self.pokemonplayer5.choosepokemon()
+            self.pokemonplayer5.won = True
         self.pokemonplayer6 = pokemonplayer6
         if self.pokemonplayer6 is not None:
             self.pokemonplayer6.choosepokemon()
+            self.pokemonplayer6.won = True
         self.pokemonenemy1 = pokemonenemy1
         if self.pokemonenemy1 is not None:
             self.pokemonenemy1.choosepokemon()
+            self.pokemonenemy1.won = True
         self.pokemonenemy2 = pokemonenemy2
         if self.pokemonenemy2 is not None:
             self.pokemonenemy2.choosepokemon()
+            self.pokemonenemy2.won = True
         self.pokemonenemy3 = pokemonenemy3
         if self.pokemonenemy3 is not None:
             self.pokemonenemy3.choosepokemon()
+            self.pokemonenemy3.won = True
         self.pokemonenemy4 = pokemonenemy4
         if self.pokemonenemy4 is not None:
             self.pokemonenemy4.choosepokemon()
+            self.pokemonenemy4.won = True
         self.pokemonenemy5 = pokemonenemy5
         if self.pokemonenemy5 is not None:
             self.pokemonenemy5.choosepokemon()
+            self.pokemonenemy5.won = True
         self.pokemonenemy6 = pokemonenemy6
         if self.pokemonenemy6 is not None:
             self.pokemonenemy6.choosepokemon()
+            self.pokemonenemy6.won = True
         
         self.fainted = True
         self.active = False
@@ -517,6 +529,11 @@ class Pokemon(Entity):
             self.person1.caughtpokemon.append(self.chosenpokemon)
             self.person1.pokedexcaught += 1
             self.person1.pokedex = str(round(self.person1.pokedexcaught / TOTALPOKEDEX * 100, 2)) + '%'
+        
+        if self.chosenpokemon not in self.person1.seenpokemon:
+            self.person1.seenpokemon.append(self.chosenpokemon)
+            self.person1.pokedexseen += 1
+                
         
         self.fainted = False
         self.active = False
@@ -999,7 +1016,7 @@ class Pokemon(Entity):
                 self.lastmove = None
                 self.activepokemonplayer.active = True
                 if self.activepokemonplayer.chosenpokemon not in self.person2.seenpokemon:
-                    self.person2.seenpokemon.append(self.chosenpokemon)
+                    self.person2.seenpokemon.append(self.activepokemonplayer.chosenpokemon)
                     self.person2.pokedexseen += 1
                 self.update_ha_state()
                 return
@@ -1028,7 +1045,7 @@ class Pokemon(Entity):
                 self.lastmove = None
                 self.activepokemonenemy.active = True
                 if self.activepokemonenemy.chosenpokemon not in self.person1.seenpokemon:
-                    self.person1.seenpokemon.append(self.chosenpokemon)
+                    self.person1.seenpokemon.append(self.activepokemonenemy.chosenpokemon)
                     self.person1.pokedexseen += 1
                 self.update_ha_state()
                 return
