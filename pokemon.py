@@ -373,7 +373,6 @@ class Pokemon(Entity):
                 temptype += '/' + self.type2
             if self.chosenpokemon is None or self.active is False:
                 return {
-                    "Name": self.pname,
                     "Health": self.health,
                     "Level": self.level,
                     "Owner": self.person1.pname,
@@ -396,7 +395,6 @@ class Pokemon(Entity):
                 else:
                     tempentitypicture += "missingpicture.jpg"
                 return {
-                    "Name": self.pname,
                     "Health": self.health,
                     "Level": self.level,
                     "Owner": self.person1.pname,
@@ -476,7 +474,11 @@ class Pokemon(Entity):
         if self.type == 'player' or self.type == 'enemy':
             self._state = self.victories
         elif self.type == 'pokemon':
-            self._state = self.pokemonname
+            tempname = self.pokemonname
+            if self.person1.type == 'enemy':
+                if not self.active and not self.fainted:
+                    tempname = '?' 
+            self._state = tempname
         else:
             self._state = self.battlestate
             
@@ -516,13 +518,6 @@ class Pokemon(Entity):
             self.person1.pokedexcaught += 1
             self.person1.pokedex = str(round(self.person1.pokedexcaught / TOTALPOKEDEX * 100, 2)) + '%'
         
-        if self.chosenpokemon not in self.person1.seenpokemon:
-            self.person1.seenpokemon.append(self.chosenpokemon)
-            self.person1.pokedexseen += 1
-        if self.chosenpokemon not in self.person2.seenpokemon:
-            self.person2.seenpokemon.append(self.chosenpokemon)
-            self.person2.pokedexseen += 1
-                
         self.fainted = False
         self.active = False
         self.won = False
@@ -1002,6 +997,9 @@ class Pokemon(Entity):
                 self.battlestate = self.person1.pname + " chose " + self.activepokemonplayer.pokemonname
                 self.lastmove = None
                 self.activepokemonplayer.active = True
+                if self.activepokemonplayer.chosenpokemon not in self.person2.seenpokemon:
+                    self.person2.seenpokemon.append(self.chosenpokemon)
+                    self.person2.pokedexseen += 1
                 self.update_ha_state()
                 return
         
@@ -1028,6 +1026,9 @@ class Pokemon(Entity):
                 self.battlestate = self.person2.pname + " chose " + self.activepokemonenemy.pokemonname
                 self.lastmove = None
                 self.activepokemonenemy.active = True
+                if self.activepokemonenemy.chosenpokemon not in self.person1.seenpokemon:
+                    self.person1.seenpokemon.append(self.chosenpokemon)
+                    self.person1.pokedexseen += 1
                 self.update_ha_state()
                 return
         
@@ -1038,6 +1039,18 @@ class Pokemon(Entity):
             if self.person1.victories % 25 == 0:
                 self.person1.badges += 1
             self.resetting = 5
+            if self.pokemonplayer1.health != 'FNT' and self.pokemonplayer1.level > 1:
+                self.pokemonplayer1.won = True
+            if self.pokemonplayer2.health != 'FNT' and self.pokemonplayer2.level > 1:
+                self.pokemonplayer2.won = True
+            if self.pokemonplayer3.health != 'FNT' and self.pokemonplayer3.level > 1:
+                self.pokemonplayer3.won = True
+            if self.pokemonplayer4.health != 'FNT' and self.pokemonplayer4.level > 1:
+                self.pokemonplayer4.won = True
+            if self.pokemonplayer5.health != 'FNT' and self.pokemonplayer5.level > 1:
+                self.pokemonplayer5.won = True
+            if self.pokemonplayer6.health != 'FNT' and self.pokemonplayer6.level > 1:
+                self.pokemonplayer6.won = True
             self.update_ha_state()
             return
         
@@ -1047,6 +1060,18 @@ class Pokemon(Entity):
             if self.person2.victories % 25 == 0:
                 self.person2.badges += 1
             self.resetting = 5
+            if self.pokemonenemy1.health != 'FNT' and self.pokemonenemy1.level > 1:
+                self.pokemonenemy1.won = True
+            if self.pokemonenemy2.health != 'FNT' and self.pokemonenemy2.level > 1:
+                self.pokemonenemy2.won = True
+            if self.pokemonenemy3.health != 'FNT' and self.pokemonenemy3.level > 1:
+                self.pokemonenemy3.won = True
+            if self.pokemonenemy4.health != 'FNT' and self.pokemonenemy4.level > 1:
+                self.pokemonenemy4.won = True
+            if self.pokemonenemy5.health != 'FNT' and self.pokemonenemy5.level > 1:
+                self.pokemonenemy5.won = True
+            if self.pokemonenemy6.health != 'FNT' and self.pokemonenemy6.level > 1:
+                self.pokemonenemy6.won = True
             self.update_ha_state()    
             return
             
