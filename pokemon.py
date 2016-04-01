@@ -698,6 +698,7 @@ class Pokemon(Entity):
     # Stat modification function; will be called inside the attack function if the move alters the defending Pokemon's stats
     # Takes the current statStage as input and returns a multiplier that will be used to calculate the new statStage
     def statMod(self, statStage):
+        multiplier = 1
         if statStage == 1:
             multiplier = 1.5
         elif statStage == -1:
