@@ -1139,15 +1139,11 @@ class Move(object):
         self.id = moveInfo[0]  # Move's number id
         self.name = moveInfo[1]  # Move's name
 
-        # Description
-        self.description = moveInfo[2]  # Move description
-        self.type = moveInfo[3]  # Move type
-        self.kind = moveInfo[4]  # Can be special, physical, or stat-changing
+        self.type = moveInfo[2]  # Move type
+        self.kind = moveInfo[3]  # Can be special, physical, or stat-changing
 
         # For in-battle calculations
-        self.power = int(moveInfo[5])  # Move's base damage
-        self.accuracy = moveInfo[6]
-        self.pp = int(moveInfo[7])
+        self.power = int(moveInfo[4])  # Move's base damage
 
     # METHODS
     # str method
@@ -1163,9 +1159,6 @@ class Move(object):
     def getName(self):
         return self.name
 
-    def getDescription(self):
-        return self.description
-
     def getType(self):
         return self.type
 
@@ -1174,12 +1167,6 @@ class Move(object):
 
     def getPower(self):
         return self.power
-
-    def getAccuracy(self):
-        return self.accuracy
-
-    def getPP(self):
-        return self.pp
 
     # SET Methods
     def setName(self, name):
@@ -1190,9 +1177,3 @@ class Move(object):
 
     def setPower(self, power):
         self.power = power
-
-    def setAccuracy(self, accuracy):
-        self.accuracy = accuracy
-
-    def setPP(self, pp):
-        self.pp = pp
