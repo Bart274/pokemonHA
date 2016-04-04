@@ -827,6 +827,76 @@ class Pokemon(Entity):
                     tempMsg += "\nFoe's " + self.victim.pokemonname + "'s attack fell! "
                 else:
                     tempMsg += "\n" + self.victim.pokemonname + "'s attack fell! "
+                    
+            elif move.kind == "a=d":
+                tempattack = self.attacker.atkStage
+                self.attacker.atkStage = self.attacker.defStage
+                self.attacker.battleATK = self.attacker.originalATK * self.statMod(self.attacker.atkStage)
+                self.attacker.defStage = tempattack
+                self.attacker.battleDEF = self.attacker.originalDEF * self.statMod(self.attacker.defStage)
+                tempattack = self.attacker.spAtkStage
+                self.attacker.spAtkStage = self.attacker.spDefStage
+                self.attacker.battleSpATK = self.attacker.originalSpATK * self.statMod(self.attacker.spAtkStage)
+                self.attacker.spDefStage = tempattack
+                self.attacker.battleSpDef = self.attacker.originalSpDEF * self.statMod(self.attacker.spDefStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s attack and defense are changed! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s attack and defense are changed! "
+            
+            elif move.kind == "a><a":
+                tempattack = self.attacker.atkStage
+                self.attacker.atkStage = self.victim.atkStage
+                self.attacker.battleATK = self.attacker.originalATK * self.statMod(self.attacker.atkStage)
+                self.victim.atkStage = tempattack
+                self.victim.battleATK = self.victim.originalATK * self.statMod(self.victim.atkStage)
+                tempattack = self.attacker.spAtkStage
+                self.attacker.spAtkStage = self.victim.spAtkStage
+                self.attacker.battleSpATK = self.attacker.originalSpATK * self.statMod(self.attacker.spAtkStage)
+                self.victim.spAtkStage = tempattack
+                self.victim.battleSpATK = self.victim.originalSpATK * self.statMod(self.victim.spAtkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + " changed attack stats with Foe's " + self.victim.pokemonname + "! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + " changed attack stats with " + self.victim.pokemonname + "! "
+
+            elif move.kind == "d><d":
+                tempattack = self.attacker.defStage
+                self.attacker.defStage = self.victim.defStage
+                self.attacker.battleDEF = self.attacker.originalDEF * self.statMod(self.attacker.defStage)
+                self.victim.defStage = tempattack
+                self.victim.battleDEF = self.victim.originalDEF * self.statMod(self.victim.defStage)
+                tempattack = self.attacker.spDefStage
+                self.attacker.spDefStage = self.victim.spDefStage
+                self.attacker.battleSpDef = self.attacker.originalSpDEF * self.statMod(self.attacker.spDefStage)
+                self.victim.spDefStage = tempattack
+                self.victim.battleSpDef = self.victim.originalSpDEF * self.statMod(self.victim.spDefStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + " changed defense stats with Foe's " + self.victim.pokemonname + "! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + " changed defense stats with " + self.victim.pokemonname + "! "
+
+            elif move.kind == "avgatt-":
+                tempattack = floor((self.victim.atkStage + self.victim.spAtkStage) / 2)
+                self.victim.atkStage = tempattack
+                self.victim.battleATK = self.victim.originalATK * self.statMod(self.victim.atkStage)
+                self.victim.spAtkStage = tempattack
+                self.victim.battleSpATK = self.victim.originalSpATK * self.statMod(self.victim.spAtkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\nFoe's " + self.victim.pokemonname + "'s attack and special attack averaged! "
+                else:
+                    tempMsg += "\n" + self.victim.pokemonname + "'s attack and special attack averaged! "
+
+            elif move.kind == "avgdef-":
+                tempattack = floor((self.victim.defStage + self.victim.spDefStage) / 2)
+                self.victim.defStage = tempattack
+                self.victim.battleDEF = self.victim.originalDEF * self.statMod(self.victim.defStage)
+                self.victim.spDefStage = tempattack
+                self.victim.battleSpDef = self.victim.originalSpDEF * self.statMod(self.victim.spDefStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\nFoe's " + self.victim.pokemonname + "'s defense and special defense averaged! "
+                else:
+                    tempMsg += "\n" + self.victim.pokemonname + "'s defense and special defense averaged! "
 
             elif move.kind == "a+":
                 self.attacker.atkStage +=1
@@ -843,6 +913,14 @@ class Pokemon(Entity):
                     tempMsg += "\n" + self.attacker.pokemonname + "'s defense rose! "
                 else:
                     tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s defense rose! "
+                    
+            elif move.kind == "d+++":
+                self.attacker.defStage +=3
+                self.attacker.battleDEF = self.attacker.originalDEF * self.statMod(self.attacker.defStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s defense sharply rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s defense sharply rose! "
 
             elif move.kind == "sa+":
                 self.attacker.spAtkStage +=1
@@ -851,6 +929,22 @@ class Pokemon(Entity):
                     tempMsg += "\n" + self.attacker.pokemonname + "'s special attack rose! "
                 else:
                     tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s special attack rose! "
+
+            elif move.kind == "sa-":
+                self.victim.spAtkStage -=1
+                self.victim.battleSpATK = self.victim.originalSpATK * self.statMod(self.victim.spAtkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\nFoe's " + self.victim.pokemonname + "'s special attack fell! "
+                else:
+                    tempMsg += "\n" + self.victim.pokemonname + "'s special attack fell! "
+
+            elif move.kind == "sa--":
+                self.victim.spAtkStage -=2
+                self.victim.battleSpATK = self.victim.originalSpATK * self.statMod(self.victim.spAtkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\nFoe's " + self.victim.pokemonname + "'s special attack greatly fell! "
+                else:
+                    tempMsg += "\n" + self.victim.pokemonname + "'s special attack greatly fell! "
 
             elif move.kind == "sd+":
                 self.attacker.spDefStage +=1
@@ -866,7 +960,155 @@ class Pokemon(Entity):
                 if self.attacker.person1.type == 'player':
                     tempMsg += "\n" + self.attacker.pokemonname + "'s speed rose! "
                 else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s speed rose! "
+
+            elif move.kind == "s++":
+                self.attacker.speedStage +=2
+                self.attacker.battleSpeed = self.attacker.originalSpeed * self.statMod(self.attacker.speedStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s speed greatly rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s speed greatly rose! "
+
+            elif move.kind == "s++w/2":
+                self.attacker.speedStage +=2
+                self.attacker.battleSpeed = self.attacker.originalSpeed * self.statMod(self.attacker.speedStage)
+                self.attacker.weight = floor(self.attacker.weight / 2)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s speed greatly rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s speed greatly rose! "
+                    
+            elif move.kind == "sa+sd+s+":
+                self.attacker.spAtkStage +=1
+                self.attacker.battleSpATK = self.attacker.originalSpATK * self.statMod(self.attacker.spAtkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s special attack rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s special attack rose! "
+                self.attacker.spDefStage +=1
+                self.attacker.battleSpDef = self.attacker.originalSpDEF * self.statMod(self.attacker.spDefStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s special defense rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s special defense rose! "
+                self.attacker.speedStage +=1
+                self.attacker.battleSpeed = self.attacker.originalSpeed * self.statMod(self.attacker.speedStage)
+                if self.attacker.person1.type == 'player':
                     tempMsg += "\n" + self.attacker.pokemonname + "'s speed rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s speed rose! "
+                    
+            elif move.kind == "a++sa++s++":
+                self.attacker.atkStage +=2
+                self.attacker.battleATK = self.attacker.originalATK * self.statMod(self.attacker.atkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s attack greatly rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s attack greatly rose! "
+                self.attacker.spAtkStage +=2
+                self.attacker.battleSpATK = self.attacker.originalSpATK * self.statMod(self.attacker.spAtkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s special attack greatly rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s special attack greatly rose! "
+                self.attacker.speedStage +=2
+                self.attacker.battleSpeed = self.attacker.originalSpeed * self.statMod(self.attacker.speedStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s speed greatly rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s speed greatly rose! "
+                    
+            elif move.kind == "a+sa+":
+                self.attacker.atkStage +=1
+                self.attacker.battleATK = self.attacker.originalATK * self.statMod(self.attacker.atkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s attack rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s attack rose! "
+                self.attacker.spAtkStage +=1
+                self.attacker.battleSpATK = self.attacker.originalSpATK * self.statMod(self.attacker.spAtkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s special attack rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s special attack rose! "
+                    
+            elif move.kind == "a+d+":
+                self.attacker.atkStage +=1
+                self.attacker.battleATK = self.attacker.originalATK * self.statMod(self.attacker.atkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s attack rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s attack rose! "
+                self.attacker.defStage +=1
+                self.attacker.battleDEF = self.attacker.originalDEF * self.statMod(self.attacker.defStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s defense rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s defense rose! "
+                    
+            elif move.kind == "a+s++":
+                self.attacker.atkStage +=1
+                self.attacker.battleATK = self.attacker.originalATK * self.statMod(self.attacker.atkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s attack rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s attack rose! "
+                self.attacker.speedStage +=2
+                self.attacker.battleSpeed = self.attacker.originalSpeed * self.statMod(self.attacker.speedStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s speed greatly rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s speed greatly rose! "
+                    
+            elif move.kind == "d+sd+":
+                self.attacker.defStage +=1
+                self.attacker.battleDEF = self.attacker.originalDEF * self.statMod(self.attacker.defStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s defense rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s defense rose! "
+                self.attacker.spDefStage +=1
+                self.attacker.battleSpDef = self.attacker.originalSpDEF * self.statMod(self.attacker.spDefStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s special defense rose! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s special defense rose! "
+                    
+            elif move.kind == "twater-":
+                if self.victim.type2 == '':
+                    self.victim.type1 = 'Water'
+                    if self.attacker.person1.type == 'player':
+                        tempMsg += "\nFoe's " + self.victim.pokemonname + "'s type changed to Water! "
+                    else:
+                        tempMsg += "\n" + self.victim.pokemonname + "'s type changed to Water! "
+                        
+            elif move.kind == "tghost-":
+                if self.victim.type2 == '':
+                    self.victim.type2 = 'Ghost'
+                    if self.attacker.person1.type == 'player':
+                        tempMsg += "\nFoe's " + self.victim.pokemonname + "'s type changed to " + self.attacker.type1 + "/" + self.attacker.type2 + "! "
+                    else:
+                        tempMsg += "\n" + self.victim.pokemonname + "'s type changed to " + self.attacker.type1 + "/" + self.attacker.type2 + "! "
+            
+            elif move.kind == "tgrass-":
+                if self.victim.type2 == '':
+                    self.victim.type2 = 'Grass'
+                    if self.attacker.person1.type == 'player':
+                        tempMsg += "\nFoe's " + self.victim.pokemonname + "'s type changed to " + self.attacker.type1 + "/" + self.attacker.type2 + "! "
+                    else:
+                        tempMsg += "\n" + self.victim.pokemonname + "'s type changed to " + self.attacker.type1 + "/" + self.attacker.type2 + "! "
+            
+            elif move.kind == "typetarget":
+                self.attacker.type1 = self.victim.type1
+                self.attacker.type2 = self.victim.type2
+                temptype = self.attacker.type1
+                if self.attacker.type2 != '':
+                    temptype += "/" + self.attacker.type2
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\n" + self.attacker.pokemonname + "'s type changed to " + temptype + "! "
+                else:
+                    tempMsg += "\nFoe's " + self.attacker.pokemonname + "'s type changed to " + temptype + "! "
 
             elif move.kind == "d-":
                 self.victim.defStage -=1
@@ -877,6 +1119,20 @@ class Pokemon(Entity):
                     tempMsg += "\n" + self.victim.pokemonname + "'s defense fell! "
 
             elif move.kind == "sa-":
+                self.victim.spAtkStage -=1
+                self.victim.battleSpATK = self.victim.originalSpATK * self.statMod(self.victim.spAtkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\nFoe's " + self.victim.pokemonname + "'s special attack fell! "
+                else:
+                    tempMsg += "\n" + self.victim.pokemonname + "'s special attack fell! "
+                    
+            elif move.kind == "a-sa-":
+                self.victim.atkStage -= 1
+                self.victim.battleATK = self.victim.originalATK * self.statMod(self.victim.atkStage)
+                if self.attacker.person1.type == 'player':
+                    tempMsg += "\nFoe's " + self.victim.pokemonname + "'s attack fell! "
+                else:
+                    tempMsg += "\n" + self.victim.pokemonname + "'s attack fell! "
                 self.victim.spAtkStage -=1
                 self.victim.battleSpATK = self.victim.originalSpATK * self.statMod(self.victim.spAtkStage)
                 if self.attacker.person1.type == 'player':
