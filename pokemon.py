@@ -380,6 +380,23 @@ class Pokemon(Entity):
                 "Pokemon seen": self.pokedexseen
             }
         elif self.type == 'pokemon':
+            if self.person1.type == 'enemy':
+                if not self.active and not self.fainted:
+                    return {
+                        "Health": '?',
+                        "Level": '?',
+                        "Owner": self.person1.pname,
+                        "Generation": '?',
+                        "Type": '?',
+                        "Attack": '?',
+                        "Defense": '?',
+                        "Special Attack": '?',
+                        "Special Defense": '?',
+                        "Speed": '?',
+                        "Height": '?',
+                        "Weight": '?'
+                    }
+            
             temptype = self.type1
             if self.type2 is not None and self.type2.strip(' \t\n\r') != '':
                 temptype += '/' + self.type2
