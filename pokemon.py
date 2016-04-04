@@ -31,6 +31,8 @@ ENTITY_ID_FORMAT = DOMAIN + '.{}'
 
 TOTALPOKEDEX = 721
 
+NUMBEROFVICTORIESPERBADGE = 1
+
 POKEDEX = []
 IV = 30
 EV = 85
@@ -1327,7 +1329,7 @@ class Pokemon(Entity):
         if self.activepokemonenemy.health == 'FNT':
             self.battlestate = self.person1.pname + " defeated " + self.person2.pname
             self.person1.victories += 1
-            if self.person1.victories % 25 == 0:
+            if self.person1.victories % NUMBEROFVICTORIESPERBADGE == 0:
                 self.person1.badges += 1
             self.resetting = 5
             if self.pokemonplayer1.health != 'FNT' and self.pokemonplayer1.level > 1:
@@ -1348,7 +1350,7 @@ class Pokemon(Entity):
         if self.activepokemonplayer.health == 'FNT':
             self.battlestate = self.person2.pname + " defeated " + self.person1.pname
             self.person2.victories += 1
-            if self.person2.victories % 25 == 0:
+            if self.person2.victories % NUMBEROFVICTORIESPERBADGE == 0:
                 self.person2.badges += 1
             self.resetting = 5
             if self.pokemonenemy1.health != 'FNT' and self.pokemonenemy1.level > 1:
