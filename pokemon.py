@@ -419,7 +419,7 @@ class Pokemon(Entity):
                 }
             else:
                 tempentitypicture = "/local/" + DOMAIN + "/"
-                full_filename = self.chosenpokemon.replace(' ','') +".gif"
+                full_filename = self.__id.zfill(3) +".gif"
                 file_path = os.path.join(self.picture_dir, full_filename)
                 if os.path.isfile(file_path):
                     tempentitypicture += full_filename
@@ -558,7 +558,13 @@ class Pokemon(Entity):
         self.active = False
         self.won = False
         
-        full_filename = self.chosenpokemon.replace(' ','') +".gif"
+        # ATTRIBUTES
+        # Referring to the pokemonInfo list to fill in the rest of the attributes
+        # ID Info
+        self.__id = pokemonInfo[0]
+        self.pokemonname = pokemonInfo[1]
+        
+        full_filename = self.__id.zfill(3) +".gif"
         file_path = os.path.join(self.picture_dir, full_filename)
         if not os.path.isfile(file_path):
             url = "https://raw.githubusercontent.com/Bart274/pokemonHA/master/Sprites/" + full_filename
@@ -568,12 +574,6 @@ class Pokemon(Entity):
                     picture.raw.decode_content = True
                     shutil.copyfileobj(picture.raw, opened_file)
 
-        # ATTRIBUTES
-        # Referring to the pokemonInfo list to fill in the rest of the attributes
-        # ID Info
-        self.__id = pokemonInfo[0]
-        self.pokemonname = pokemonInfo[1]
-        
         # Type
         self.type1 = pokemonInfo[2]
         self.type2 = pokemonInfo[3]
@@ -1399,7 +1399,7 @@ class Pokemon(Entity):
 ###############################################################################        
 class Move(object):
     def __init__(self, move):
-        moveInfo = []
+        moveInfo = [None, None, None, None, 0]
         # Only reading through the file if no information is stored in the Moves Dictionary
         _LOGGER.info("POKEMON: selected new Move: %s", move)
         # Finding the matching key in the dictionary, then assigning the list to a variable called moveInfo
@@ -1407,6 +1407,7 @@ class Move(object):
             if key.lower().strip(' \t\n\r') == move.lower().strip(' \t\n\r'):
                 moveInfo = MOVES_DICTIONARY[key]
 
+        
 
         # ATTRIBUTES
         # ID info
