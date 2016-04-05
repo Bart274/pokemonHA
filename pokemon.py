@@ -19,6 +19,7 @@ from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle
 from homeassistant.helpers.event import track_utc_time_change
 from homeassistant.helpers.entity import generate_entity_id
+import homeassistant.loader as loader
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -209,6 +210,16 @@ def setup(hass, config):
                             pokemonenemy1, pokemonenemy2, pokemonenemy3,
                             pokemonenemy4, pokemonenemy5, pokemonenemy6)
     pokemonbattle.update_ha_state()
+    
+    group = loader.get_component('group')
+    group.Group(hass, 'Pokemon', [
+        pokemonbattle.entity_id, player.entity_id, pokemonplayer1.entity_id,
+        pokemonplayer2.entity_id, pokemonplayer3.entity_id,
+        pokemonplayer4.entity_id, pokemonplayer5.entity_id,
+        pokemonplayer6.entity_id, enemy.entity_id, pokemonenemy1.entity_id,
+        pokemonenemy2.entity_id, pokemonenemy3.entity_id,
+        pokemonenemy4.entity_id, pokemonenemy5.entity_id,
+        pokemonenemy6.entity_id])
         
     def update(now):
         """ Keeps the api logged in of all account """
