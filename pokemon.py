@@ -623,19 +623,30 @@ class Pokemon(Entity):
         # In Battle Stats
         # The base stat is different from the in battle stat. The base stat is just used for calculating the in-battle stat
         # The in battle stats are calculated based on a formula from the games
-        self.battleHP = int(self.__hp + (0.5*IV) + (0.125*EV) + 60)
-        self.battleATK = self.__atk + (0.5*IV) + (0.125*EV) + 5
-        self.battleDEF = self.__defense + (0.5*IV) + (0.125*EV) + 5
-        self.battleSpATK = self.__spAtk + (0.5*IV) + (0.125*EV) + 5
-        self.battleSpDEF = self.__spDef + (0.5*IV) + (0.125*EV) + 5
-        self.battleSpeed = self.__speed + (0.5*IV) + (0.125*EV) + 5
+        #self.battleHP = int(self.__hp + (0.5*IV) + (0.125*EV) + 60)
+        #self.battleATK = self.__atk + (0.5*IV) + (0.125*EV) + 5
+        #self.battleDEF = self.__defense + (0.5*IV) + (0.125*EV) + 5
+        #self.battleSpATK = self.__spAtk + (0.5*IV) + (0.125*EV) + 5
+        #self.battleSpDEF = self.__spDef + (0.5*IV) + (0.125*EV) + 5
+        #self.battleSpeed = self.__speed + (0.5*IV) + (0.125*EV) + 5
+        self.battleHP = round((self.__hp * 2 + IV + (EV / 4)) * self.level / 100 + 10 + self.level,0)
+        self.battleATK = round(((self.__atk * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleDEF = round(((self.__defense * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleSpATK = round(((self.__spAtk * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleSpDEF = round(((self.__spDef * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleSpeed = round(((self.__speed * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
 
         # These variables are used to just hold the values of the original stat for stat modification purposes
-        self.originalATK = self.__atk + (0.5*IV) + (0.125*EV) + 5
-        self.originalDEF = self.__defense + (0.5*IV) + (0.125*EV) + 5
-        self.originalSpATK = self.__spAtk + (0.5*IV) + (0.125*EV) + 5
-        self.originalSpDEF = self.__spDef + (0.5*IV) + (0.125*EV) + 5
-        self.originalSpeed = self.__speed + (0.5*IV) + (0.125*EV) + 5
+        #self.originalATK = self.__atk + (0.5*IV) + (0.125*EV) + 5
+        #self.originalDEF = self.__defense + (0.5*IV) + (0.125*EV) + 5
+        #self.originalSpATK = self.__spAtk + (0.5*IV) + (0.125*EV) + 5
+        #self.originalSpDEF = self.__spDef + (0.5*IV) + (0.125*EV) + 5
+        #self.originalSpeed = self.__speed + (0.5*IV) + (0.125*EV) + 5
+        self.originalATK = self.battleATK
+        self.originalDEF = self.battleDEF
+        self.originalSpATK = self.battleSpATK
+        self.originalSpDEF = self.battleSpDEF
+        self.originalSpeed = self.battleSpeed
 
         self.health = self.battleHP
 
