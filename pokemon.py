@@ -575,7 +575,7 @@ class Pokemon(Entity):
             self.level = 1
         self.chosenpokemon = chosenpokemon
         _LOGGER.info("POKEMON: chosenpokemon: %s", self.chosenpokemon)
-        for self.chosenpokemon in POKEMONDICTIONARY:
+        if self.chosenpokemon in POKEMONDICTIONARY:
             pokemonInfo = POKEMONDICTIONARY[self.chosenpokemon]
         
         if self.chosenpokemon not in self.person1.caughtpokemon:
