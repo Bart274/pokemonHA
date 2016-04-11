@@ -555,6 +555,62 @@ class Pokemon(Entity):
         """ Unit of measurement of this entity """
         if self.type == 'player' or self.type == 'enemy':
             return "WINS"
+            
+    def levelup(self):
+        self.level += 1
+        self.level = min(self.level, 100)
+        self.battleHP = round((self.__hp * 2 + IV + (EV / 4)) * self.level / 100 + 10 + self.level,0)
+        self.battleATK = round(((self.__atk * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleDEF = round(((self.__defense * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleSpATK = round(((self.__spAtk * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleSpDEF = round(((self.__spDef * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleSpeed = round(((self.__speed * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.originalATK = self.battleATK
+        self.originalDEF = self.battleDEF
+        self.originalSpATK = self.battleSpATK
+        self.originalSpDEF = self.battleSpDEF
+        self.originalSpeed = self.battleSpeed
+        self.health = self.battleHP
+        self.atkStage = 0
+        self.defStage = 0
+        self.spAtkStage = 0
+        self.spDefStage = 0
+        self.speedStage = 0
+        self.movelist = []
+        x = 1
+        while x <= self.level:
+            key = int(self.__id) * 1000 + x
+            if key in MOVES_PER_LEVELDICTIONARY:
+                moveInfo = MOVES_PER_LEVELDICTIONARY[key]
+                if moveInfo[2] != '':
+                    self.movelist.append(moveInfo[2])
+                if moveInfo[3] != '':
+                    self.movelist.append(moveInfo[3])
+                if moveInfo[4] != '':
+                    self.movelist.append(moveInfo[4])
+                if moveInfo[5] != '':
+                    self.movelist.append(moveInfo[5])
+                if moveInfo[6] != '':
+                    self.movelist.append(moveInfo[6])
+                if moveInfo[7] != '':
+                    self.movelist.append(moveInfo[7])
+                if moveInfo[8] != '':
+                    self.movelist.append(moveInfo[8])
+                if moveInfo[9] != '':
+                    self.movelist.append(moveInfo[9])
+                if moveInfo[10] != '':
+                    self.movelist.append(moveInfo[10])
+                if moveInfo[11] != '':
+                    self.movelist.append(moveInfo[11])
+                if moveInfo[12] != '':
+                    self.movelist.append(moveInfo[12])
+                if moveInfo[13] != '':
+                    self.movelist.append(moveInfo[13])
+                if moveInfo[14] != '':
+                    self.movelist.append(moveInfo[14])
+                if moveInfo[15] != '':
+                    self.movelist.append(moveInfo[15])
+            x += 1
         
     def choosepokemon(self, chosenpokemon=None):
         if chosenpokemon is None:
@@ -1267,9 +1323,7 @@ class Pokemon(Entity):
             else:
                 self.battlestate += "\n" + self.victim.pokemonname + " fainted..."
             self.attacker.won = True
-            self.attacker.level += 1
-            self.attacker.level = min(self.attacker.level, 100)
-            self.attacker.choosepokemon()
+            self.attacker.levelup()
         
     def update(self):
         """Get the latest data and updates the state."""
