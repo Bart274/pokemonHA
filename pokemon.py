@@ -47,6 +47,7 @@ POKEMONDICTIONARYGEN5 = {}
 POKEMONDICTIONARYGEN6 = {}
 TYPEDICTIONARY = {}
 MOVES_DICTIONARY = {}
+MOVES_PER_LEVELDICTIONARY = {}
 POKEMON_DIR = None
 
 def setup(hass, config):
@@ -110,31 +111,46 @@ def setup(hass, config):
             err = "An error happened when requesting the pokemonmoves.csv!"
             _LOGGER.error(err)
             return False
+    full_filename = "pokemonmovesperlevel.csv"
+    file_path = os.path.join(POKEMON_DIR, full_filename)
+    if os.path.isfile(file_path):
+        os.remove(file_path)
+    if not os.path.isfile(file_path):
+        url = "https://raw.githubusercontent.com/Bart274/pokemonHA/master/pokemonmovesperlevel.csv"
+        pokemoncsv = requests.get(url, stream=True)
+        if pokemoncsv.status_code == 200:
+            with open(file_path, 'wb') as opened_file:
+                pokemoncsv.raw.decode_content = True
+                shutil.copyfileobj(pokemoncsv.raw, opened_file)
+        else:
+            err = "An error happened when requesting the pokemon.csv!"
+            _LOGGER.error(err)
+            return False
         
     fin = open(os.path.join(POKEMON_DIR,"pokemon.csv"), 'r')
     # Creating a dictionary with each Pokemon's name as a key
     for line in fin:
         line = line.strip()
         pokeList = line.split(",")
-        if pokeList[17] == 'yes' and pokeList[1].strip(' \t\n\r') != '' and pokeList[1].lower().strip(' \t\n\r') != 'pokemon':
-            POKEMONDICTIONARY[pokeList[1]] = pokeList
+        if pokeList[17] == 'yes' and pokeList[0].strip(' \t\n\r') != '' and pokeList[0].lower().strip(' \t\n\r') != 'nat':
+            POKEMONDICTIONARY[pokeList[0]] = pokeList
             if int(pokeList[14]) <= 1:
-                POKEMONDICTIONARYGEN1[pokeList[1]] = pokeList
+                POKEMONDICTIONARYGEN1[pokeList[0]] = pokeList
             if int(pokeList[14]) <= 2:
-                POKEMONDICTIONARYGEN2[pokeList[1]] = pokeList
+                POKEMONDICTIONARYGEN2[pokeList[0]] = pokeList
             if int(pokeList[14]) <= 3:
-                POKEMONDICTIONARYGEN3[pokeList[1]] = pokeList
+                POKEMONDICTIONARYGEN3[pokeList[0]] = pokeList
             if int(pokeList[14]) <= 4:
-                POKEMONDICTIONARYGEN4[pokeList[1]] = pokeList
+                POKEMONDICTIONARYGEN4[pokeList[0]] = pokeList
             if int(pokeList[14]) <= 5:
-                POKEMONDICTIONARYGEN5[pokeList[1]] = pokeList
+                POKEMONDICTIONARYGEN5[pokeList[0]] = pokeList
             if int(pokeList[14]) <= 6:
-                POKEMONDICTIONARYGEN6[pokeList[1]] = pokeList
+                POKEMONDICTIONARYGEN6[pokeList[0]] = pokeList
     fin.close()
 
     # Taking the keys from above, turning them into a list, and sorting them
     for key in POKEMONDICTIONARY:
-        POKEDEX.append(POKEMONDICTIONARY[key][1].lower())
+        POKEDEX.append(POKEMONDICTIONARY[key][0].lower())
         POKEDEX.sort()
         
     # Reading "Type Advantages.csv" file to determine type advantages and the damage modifier
@@ -152,7 +168,15 @@ def setup(hass, config):
     for line in fin:
         line = line.strip()
         movelist = line.split(",")
-        MOVES_DICTIONARY[movelist[1]] = movelist  # The name of the move is the key while the rest of the
+        MOVES_DICTIONARY[movelist[0]] = movelist  # The name of the move is the key while the rest of the
+        # list is the value
+    fin.close()
+    
+    fin = open(os.path.join(POKEMON_DIR,"pokemonmovesperlevel.csv"), 'r')
+    for line in fin:
+        line = line.strip()
+        movelist = line.split(",")
+        MOVES_PER_LEVELDICTIONARY[int(movelist[0]) * 1000 + int(movelist[1])] = movelist  # The name of the move is the key while the rest of the
         # list is the value
     fin.close()
     
@@ -549,11 +573,10 @@ class Pokemon(Entity):
             else:
                 chosenpokemon = random.choice(list(POKEMONDICTIONARY))
             self.level = 1
-        self.chosenpokemon = chosenpokemon.lower().strip(' \t\n\r')
+        self.chosenpokemon = chosenpokemon
         _LOGGER.info("POKEMON: chosenpokemon: %s", self.chosenpokemon)
-        for key in POKEMONDICTIONARY:
-            if key.lower().strip(' \t\n\r') == self.chosenpokemon:
-                pokemonInfo = POKEMONDICTIONARY[key]
+        for self.chosenpokemon in POKEMONDICTIONARY:
+            pokemonInfo = POKEMONDICTIONARY[self.chosenpokemon]
         
         if self.chosenpokemon not in self.person1.caughtpokemon:
             self.person1.caughtpokemon.append(self.chosenpokemon)
@@ -614,21 +637,6 @@ class Pokemon(Entity):
         self.originalSpDEF = self.__spDef + (0.5*IV) + (0.125*EV) + 5
         self.originalSpeed = self.__speed + (0.5*IV) + (0.125*EV) + 5
 
-        # Moves
-        # The Kanto Pokemon Spreadsheet has pre-determined movesets
-        self.move1 = Move(pokemonInfo[10])
-        self.move2 = Move(pokemonInfo[11])
-        self.move3 = Move(pokemonInfo[12])
-        self.move4 = Move(pokemonInfo[13])
-
-        self.generation = pokemonInfo[14]
-        
-        self.height = int(pokemonInfo[15])
-        self.weight = int(pokemonInfo[16])
-        
-        # A list containing all the moves; used for error-checking later
-        self.movelist = [self.move1.name.lower(), self.move2.name.lower(), self.move3.name.lower(), self.move4.name.lower()]
-        
         self.health = self.battleHP
 
         # In Battle Stats
@@ -638,7 +646,50 @@ class Pokemon(Entity):
         self.spAtkStage = 0
         self.spDefStage = 0
         self.speedStage = 0
+        
+        self.movelist = []
+        x = 1
+        while x <= self.level:
+            key = int(self.__id) * 1000 + x
+            if key in MOVES_PER_LEVELDICTIONARY:
+                moveInfo = MOVES_PER_LEVELDICTIONARY[key]
+                if moveInfo[2] != '':
+                    self.movelist.append(moveInfo[2])
+                if moveInfo[3] != '':
+                    self.movelist.append(moveInfo[3])
+                if moveInfo[4] != '':
+                    self.movelist.append(moveInfo[4])
+                if moveInfo[5] != '':
+                    self.movelist.append(moveInfo[5])
+                if moveInfo[6] != '':
+                    self.movelist.append(moveInfo[6])
+                if moveInfo[7] != '':
+                    self.movelist.append(moveInfo[7])
+                if moveInfo[8] != '':
+                    self.movelist.append(moveInfo[8])
+                if moveInfo[9] != '':
+                    self.movelist.append(moveInfo[9])
+                if moveInfo[10] != '':
+                    self.movelist.append(moveInfo[10])
+                if moveInfo[11] != '':
+                    self.movelist.append(moveInfo[11])
+                if moveInfo[12] != '':
+                    self.movelist.append(moveInfo[12])
+                if moveInfo[13] != '':
+                    self.movelist.append(moveInfo[13])
+                if moveInfo[14] != '':
+                    self.movelist.append(moveInfo[14])
+                if moveInfo[15] != '':
+                    self.movelist.append(moveInfo[15])
+            x += 1
 
+        _LOGGER.info("POKEMON: movelist: %s", self.movelist)
+        
+        self.generation = pokemonInfo[14]
+        
+        self.height = int(pokemonInfo[15])
+        self.weight = int(pokemonInfo[16])
+        
     # Get Attribute METHODS
     def getPokemonName(self):
         return self.pokemonname
@@ -1206,6 +1257,8 @@ class Pokemon(Entity):
                 self.battlestate += "\n" + self.victim.pokemonname + " fainted..."
             self.attacker.won = True
             self.attacker.level += 1
+            self.attacker.level = min(self.attacker.level, 100)
+            self.attacker.choosepokemon()
         
     def update(self):
         """Get the latest data and updates the state."""
@@ -1414,11 +1467,8 @@ class Move(object):
         # Only reading through the file if no information is stored in the Moves Dictionary
         _LOGGER.info("POKEMON: selected new Move: %s", move)
         # Finding the matching key in the dictionary, then assigning the list to a variable called moveInfo
-        for key in MOVES_DICTIONARY:
-            if key.lower().strip(' \t\n\r') == move.lower().strip(' \t\n\r'):
-                moveInfo = MOVES_DICTIONARY[key]
-
-        
+        if move in MOVES_DICTIONARY:
+            moveInfo = MOVES_DICTIONARY[move]
 
         # ATTRIBUTES
         # ID info
