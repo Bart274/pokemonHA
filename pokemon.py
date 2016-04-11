@@ -300,7 +300,7 @@ class Pokemon(Entity):
         self.pokedexseen = 0
         self.caughtpokemon = []
         self.seenpokemon = []
-        self.level = 1
+        self.level = 5
         self.won = False
         self.attacker = None
         self.victim = None
@@ -557,33 +557,44 @@ class Pokemon(Entity):
             return "WINS"
             
     def levelup(self):
+        tempstring = ""
+        tempname = self.pokemonname
+        if self.person1.type == 'enemy':
+            tempname = "Foe's " + tempname
         prevlevel = self.level
-        self.level += 1
-        self.level = min(self.level, 100)
+        if self.level < 100:
+            self.level += 1
+            tempstring += "\n" + tempname + " grew to level " + str(self.level)
         
         tempHP1 = round((self.__hp * 2 + IV + (EV / 4)) * prevlevel / 100 + 10 + prevlevel,0)
         tempHP2 = round((self.__hp * 2 + IV + (EV / 4)) * self.level / 100 + 10 + self.level,0)
         self.battleHP += tempHP2 - tempHP1
+        tempstring += "\nHP +" + str(tempHP2 - tempHP1)
         
         tempATK1 = round(((self.__atk * 2 + IV + (EV / 4)) * prevlevel / 100 + 5),0)
         tempATK2 = round(((self.__atk * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
         self.battleATK += tempATK2 - tempATK1
+        tempstring += "\nATK +" + str(tempATK2 - tempATK1)
         
         tempDEF1 = round(((self.__defense * 2 + IV + (EV / 4)) * prevlevel / 100 + 5),0)
         tempDEF2 = round(((self.__defense * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
         self.battleDEF += tempDEF2 - tempDEF1
+        tempstring += "\nDEF +" + str(tempDEF2 - tempDEF1)
         
         tempSPATK1 = round(((self.__spAtk * 2 + IV + (EV / 4)) * prevlevel / 100 + 5),0)
         tempSPATK2 = round(((self.__spAtk * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
         self.battleSpATK += tempSPATK2 - tempSPATK1
+        tempstring += "\nSpATK +" + str(tempSPATK2 - tempSPATK1)
         
         tempSPDEF1 = round(((self.__spDef * 2 + IV + (EV / 4)) * prevlevel / 100 + 5),0)
         tempSPDEF2 = round(((self.__spDef * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
         self.battleSpDEF += tempSPDEF2 - tempSPDEF1
+        tempstring += "\nSpDEF +" + str(tempSPDEF2 - tempSPDEF1)
         
         tempSPEED1 = round(((self.__speed * 2 + IV + (EV / 4)) * prevlevel / 100 + 5),0)
         tempSPEED2 = round(((self.__speed * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
         self.battleSpeed += tempSPEED2 - tempSPEED1
+        tempstring += "\nSpeed +" + str(tempSPEED2 - tempSPEED1)
         
         self.originalATK = self.battleATK
         self.originalDEF = self.battleDEF
@@ -631,6 +642,7 @@ class Pokemon(Entity):
                 if moveInfo[15] != '':
                     self.movelist.append(moveInfo[15])
             x += 1
+        return tempstring
         
     def choosepokemon(self, chosenpokemon=None):
         if chosenpokemon is None:
@@ -648,7 +660,7 @@ class Pokemon(Entity):
                 chosenpokemon = random.choice(list(POKEMONDICTIONARYGEN6))
             else:
                 chosenpokemon = random.choice(list(POKEMONDICTIONARY))
-            self.level = 1
+            self.level = 5
         self.chosenpokemon = chosenpokemon
         _LOGGER.info("POKEMON: chosenpokemon: %s", self.chosenpokemon)
         if self.chosenpokemon in POKEMONDICTIONARY:
@@ -1343,7 +1355,7 @@ class Pokemon(Entity):
             else:
                 self.battlestate += "\n" + self.victim.pokemonname + " fainted..."
             self.attacker.won = True
-            self.attacker.levelup()
+            self.battlestate += self.attacker.levelup()
         
     def update(self):
         """Get the latest data and updates the state."""
