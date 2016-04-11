@@ -559,7 +559,11 @@ class Pokemon(Entity):
     def levelup(self):
         self.level += 1
         self.level = min(self.level, 100)
-        self.battleHP = round((self.__hp * 2 + IV + (EV / 4)) * self.level / 100 + 10 + self.level,0)
+        
+        tempHP1 = round((self.__hp * 2 + IV + (EV / 4)) * (self.level - 1) / 100 + 10 + (self.level - 1),0)
+        tempHP2 = round((self.__hp * 2 + IV + (EV / 4)) * self.level / 100 + 10 + self.level,0)
+        
+        self.battleHP += tempHP2 - tempHP1
         self.battleATK = round(((self.__atk * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
         self.battleDEF = round(((self.__defense * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
         self.battleSpATK = round(((self.__spAtk * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
