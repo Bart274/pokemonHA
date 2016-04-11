@@ -557,18 +557,34 @@ class Pokemon(Entity):
             return "WINS"
             
     def levelup(self):
+        prevlevel = self.level
         self.level += 1
         self.level = min(self.level, 100)
         
-        tempHP1 = round((self.__hp * 2 + IV + (EV / 4)) * (self.level - 1) / 100 + 10 + (self.level - 1),0)
+        tempHP1 = round((self.__hp * 2 + IV + (EV / 4)) * prevlevel / 100 + 10 + prevlevel,0)
         tempHP2 = round((self.__hp * 2 + IV + (EV / 4)) * self.level / 100 + 10 + self.level,0)
-        
         self.battleHP += tempHP2 - tempHP1
-        self.battleATK = round(((self.__atk * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
-        self.battleDEF = round(((self.__defense * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
-        self.battleSpATK = round(((self.__spAtk * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
-        self.battleSpDEF = round(((self.__spDef * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
-        self.battleSpeed = round(((self.__speed * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        
+        tempATK1 = round(((self.__atk * 2 + IV + (EV / 4)) * prevlevel / 100 + 5),0)
+        tempATK2 = round(((self.__atk * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleATK += tempATK2 - tempATK1
+        
+        tempDEF1 = round(((self.__defense * 2 + IV + (EV / 4)) * prevlevel / 100 + 5),0)
+        tempDEF2 = round(((self.__defense * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleDEF += tempDEF2 - tempDEF1
+        
+        tempSPATK1 = round(((self.__spAtk * 2 + IV + (EV / 4)) * prevlevel / 100 + 5),0)
+        tempSPATK2 = round(((self.__spAtk * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleSpATK += tempSPATK2 - tempSPATK1
+        
+        tempSPDEF1 = round(((self.__spDef * 2 + IV + (EV / 4)) * prevlevel / 100 + 5),0)
+        tempSPDEF2 = round(((self.__spDef * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleSpDEF += tempSPDEF2 - tempSPDEF1
+        
+        tempSPEED1 = round(((self.__speed * 2 + IV + (EV / 4)) * prevlevel / 100 + 5),0)
+        tempSPEED2 = round(((self.__speed * 2 + IV + (EV / 4)) * self.level / 100 + 5),0)
+        self.battleSpeed += tempSPEED2 - tempSPEED1
+        
         self.originalATK = self.battleATK
         self.originalDEF = self.battleDEF
         self.originalSpATK = self.battleSpATK
