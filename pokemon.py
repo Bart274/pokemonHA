@@ -1493,17 +1493,17 @@ class Pokemon(Entity):
             if self.person1.victories % NUMBEROFVICTORIESPERBADGE == 0:
                 self.person1.badges += 1
             self.resetting = 5
-            if self.pokemonplayer1.health != 'FNT' and self.pokemonplayer1.level > 1:
+            if self.pokemonplayer1.health != 'FNT' and self.pokemonplayer1.level > 5:
                 self.pokemonplayer1.won = True
-            if self.pokemonplayer2.health != 'FNT' and self.pokemonplayer2.level > 1:
+            if self.pokemonplayer2.health != 'FNT' and self.pokemonplayer2.level > 5:
                 self.pokemonplayer2.won = True
-            if self.pokemonplayer3.health != 'FNT' and self.pokemonplayer3.level > 1:
+            if self.pokemonplayer3.health != 'FNT' and self.pokemonplayer3.level > 5:
                 self.pokemonplayer3.won = True
-            if self.pokemonplayer4.health != 'FNT' and self.pokemonplayer4.level > 1:
+            if self.pokemonplayer4.health != 'FNT' and self.pokemonplayer4.level > 5:
                 self.pokemonplayer4.won = True
-            if self.pokemonplayer5.health != 'FNT' and self.pokemonplayer5.level > 1:
+            if self.pokemonplayer5.health != 'FNT' and self.pokemonplayer5.level > 5:
                 self.pokemonplayer5.won = True
-            if self.pokemonplayer6.health != 'FNT' and self.pokemonplayer6.level > 1:
+            if self.pokemonplayer6.health != 'FNT' and self.pokemonplayer6.level > 5:
                 self.pokemonplayer6.won = True
             self.update_ha_state()
             return
@@ -1514,17 +1514,17 @@ class Pokemon(Entity):
             if self.person2.victories % NUMBEROFVICTORIESPERBADGE == 0:
                 self.person2.badges += 1
             self.resetting = 5
-            if self.pokemonenemy1.health != 'FNT' and self.pokemonenemy1.level > 1:
+            if self.pokemonenemy1.health != 'FNT' and self.pokemonenemy1.level > 5:
                 self.pokemonenemy1.won = True
-            if self.pokemonenemy2.health != 'FNT' and self.pokemonenemy2.level > 1:
+            if self.pokemonenemy2.health != 'FNT' and self.pokemonenemy2.level > 5:
                 self.pokemonenemy2.won = True
-            if self.pokemonenemy3.health != 'FNT' and self.pokemonenemy3.level > 1:
+            if self.pokemonenemy3.health != 'FNT' and self.pokemonenemy3.level > 5:
                 self.pokemonenemy3.won = True
-            if self.pokemonenemy4.health != 'FNT' and self.pokemonenemy4.level > 1:
+            if self.pokemonenemy4.health != 'FNT' and self.pokemonenemy4.level > 5:
                 self.pokemonenemy4.won = True
-            if self.pokemonenemy5.health != 'FNT' and self.pokemonenemy5.level > 1:
+            if self.pokemonenemy5.health != 'FNT' and self.pokemonenemy5.level > 5:
                 self.pokemonenemy5.won = True
-            if self.pokemonenemy6.health != 'FNT' and self.pokemonenemy6.level > 1:
+            if self.pokemonenemy6.health != 'FNT' and self.pokemonenemy6.level > 5:
                 self.pokemonenemy6.won = True
             self.update_ha_state()    
             return
