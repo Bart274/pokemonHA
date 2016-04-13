@@ -13,8 +13,8 @@ The following entities will be added:
 - pokemon.pokemon1player ... pokemon.pokemon6player (the 6 pokemon of the player)
 - pokemon.pokemon1enemy ... pokemon.pokemon6enemy (the 6 pokemon of the enemy)
 
-Each 25 victories will give a trainer a badge. In this version only the original 151 pokemon are included. In the future, more pokemon will be added and each 8 badges will unlock the next generation of pokemon.
+Each victory will give a trainer a badge. Each 8 badges will unlock the next generation of pokemon.
 
 The pokedex will display the amount of unique pokemon a trainer has used.
 
-At the beginning of each battle all fainted pokemon will be replaced by new randomly choosen pokemon. The not fainted pokemon will go up one level and that will make their attacks stronger.
+At the beginning of each battle all fainted pokemon that haven't won a battle will be replaced by new randomly choosen pokemon. The not fainted pokemon will go up one level and that will make their attacks stronger.
