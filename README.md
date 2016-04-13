@@ -20,13 +20,18 @@ The pokedex will display the amount of unique pokemon a trainer has used.
 At the beginning of each battle all fainted pokemon that haven't won a battle will be replaced by new randomly choosen pokemon. The not fainted pokemon will go up one level and that will make their attacks stronger.
 
 Pokemon Group containing the battle, player cards and pokemon details:
+
 ![Pokemon group](https://raw.githubusercontent.com/Bart274/pokemonHA/master/screenshots/pok1.PNG)
 
 Trainer Card:
+
 ![Trainer card](https://raw.githubusercontent.com/Bart274/pokemonHA/master/screenshots/pok2.PNG)
+
 The trainer card shows the number of badges the trainer has collected.
 It also shows the unique amount of pokemon the trainer has caught and has seen, together with the percentage of the pokedex the trainer has collected.
 
 Pokemon Details:
+
 ![Pokemon details](https://raw.githubusercontent.com/Bart274/pokemonHA/master/screenshots/pok3.PNG)
+
 The details on the card are the current active details for the current battle. These stats change depending on the level of the pokemon and the moves used in the battle.
