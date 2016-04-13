@@ -1375,51 +1375,51 @@ class Pokemon(Entity):
             self.resetting -= 1
             if self.resetting == 0:
                 self.battlestate = "Battle beginning"
-                if not self.pokemonplayer1.won:
+                if not self.pokemonplayer1.won or self.pokemonplayer1.level == 100:
                     self.pokemonplayer1.choosepokemon()
                 else:
                     self.pokemonplayer1.choosepokemon(self.pokemonplayer1.chosenpokemon)
-                if not self.pokemonplayer2.won:
+                if not self.pokemonplayer2.won or self.pokemonplayer2.level == 100:
                     self.pokemonplayer2.choosepokemon()
                 else:
                     self.pokemonplayer2.choosepokemon(self.pokemonplayer2.chosenpokemon)
-                if not self.pokemonplayer3.won:
+                if not self.pokemonplayer3.won or self.pokemonplayer3.level == 100:
                     self.pokemonplayer3.choosepokemon()
                 else:
                     self.pokemonplayer3.choosepokemon(self.pokemonplayer3.chosenpokemon)
-                if not self.pokemonplayer4.won:
+                if not self.pokemonplayer4.won or self.pokemonplayer4.level == 100:
                     self.pokemonplayer4.choosepokemon()
                 else:
                     self.pokemonplayer4.choosepokemon(self.pokemonplayer4.chosenpokemon)
-                if not self.pokemonplayer5.won:
+                if not self.pokemonplayer5.won or self.pokemonplayer5.level == 100:
                     self.pokemonplayer5.choosepokemon()
                 else:
                     self.pokemonplayer5.choosepokemon(self.pokemonplayer5.chosenpokemon)
-                if not self.pokemonplayer6.won:
+                if not self.pokemonplayer6.won or self.pokemonplayer6.level == 100:
                     self.pokemonplayer6.choosepokemon()
                 else:
                     self.pokemonplayer6.choosepokemon(self.pokemonplayer6.chosenpokemon)
-                if not self.pokemonenemy1.won:
+                if not self.pokemonenemy1.won or self.pokemonenemy1.level == 100:
                     self.pokemonenemy1.choosepokemon()
                 else:
                     self.pokemonenemy1.choosepokemon(self.pokemonenemy1.chosenpokemon)
-                if not self.pokemonenemy2.won:
+                if not self.pokemonenemy2.won or self.pokemonenemy2.level == 100:
                     self.pokemonenemy2.choosepokemon()
                 else:
                     self.pokemonenemy2.choosepokemon(self.pokemonenemy2.chosenpokemon)
-                if not self.pokemonenemy3.won:
+                if not self.pokemonenemy3.won or self.pokemonenemy3.level == 100:
                     self.pokemonenemy3.choosepokemon()
                 else:
                     self.pokemonenemy3.choosepokemon(self.pokemonenemy3.chosenpokemon)
-                if not self.pokemonenemy4.won:
+                if not self.pokemonenemy4.won or self.pokemonenemy4.level == 100:
                     self.pokemonenemy4.choosepokemon()
                 else:
                     self.pokemonenemy4.choosepokemon(self.pokemonenemy4.chosenpokemon)
-                if not self.pokemonenemy5.won:
+                if not self.pokemonenemy5.won or self.pokemonenemy5.level == 100:
                     self.pokemonenemy5.choosepokemon()
                 else:
                     self.pokemonenemy5.choosepokemon(self.pokemonenemy5.chosenpokemon)
-                if not self.pokemonenemy6.won:
+                if not self.pokemonenemy6.won or self.pokemonenemy6.level == 100:
                     self.pokemonenemy6.choosepokemon()
                 else:
                     self.pokemonenemy6.choosepokemon(self.pokemonenemy6.chosenpokemon)
