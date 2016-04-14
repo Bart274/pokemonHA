@@ -393,6 +393,7 @@ class Pokemon(Entity):
         self.generation = None
         self.height = None
         self.weight = None
+        self.movedictionary = {}
         
         if self.type == 'pokemon':
             self.entity_id = generate_entity_id(
@@ -431,8 +432,15 @@ class Pokemon(Entity):
                         "Special Defense": '?',
                         "Speed": '?',
                         "Height": '?',
-                        "Weight": '?'
+                        "Weight": '?',
+                        "Moves": '?'
                     }
+            
+            moves = ''
+            for key in self.movedictionary:
+                if moves != '':
+                    moves += ', '
+                moves += self.movedictionary[key].name + ' PP ' + str(self.movedictionary[key].pp)
             
             temptype = self.type1
             if self.type2 is not None and self.type2.strip(' \t\n\r') != '':
@@ -450,7 +458,8 @@ class Pokemon(Entity):
                     "Special Defense": self.battleSpDEF,
                     "Speed": self.battleSpeed,
                     "Height": self.height,
-                    "Weight": self.weight
+                    "Weight": self.weight,
+                    "Moves": moves
                 }
             else:
                 tempentitypicture = "/local/" + DOMAIN + "/"
@@ -473,7 +482,8 @@ class Pokemon(Entity):
                     "Speed": self.battleSpeed,
                     "Height": self.height,
                     "Weight": self.weight,
-                    "entity_picture": tempentitypicture
+                    "entity_picture": tempentitypicture,
+                    "Moves": moves
                 }
         else:
             if self.attacker is None:
@@ -642,6 +652,19 @@ class Pokemon(Entity):
                 if moveInfo[15] != '':
                     self.movelist.append(moveInfo[15])
             x += 1
+        
+        if '165' in self.movedictionary:
+            del self.movedictionary['165']
+            self.movelist.remove('165')
+            
+        for move in self.movelist:
+            if move not in self.movedictionary:
+                self.movedictionary[move] = Move(move)
+        
+        if self.movedictionary == {}:
+            self.movedictionary['165'] = Move('165')
+            self.movelist.append('165')
+        
         return tempstring
         
     def choosepokemon(self, chosenpokemon=None):
@@ -781,6 +804,10 @@ class Pokemon(Entity):
                 if moveInfo[15] != '':
                     self.movelist.append(moveInfo[15])
             x += 1
+            
+        self.movedictionary = {}
+        for move in self.movelist:
+            self.movedictionary[move] = Move(move)
 
         _LOGGER.info("POKEMON: movelist: %s", self.movelist)
         
@@ -847,31 +874,6 @@ class Pokemon(Entity):
     def setSpeedStage(self, speedStage):
         self.speedStage = speedStage
 
-    # MOVE Methods
-    def getMove1(self):
-        return self.move1
-
-    def getMove2(self):
-        return self.move2
-
-    def getMove3(self):
-        return self.move3
-
-    def getMove4(self):
-        return self.move4
-
-    def setMove1(self, move1):
-        self.move1 = Move(move1)
-
-    def setMove2(self, move2):
-        self.move2 = Move(move2)
-
-    def setMove3(self, move3):
-        self.move3 = Move(move3)
-
-    def setMove4(self, move4):
-        self.move4 = Move(move4)
-        
     # Takes an int as input and returns a string with the pokemon losing that much HP
     def loseHP(self, lostHP):
         self.battleHP -= lostHP
@@ -925,12 +927,13 @@ class Pokemon(Entity):
 
     # Will take a move, the attacking Pokemon object, and the defending Pokemon object as input
     # Will return a string that contains the amount of damage done and the effectiveness of the move
-    def attack(self, move):
+    def attack(self, movename):
         # Creating an empty string to store the results of the attack function
         tempMsg= ""
 
         # Making the input string into an actual move object
-        move = Move(move)
+        # move = Move(move)
+        move = self.attacker.movedictionary[movename]
 
         # This modifier is used in damage calculations; it takes into account type advantage and STAB bonus
         modifier = 1
@@ -1333,6 +1336,15 @@ class Pokemon(Entity):
             else:
                 tempMsg += "\nIt doesn't affect " + self.victim.pokemonname + "..."
 
+        if self.attacker.movedictionary[movename].pp != '':
+            self.attacker.movedictionary[movename].pp -= 1
+        if self.attacker.movedictionary[movename].pp == 0:
+            del self.attacker.movedictionary[movename]
+            self.attacker.movelist.remove(movename)
+            if self.attacker.movedictionary == {}:
+                self.attacker.movedictionary['165'] = Move('165')
+                self.attacker.movelist.append('165')
+               
         # String containing useMove(), damage, and type effectiveness
         return tempMsg
 
@@ -1375,60 +1387,74 @@ class Pokemon(Entity):
             self.resetting -= 1
             if self.resetting == 0:
                 self.battlestate = "Battle beginning"
-                if not self.pokemonplayer1.won or self.pokemonplayer1.level == 100:
-                    self.pokemonplayer1.choosepokemon()
-                else:
-                    self.pokemonplayer1.choosepokemon(self.pokemonplayer1.chosenpokemon)
-                if not self.pokemonplayer2.won or self.pokemonplayer2.level == 100:
-                    self.pokemonplayer2.choosepokemon()
-                else:
-                    self.pokemonplayer2.choosepokemon(self.pokemonplayer2.chosenpokemon)
-                if not self.pokemonplayer3.won or self.pokemonplayer3.level == 100:
-                    self.pokemonplayer3.choosepokemon()
-                else:
-                    self.pokemonplayer3.choosepokemon(self.pokemonplayer3.chosenpokemon)
-                if not self.pokemonplayer4.won or self.pokemonplayer4.level == 100:
-                    self.pokemonplayer4.choosepokemon()
-                else:
-                    self.pokemonplayer4.choosepokemon(self.pokemonplayer4.chosenpokemon)
-                if not self.pokemonplayer5.won or self.pokemonplayer5.level == 100:
-                    self.pokemonplayer5.choosepokemon()
-                else:
-                    self.pokemonplayer5.choosepokemon(self.pokemonplayer5.chosenpokemon)
-                if not self.pokemonplayer6.won or self.pokemonplayer6.level == 100:
-                    self.pokemonplayer6.choosepokemon()
-                else:
-                    self.pokemonplayer6.choosepokemon(self.pokemonplayer6.chosenpokemon)
-                if not self.pokemonenemy1.won or self.pokemonenemy1.level == 100:
-                    self.pokemonenemy1.choosepokemon()
-                else:
-                    self.pokemonenemy1.choosepokemon(self.pokemonenemy1.chosenpokemon)
-                if not self.pokemonenemy2.won or self.pokemonenemy2.level == 100:
-                    self.pokemonenemy2.choosepokemon()
-                else:
-                    self.pokemonenemy2.choosepokemon(self.pokemonenemy2.chosenpokemon)
-                if not self.pokemonenemy3.won or self.pokemonenemy3.level == 100:
-                    self.pokemonenemy3.choosepokemon()
-                else:
-                    self.pokemonenemy3.choosepokemon(self.pokemonenemy3.chosenpokemon)
-                if not self.pokemonenemy4.won or self.pokemonenemy4.level == 100:
-                    self.pokemonenemy4.choosepokemon()
-                else:
-                    self.pokemonenemy4.choosepokemon(self.pokemonenemy4.chosenpokemon)
-                if not self.pokemonenemy5.won or self.pokemonenemy5.level == 100:
-                    self.pokemonenemy5.choosepokemon()
-                else:
-                    self.pokemonenemy5.choosepokemon(self.pokemonenemy5.chosenpokemon)
-                if not self.pokemonenemy6.won or self.pokemonenemy6.level == 100:
-                    self.pokemonenemy6.choosepokemon()
-                else:
-                    self.pokemonenemy6.choosepokemon(self.pokemonenemy6.chosenpokemon)
+                self.lastmove = None
+                if not self.pokemonplayer1.active or self.pokemonplayer1.level == 100:
+                    if not self.pokemonplayer1.won or self.pokemonplayer1.level == 100:
+                        self.pokemonplayer1.choosepokemon()
+                    else:
+                        self.pokemonplayer1.choosepokemon(self.pokemonplayer1.chosenpokemon)
+                if not self.pokemonplayer2.active or self.pokemonplayer2.level == 100:
+                    if not self.pokemonplayer2.won or self.pokemonplayer2.level == 100:
+                        self.pokemonplayer2.choosepokemon()
+                    else:
+                        self.pokemonplayer2.choosepokemon(self.pokemonplayer2.chosenpokemon)
+                if not self.pokemonplayer3.active or self.pokemonplayer3.level == 100:
+                    if not self.pokemonplayer3.won or self.pokemonplayer3.level == 100:
+                        self.pokemonplayer3.choosepokemon()
+                    else:
+                        self.pokemonplayer3.choosepokemon(self.pokemonplayer3.chosenpokemon)
+                if not self.pokemonplayer4.active or self.pokemonplayer4.level == 100:
+                    if not self.pokemonplayer4.won or self.pokemonplayer4.level == 100:
+                        self.pokemonplayer4.choosepokemon()
+                    else:
+                        self.pokemonplayer4.choosepokemon(self.pokemonplayer4.chosenpokemon)
+                if not self.pokemonplayer5.active or self.pokemonplayer5.level == 100:
+                    if not self.pokemonplayer5.won or self.pokemonplayer5.level == 100:
+                        self.pokemonplayer5.choosepokemon()
+                    else:
+                        self.pokemonplayer5.choosepokemon(self.pokemonplayer5.chosenpokemon)
+                if not self.pokemonplayer6.active or self.pokemonplayer6.level == 100:
+                    if not self.pokemonplayer6.won or self.pokemonplayer6.level == 100:
+                        self.pokemonplayer6.choosepokemon()
+                    else:
+                        self.pokemonplayer6.choosepokemon(self.pokemonplayer6.chosenpokemon)
+                if not self.pokemonenemy1.active or self.pokemonenemy1.level == 100:
+                    if not self.pokemonenemy1.won or self.pokemonenemy1.level == 100:
+                        self.pokemonenemy1.choosepokemon()
+                    else:
+                        self.pokemonenemy1.choosepokemon(self.pokemonenemy1.chosenpokemon)
+                if not self.pokemonenemy2.active or self.pokemonenemy2.level == 100:
+                    if not self.pokemonenemy2.won or self.pokemonenemy2.level == 100:
+                        self.pokemonenemy2.choosepokemon()
+                    else:
+                        self.pokemonenemy2.choosepokemon(self.pokemonenemy2.chosenpokemon)
+                if not self.pokemonenemy3.active or self.pokemonenemy3.level == 100:
+                    if not self.pokemonenemy3.won or self.pokemonenemy3.level == 100:
+                        self.pokemonenemy3.choosepokemon()
+                    else:
+                        self.pokemonenemy3.choosepokemon(self.pokemonenemy3.chosenpokemon)
+                if not self.pokemonenemy4.active or self.pokemonenemy4.level == 100:
+                    if not self.pokemonenemy4.won or self.pokemonenemy4.level == 100:
+                        self.pokemonenemy4.choosepokemon()
+                    else:
+                        self.pokemonenemy4.choosepokemon(self.pokemonenemy4.chosenpokemon)
+                if not self.pokemonenemy5.active or self.pokemonenemy5.level == 100:
+                    if not self.pokemonenemy5.won or self.pokemonenemy5.level == 100:
+                        self.pokemonenemy5.choosepokemon()
+                    else:
+                        self.pokemonenemy5.choosepokemon(self.pokemonenemy5.chosenpokemon)
+                if not self.pokemonenemy6.active or self.pokemonenemy6.level == 100:
+                    if not self.pokemonenemy6.won or self.pokemonenemy6.level == 100:
+                        self.pokemonenemy6.choosepokemon()
+                    else:
+                        self.pokemonenemy6.choosepokemon(self.pokemonenemy6.chosenpokemon)
                 self.activepokemonplayer = None
                 self.activepokemonenemy = None
             self.update_ha_state()
             return
                 
         if self.activepokemonplayer is None or self.activepokemonplayer.health == 'FNT':
+            self.lastmove = None
             self.pokemonplayer1.active = False
             self.pokemonplayer2.active = False
             self.pokemonplayer3.active = False
@@ -1458,6 +1484,7 @@ class Pokemon(Entity):
                 return
         
         if self.activepokemonenemy is None or self.activepokemonenemy.health == 'FNT':
+            self.lastmove = None
             self.pokemonenemy1.active = False
             self.pokemonenemy2.active = False
             self.pokemonenemy3.active = False
@@ -1492,7 +1519,7 @@ class Pokemon(Entity):
             self.person1.victories += 1
             if self.person1.victories % NUMBEROFVICTORIESPERBADGE == 0:
                 self.person1.badges += 1
-            self.resetting = 5
+            self.resetting = 3
             if self.pokemonplayer1.health != 'FNT' and self.pokemonplayer1.level > 5:
                 self.pokemonplayer1.won = True
             if self.pokemonplayer2.health != 'FNT' and self.pokemonplayer2.level > 5:
@@ -1513,7 +1540,7 @@ class Pokemon(Entity):
             self.person2.victories += 1
             if self.person2.victories % NUMBEROFVICTORIESPERBADGE == 0:
                 self.person2.badges += 1
-            self.resetting = 5
+            self.resetting = 3
             if self.pokemonenemy1.health != 'FNT' and self.pokemonenemy1.level > 5:
                 self.pokemonenemy1.won = True
             if self.pokemonenemy2.health != 'FNT' and self.pokemonenemy2.level > 5:
@@ -1560,7 +1587,7 @@ class Pokemon(Entity):
 ###############################################################################        
 class Move(object):
     def __init__(self, move):
-        moveInfo = [None, None, None, None, 0]
+        moveInfo = [None, None, None, None, 0, '', '']
         # Only reading through the file if no information is stored in the Moves Dictionary
         _LOGGER.info("POKEMON: selected new Move: %s", move)
         # Finding the matching key in the dictionary, then assigning the list to a variable called moveInfo
@@ -1578,6 +1605,14 @@ class Move(object):
 
         # For in-battle calculations
         self.power = int(moveInfo[4])  # Move's base damage
+        
+        self.pp = ''
+        if moveInfo[5] != '':
+            self.pp = int(moveInfo[5])
+            
+        self.accuracy = ''
+        if moveInfo[6] != '':
+            self.accuracy = int(moveInfo[6])
 
     # METHODS
     # str method
