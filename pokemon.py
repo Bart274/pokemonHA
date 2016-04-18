@@ -311,50 +311,62 @@ class Pokemon(Entity):
         if self.pokemonplayer1 is not None:
             self.pokemonplayer1.choosepokemon()
             self.pokemonplayer1.won = True
+            self.pokemonplayer1.level -= 1
         self.pokemonplayer2 = pokemonplayer2
         if self.pokemonplayer2 is not None:
             self.pokemonplayer2.choosepokemon()
             self.pokemonplayer2.won = True
+            self.pokemonplayer2.level -= 1
         self.pokemonplayer3 = pokemonplayer3
         if self.pokemonplayer3 is not None:
             self.pokemonplayer3.choosepokemon()
             self.pokemonplayer3.won = True
+            self.pokemonplayer3.level -= 1
         self.pokemonplayer4 = pokemonplayer4
         if self.pokemonplayer4 is not None:
             self.pokemonplayer4.choosepokemon()
             self.pokemonplayer4.won = True
+            self.pokemonplayer4.level -= 1
         self.pokemonplayer5 = pokemonplayer5
         if self.pokemonplayer5 is not None:
             self.pokemonplayer5.choosepokemon()
             self.pokemonplayer5.won = True
+            self.pokemonplayer5.level -= 1
         self.pokemonplayer6 = pokemonplayer6
         if self.pokemonplayer6 is not None:
             self.pokemonplayer6.choosepokemon()
             self.pokemonplayer6.won = True
+            self.pokemonplayer6.level -= 1
         self.pokemonenemy1 = pokemonenemy1
         if self.pokemonenemy1 is not None:
             self.pokemonenemy1.choosepokemon()
             self.pokemonenemy1.won = True
+            self.pokemonenemy1.level -= 1
         self.pokemonenemy2 = pokemonenemy2
         if self.pokemonenemy2 is not None:
             self.pokemonenemy2.choosepokemon()
             self.pokemonenemy2.won = True
+            self.pokemonenemy2.level -= 1
         self.pokemonenemy3 = pokemonenemy3
         if self.pokemonenemy3 is not None:
             self.pokemonenemy3.choosepokemon()
             self.pokemonenemy3.won = True
+            self.pokemonenemy3.level -= 1
         self.pokemonenemy4 = pokemonenemy4
         if self.pokemonenemy4 is not None:
             self.pokemonenemy4.choosepokemon()
             self.pokemonenemy4.won = True
+            self.pokemonenemy4.level -= 1
         self.pokemonenemy5 = pokemonenemy5
         if self.pokemonenemy5 is not None:
             self.pokemonenemy5.choosepokemon()
             self.pokemonenemy5.won = True
+            self.pokemonenemy5.level -= 1
         self.pokemonenemy6 = pokemonenemy6
         if self.pokemonenemy6 is not None:
             self.pokemonenemy6.choosepokemon()
             self.pokemonenemy6.won = True
+            self.pokemonenemy6.level -= 1
         
         self.fainted = True
         self.active = False
@@ -384,7 +396,6 @@ class Pokemon(Entity):
         self.move2 = None
         self.move3 = None
         self.move4 = None
-        self.movelist = None
         self.atkStage = None
         self.defStage = None
         self.spAtkStage = None
@@ -617,53 +628,46 @@ class Pokemon(Entity):
         self.spAtkStage = 0
         self.spDefStage = 0
         self.speedStage = 0
-        self.movelist = []
         x = 1
         while x <= self.level:
             key = int(self.__id) * 1000 + x
             if key in MOVES_PER_LEVELDICTIONARY:
                 moveInfo = MOVES_PER_LEVELDICTIONARY[key]
-                if moveInfo[2] != '':
-                    self.movelist.append(moveInfo[2])
-                if moveInfo[3] != '':
-                    self.movelist.append(moveInfo[3])
-                if moveInfo[4] != '':
-                    self.movelist.append(moveInfo[4])
-                if moveInfo[5] != '':
-                    self.movelist.append(moveInfo[5])
-                if moveInfo[6] != '':
-                    self.movelist.append(moveInfo[6])
-                if moveInfo[7] != '':
-                    self.movelist.append(moveInfo[7])
-                if moveInfo[8] != '':
-                    self.movelist.append(moveInfo[8])
-                if moveInfo[9] != '':
-                    self.movelist.append(moveInfo[9])
-                if moveInfo[10] != '':
-                    self.movelist.append(moveInfo[10])
-                if moveInfo[11] != '':
-                    self.movelist.append(moveInfo[11])
-                if moveInfo[12] != '':
-                    self.movelist.append(moveInfo[12])
-                if moveInfo[13] != '':
-                    self.movelist.append(moveInfo[13])
-                if moveInfo[14] != '':
-                    self.movelist.append(moveInfo[14])
-                if moveInfo[15] != '':
-                    self.movelist.append(moveInfo[15])
+                if moveInfo[2] != '' and moveInfo[2] not in self.movedictionary:
+                    self.movedictionary[moveInfo[2]] = Move(moveInfo[2])
+                if moveInfo[3] != '' and moveInfo[3] not in self.movedictionary:
+                    self.movedictionary[moveInfo[3]] = Move(moveInfo[3])
+                if moveInfo[4] != '' and moveInfo[4] not in self.movedictionary:
+                    self.movedictionary[moveInfo[4]] = Move(moveInfo[4])
+                if moveInfo[5] != '' and moveInfo[5] not in self.movedictionary:
+                    self.movedictionary[moveInfo[5]] = Move(moveInfo[5])
+                if moveInfo[6] != '' and moveInfo[6] not in self.movedictionary:
+                    self.movedictionary[moveInfo[6]] = Move(moveInfo[6])
+                if moveInfo[7] != '' and moveInfo[7] not in self.movedictionary:
+                    self.movedictionary[moveInfo[7]] = Move(moveInfo[7])
+                if moveInfo[8] != '' and moveInfo[8] not in self.movedictionary:
+                    self.movedictionary[moveInfo[8]] = Move(moveInfo[8])
+                if moveInfo[9] != '' and moveInfo[9] not in self.movedictionary:
+                    self.movedictionary[moveInfo[9]] = Move(moveInfo[9])
+                if moveInfo[10] != '' and moveInfo[10] not in self.movedictionary:
+                    self.movedictionary[moveInfo[10]] = Move(moveInfo[10])
+                if moveInfo[11] != '' and moveInfo[11] not in self.movedictionary:
+                    self.movedictionary[moveInfo[11]] = Move(moveInfo[11])
+                if moveInfo[12] != '' and moveInfo[12] not in self.movedictionary:
+                    self.movedictionary[moveInfo[12]] = Move(moveInfo[12])
+                if moveInfo[13] != '' and moveInfo[13] not in self.movedictionary:
+                    self.movedictionary[moveInfo[13]] = Move(moveInfo[13])
+                if moveInfo[14] != '' and moveInfo[14] not in self.movedictionary:
+                    self.movedictionary[moveInfo[14]] = Move(moveInfo[14])
+                if moveInfo[15] != '' and moveInfo[15] not in self.movedictionary:
+                    self.movedictionary[moveInfo[15]] = Move(moveInfo[15])
             x += 1
         
         if '165' in self.movedictionary:
             del self.movedictionary['165']
-            self.movelist.remove('165')
             
-        for move in self.movelist:
-            if move not in self.movedictionary:
-                self.movedictionary[move] = Move(move)
-        
-        if self.movedictionary == {}:
+        if not self.movedictionary:
             self.movedictionary['165'] = Move('165')
-            self.movelist.append('165')
         
         return tempstring
         
@@ -684,6 +688,8 @@ class Pokemon(Entity):
             else:
                 chosenpokemon = random.choice(list(POKEMONDICTIONARY))
             self.level = 5
+        else:
+            self.levelup()
         self.chosenpokemon = chosenpokemon
         _LOGGER.info("POKEMON: chosenpokemon: %s", self.chosenpokemon)
         if self.chosenpokemon in POKEMONDICTIONARY:
@@ -769,47 +775,46 @@ class Pokemon(Entity):
         self.spDefStage = 0
         self.speedStage = 0
         
-        self.movelist = []
+        self.movedictionary = {}
         x = 1
         while x <= self.level:
             key = int(self.__id) * 1000 + x
             if key in MOVES_PER_LEVELDICTIONARY:
                 moveInfo = MOVES_PER_LEVELDICTIONARY[key]
-                if moveInfo[2] != '':
-                    self.movelist.append(moveInfo[2])
-                if moveInfo[3] != '':
-                    self.movelist.append(moveInfo[3])
-                if moveInfo[4] != '':
-                    self.movelist.append(moveInfo[4])
-                if moveInfo[5] != '':
-                    self.movelist.append(moveInfo[5])
-                if moveInfo[6] != '':
-                    self.movelist.append(moveInfo[6])
-                if moveInfo[7] != '':
-                    self.movelist.append(moveInfo[7])
-                if moveInfo[8] != '':
-                    self.movelist.append(moveInfo[8])
-                if moveInfo[9] != '':
-                    self.movelist.append(moveInfo[9])
-                if moveInfo[10] != '':
-                    self.movelist.append(moveInfo[10])
-                if moveInfo[11] != '':
-                    self.movelist.append(moveInfo[11])
-                if moveInfo[12] != '':
-                    self.movelist.append(moveInfo[12])
-                if moveInfo[13] != '':
-                    self.movelist.append(moveInfo[13])
-                if moveInfo[14] != '':
-                    self.movelist.append(moveInfo[14])
-                if moveInfo[15] != '':
-                    self.movelist.append(moveInfo[15])
+                if moveInfo[2] != '' and moveInfo[2] not in self.movedictionary:
+                    self.movedictionary[moveInfo[2]] = Move(moveInfo[2])
+                if moveInfo[3] != '' and moveInfo[3] not in self.movedictionary:
+                    self.movedictionary[moveInfo[3]] = Move(moveInfo[3])
+                if moveInfo[4] != '' and moveInfo[4] not in self.movedictionary:
+                    self.movedictionary[moveInfo[4]] = Move(moveInfo[4])
+                if moveInfo[5] != '' and moveInfo[5] not in self.movedictionary:
+                    self.movedictionary[moveInfo[5]] = Move(moveInfo[5])
+                if moveInfo[6] != '' and moveInfo[6] not in self.movedictionary:
+                    self.movedictionary[moveInfo[6]] = Move(moveInfo[6])
+                if moveInfo[7] != '' and moveInfo[7] not in self.movedictionary:
+                    self.movedictionary[moveInfo[7]] = Move(moveInfo[7])
+                if moveInfo[8] != '' and moveInfo[8] not in self.movedictionary:
+                    self.movedictionary[moveInfo[8]] = Move(moveInfo[8])
+                if moveInfo[9] != '' and moveInfo[9] not in self.movedictionary:
+                    self.movedictionary[moveInfo[9]] = Move(moveInfo[9])
+                if moveInfo[10] != '' and moveInfo[10] not in self.movedictionary:
+                    self.movedictionary[moveInfo[10]] = Move(moveInfo[10])
+                if moveInfo[11] != '' and moveInfo[11] not in self.movedictionary:
+                    self.movedictionary[moveInfo[11]] = Move(moveInfo[11])
+                if moveInfo[12] != '' and moveInfo[12] not in self.movedictionary:
+                    self.movedictionary[moveInfo[12]] = Move(moveInfo[12])
+                if moveInfo[13] != '' and moveInfo[13] not in self.movedictionary:
+                    self.movedictionary[moveInfo[13]] = Move(moveInfo[13])
+                if moveInfo[14] != '' and moveInfo[14] not in self.movedictionary:
+                    self.movedictionary[moveInfo[14]] = Move(moveInfo[14])
+                if moveInfo[15] != '' and moveInfo[14] not in self.movedictionary:
+                    self.movedictionary[moveInfo[15]] = Move(moveInfo[15])
             x += 1
             
-        self.movedictionary = {}
-        for move in self.movelist:
-            self.movedictionary[move] = Move(move)
-
-        _LOGGER.info("POKEMON: movelist: %s", self.movelist)
+        if not self.movedictionary:
+            self.movedictionary['165'] = Move('165')
+            
+        _LOGGER.info("POKEMON: movelist: %s", list(self.movedictionary.keys()))
         
         self.generation = pokemonInfo[14]
         
@@ -1340,10 +1345,8 @@ class Pokemon(Entity):
             self.attacker.movedictionary[movename].pp -= 1
         if self.attacker.movedictionary[movename].pp == 0:
             del self.attacker.movedictionary[movename]
-            self.attacker.movelist.remove(movename)
             if self.attacker.movedictionary == {}:
                 self.attacker.movedictionary['165'] = Move('165')
-                self.attacker.movelist.append('165')
                
         # String containing useMove(), damage, and type effectiveness
         return tempMsg
@@ -1355,7 +1358,17 @@ class Pokemon(Entity):
         
     def createattack(self):
         _LOGGER.info('POKEMON: %s will attack %s', self.attacker.pokemonname, self.victim.pokemonname)
-        cpu_choice = random.choice(self.attacker.movelist)
+        
+        tempdictionary = {}
+        for move in self.attacker.movedictionary:
+            x = 1
+            while x <= self.attacker.movedictionary[move].pp:
+                key = move + str(x)
+                tempdictionary[key] = move
+                x += 1
+        
+        cpu_choice = random.choice(list(tempdictionary.keys()))
+        cpu_choice = tempdictionary[cpu_choice]
         self.attackedwith = cpu_choice
         self.battlestate = self.attack(cpu_choice)
         self.victim.health -= self.damage
@@ -1367,7 +1380,6 @@ class Pokemon(Entity):
             else:
                 self.battlestate += "\n" + self.victim.pokemonname + " fainted..."
             self.attacker.won = True
-            self.battlestate += self.attacker.levelup()
         
     def update(self):
         """Get the latest data and updates the state."""
