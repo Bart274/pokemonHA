@@ -333,6 +333,7 @@ class Pokemon(Entity):
         self.activepokemonenemy = None
         self.battlestate = "Battle beginning"
         self.pokemonplayer1 = pokemonplayer1
+        self.pokemonleft = 0
         if self.pokemonplayer1 is not None:
             self.pokemonplayer1.choosepokemon()
             self.pokemonplayer1.won = True
@@ -564,7 +565,20 @@ class Pokemon(Entity):
     def icon(self):
         """Return the icon to use for device if any."""
         if self.type == 'player' or self.type == 'enemy':
-            return 'mdi:account-card-details'
+            if self.pokemonleft = 6:
+                return 'mdi:dice-6'
+            elif self.pokemonleft = 5:
+                return 'mdi:dice-5'
+            elif self.pokemonleft = 4:
+                return 'mdi:dice-4'
+            elif self.pokemonleft = 3:
+                return 'mdi:dice-3'
+            elif self.pokemonleft = 2:
+                return 'mdi:dice-2'
+            elif self.pokemonleft = 1:
+                return 'mdi:dice-1'
+            else:
+                return 'mdi:account-card-details'
         elif self.type == 'battle':
             if self.resetting > 0:
                 return 'mdi:cached'
@@ -1541,6 +1555,8 @@ class Pokemon(Entity):
             if self.resetting == 0:
                 self.battlestate = "Battle beginning"
                 self.pokemonbattleenemy.battlestate = "Battle beginning"
+                self.person1.pokemonleft = 6
+                self.person2.pokemonleft = 6
                 self.lastmove = None
                 if not self.pokemonplayer1.active or self.pokemonplayer1.level == 100:
                     if not self.pokemonplayer1.won or self.pokemonplayer1.level == 100:
@@ -1612,6 +1628,7 @@ class Pokemon(Entity):
             return
                 
         if self.activepokemonplayer is None or self.activepokemonplayer.health == 'FNT':
+            self.person1.pokemonleft -= 1
             self.lastmove = None
             self.pokemonplayer1.active = False
             self.pokemonplayer2.active = False
@@ -1647,6 +1664,7 @@ class Pokemon(Entity):
                 return
         
         if self.activepokemonenemy is None or self.activepokemonenemy.health == 'FNT':
+            self.person2.pokemonleft -= 1
             self.lastmove = None
             self.pokemonenemy1.active = False
             self.pokemonenemy2.active = False
