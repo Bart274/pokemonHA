@@ -13,6 +13,8 @@ import shutil
 import os.path
 import requests
 
+import sqlite3 as lite
+
 from math import floor
 
 from homeassistant.helpers.entity import Entity
@@ -182,6 +184,48 @@ def setup(hass, config):
     fin.close()
     
     pokemon_config = config[DOMAIN]
+    
+    def readdata(pokemonentity):
+        POKEMON_DIR = hass.config.path(DOMAIN)
+
+        if not os.path.exists(POKEMON_DIR):
+            os.makedirs(POKEMON_DIR)
+        
+        full_filename = "pokemon.db"
+        file_path = os.path.join(POKEMON_DIR, full_filename)
+        
+        try:
+            con = lite.connect(file_path)
+            
+            with con:
+
+                con.row_factory = lite.Row
+
+                cur = con.cursor() 
+                cur.execute("SELECT * FROM Pokemon WHERE Id = '" + pokemonentity.entity_id +"'")
+
+                rows = cur.fetchall()
+
+                if len(rows) == 1:
+                    for row in rows:
+                        if pokemonentity.type == 'player' or pokemonentity.type == 'enemy':
+                            pokemonentity.caughtpokemon = row['PokemonCaught'].split(",")
+                            pokemonentity.seenpokemon = row['PokemonSeen'].split(",")
+                            pokemonentity.victories = row['Victories']
+                            pokemonentity.badges = row['Badges']
+                        elif pokemonentity.type == 'pokemon':
+                            pokemonentity.chosenpokemon = str(row['PokemonID'])
+                            pokemonentity.level = row['PokemonLevel'] - 1
+
+        except lite.Error as e:
+    
+            if con:
+                con.rollback()
+            
+        finally:
+    
+            if con:
+                con.close()
 
     # Get the username and password from the configuration
     playername = pokemon_config.get('playername', DEFAULT_NAME)
@@ -195,40 +239,59 @@ def setup(hass, config):
     enemy.update_ha_state()
         
     pokemonplayer1 = Pokemon(hass, 'pokemon', '1', hideenemy, picture_dir, player, enemy)
+    _LOGGER.info("POKEMON: pokemonplayer1 id= %s level= %s", pokemonplayer1.chosenpokemon, pokemonplayer1.level)
+    readdata(pokemonplayer1)
+    _LOGGER.info("POKEMON: pokemonplayer1 id= %s level= %s", pokemonplayer1.chosenpokemon, pokemonplayer1.level)
     pokemonplayer1.update_ha_state()
         
     pokemonplayer2 = Pokemon(hass, 'pokemon', '2', hideenemy, picture_dir, player, enemy)
+    readdata(pokemonplayer2)
     pokemonplayer2.update_ha_state()
        
     pokemonplayer3 = Pokemon(hass, 'pokemon', '3', hideenemy, picture_dir, player, enemy)
+    readdata(pokemonplayer3)
     pokemonplayer3.update_ha_state()
         
     pokemonplayer4 = Pokemon(hass, 'pokemon', '4', hideenemy, picture_dir, player, enemy)
+    readdata(pokemonplayer4)
     pokemonplayer4.update_ha_state()
         
     pokemonplayer5 = Pokemon(hass, 'pokemon', '5', hideenemy, picture_dir, player, enemy)
+    readdata(pokemonplayer5)
     pokemonplayer5.update_ha_state()
         
     pokemonplayer6 = Pokemon(hass, 'pokemon', '6', hideenemy, picture_dir, player, enemy)
+    readdata(pokemonplayer6)
     pokemonplayer6.update_ha_state()
         
     pokemonenemy1 = Pokemon(hass, 'pokemon', '1', hideenemy, picture_dir, enemy, player)
+    readdata(pokemonenemy1)
     pokemonenemy1.update_ha_state()
         
     pokemonenemy2 = Pokemon(hass, 'pokemon', '2', hideenemy, picture_dir, enemy, player)
+    readdata(pokemonenemy2)
     pokemonenemy2.update_ha_state()
         
     pokemonenemy3 = Pokemon(hass, 'pokemon', '3', hideenemy, picture_dir, enemy, player)
+    readdata(pokemonenemy3)
     pokemonenemy3.update_ha_state()
         
     pokemonenemy4 = Pokemon(hass, 'pokemon', '4', hideenemy, picture_dir, enemy, player)
+    readdata(pokemonenemy4)
     pokemonenemy4.update_ha_state()
         
     pokemonenemy5 = Pokemon(hass, 'pokemon', '5', hideenemy, picture_dir, enemy, player)
+    readdata(pokemonenemy5)
     pokemonenemy5.update_ha_state()
         
     pokemonenemy6 = Pokemon(hass, 'pokemon', '6', hideenemy, picture_dir, enemy, player)
+    readdata(pokemonenemy6)
     pokemonenemy6.update_ha_state()
+    
+    readdata(player)
+    player.update_ha_state()
+    readdata(enemy)
+    enemy.update_ha_state()
     
     pokemonbattleenemy = Pokemon(hass, 'battleenemy', 'battle', hideenemy, picture_dir, player, enemy,
                             pokemonplayer1, pokemonplayer2, pokemonplayer3,
@@ -267,7 +330,79 @@ def setup(hass, config):
             pokemonenemy2.entity_id, pokemonenemy3.entity_id,
             pokemonenemy4.entity_id, pokemonenemy5.entity_id,
             pokemonenemy6.entity_id])
+            
+    def writedata():
+        """ writes the data to the db file """
+        POKEMON_DIR = hass.config.path(DOMAIN)
 
+        if not os.path.exists(POKEMON_DIR):
+            os.makedirs(POKEMON_DIR)
+        
+        full_filename = "pokemon.db"
+        file_path = os.path.join(POKEMON_DIR, full_filename)
+        
+        playercaughtpokemon = ''
+        for caught in player.caughtpokemon:
+            if playercaughtpokemon != '':
+                playercaughtpokemon += ','
+            playercaughtpokemon += caught
+        playerseenpokemon = ''
+        for seen in player.seenpokemon:
+            if playerseenpokemon != '':
+                playerseenpokemon += ','
+            playerseenpokemon += seen
+        enemycaughtpokemon = ''
+        for caught in enemy.caughtpokemon:
+            if enemycaughtpokemon != '':
+                enemycaughtpokemon += ','
+            enemycaughtpokemon += caught
+        enemyseenpokemon = ''
+        for seen in enemy.seenpokemon:
+            if enemyseenpokemon != '':
+                enemyseenpokemon += ','
+            enemyseenpokemon += seen
+        
+        pokemondata = (
+            (player.entity_id, player.victories, player.badges, playercaughtpokemon, playerseenpokemon, 0, 0),
+            (enemy.entity_id, enemy.victories, enemy.badges, enemycaughtpokemon, playerseenpokemon, 0, 0),
+            (pokemonplayer1.entity_id, 0, 0, '', '', pokemonplayer1.chosenpokemon, pokemonplayer1.level),
+            (pokemonplayer2.entity_id, 0, 0, '', '', pokemonplayer2.chosenpokemon, pokemonplayer2.level),
+            (pokemonplayer3.entity_id, 0, 0, '', '', pokemonplayer3.chosenpokemon, pokemonplayer3.level),
+            (pokemonplayer4.entity_id, 0, 0, '', '', pokemonplayer4.chosenpokemon, pokemonplayer4.level),
+            (pokemonplayer5.entity_id, 0, 0, '', '', pokemonplayer5.chosenpokemon, pokemonplayer5.level),
+            (pokemonplayer6.entity_id, 0, 0, '', '', pokemonplayer6.chosenpokemon, pokemonplayer6.level),
+            (pokemonenemy1.entity_id, 0, 0, '', '', pokemonenemy1.chosenpokemon, pokemonenemy1.level),
+            (pokemonenemy2.entity_id, 0, 0, '', '', pokemonenemy2.chosenpokemon, pokemonenemy2.level),
+            (pokemonenemy3.entity_id, 0, 0, '', '', pokemonenemy3.chosenpokemon, pokemonenemy3.level),
+            (pokemonenemy4.entity_id, 0, 0, '', '', pokemonenemy4.chosenpokemon, pokemonenemy4.level),
+            (pokemonenemy5.entity_id, 0, 0, '', '', pokemonenemy5.chosenpokemon, pokemonenemy5.level),
+            (pokemonenemy6.entity_id, 0, 0, '', '', pokemonenemy6.chosenpokemon, pokemonenemy6.level)
+        )
+        _LOGGER.info("POKEMON: pokemondata: %s", pokemondata)
+        
+        try:
+            con = lite.connect(file_path)
+
+            with con:
+    
+                cur = con.cursor()    
+    
+                cur.execute("DROP TABLE IF EXISTS Pokemon")
+                cur.execute("CREATE TABLE Pokemon(Id TEXT, Victories INT, Badges INT, PokemonCaught TEXT, PokemonSeen TEXT, PokemonID INT, PokemonLevel INT)")
+                cur.executemany("INSERT INTO Pokemon VALUES(?, ?, ?, ?, ?, ?, ?)", pokemondata)
+    
+        except lite.Error as e:
+    
+            if con:
+                con.rollback()
+        
+            _LOGGER.error("POKEMON: Error %s:" % e.args[0])
+            
+        finally:
+    
+            if con:
+                con.close()
+        
     def update(now):
         """ Keeps the api logged in of all account """
         pokemonbattle.update()
@@ -286,6 +421,7 @@ def setup(hass, config):
         pokemonenemy4.update()
         pokemonenemy5.update()
         pokemonenemy6.update()
+        writedata()
             
     track_utc_time_change(
         hass, update,
@@ -335,62 +471,62 @@ class Pokemon(Entity):
         self.pokemonplayer1 = pokemonplayer1
         self.pokemonleft = 0
         if self.pokemonplayer1 is not None:
-            self.pokemonplayer1.choosepokemon()
+            self.pokemonplayer1.choosepokemon(self.pokemonplayer1.chosenpokemon)
             self.pokemonplayer1.won = True
             self.pokemonplayer1.level -= 1
         self.pokemonplayer2 = pokemonplayer2
         if self.pokemonplayer2 is not None:
-            self.pokemonplayer2.choosepokemon()
+            self.pokemonplayer2.choosepokemon(self.pokemonplayer2.chosenpokemon)
             self.pokemonplayer2.won = True
             self.pokemonplayer2.level -= 1
         self.pokemonplayer3 = pokemonplayer3
         if self.pokemonplayer3 is not None:
-            self.pokemonplayer3.choosepokemon()
+            self.pokemonplayer3.choosepokemon(self.pokemonplayer3.chosenpokemon)
             self.pokemonplayer3.won = True
             self.pokemonplayer3.level -= 1
         self.pokemonplayer4 = pokemonplayer4
         if self.pokemonplayer4 is not None:
-            self.pokemonplayer4.choosepokemon()
+            self.pokemonplayer4.choosepokemon(self.pokemonplayer4.chosenpokemon)
             self.pokemonplayer4.won = True
             self.pokemonplayer4.level -= 1
         self.pokemonplayer5 = pokemonplayer5
         if self.pokemonplayer5 is not None:
-            self.pokemonplayer5.choosepokemon()
+            self.pokemonplayer5.choosepokemon(self.pokemonplayer5.chosenpokemon)
             self.pokemonplayer5.won = True
             self.pokemonplayer5.level -= 1
         self.pokemonplayer6 = pokemonplayer6
         if self.pokemonplayer6 is not None:
-            self.pokemonplayer6.choosepokemon()
+            self.pokemonplayer6.choosepokemon(self.pokemonplayer6.chosenpokemon)
             self.pokemonplayer6.won = True
             self.pokemonplayer6.level -= 1
         self.pokemonenemy1 = pokemonenemy1
         if self.pokemonenemy1 is not None:
-            self.pokemonenemy1.choosepokemon()
+            self.pokemonenemy1.choosepokemon(self.pokemonenemy1.chosenpokemon)
             self.pokemonenemy1.won = True
             self.pokemonenemy1.level -= 1
         self.pokemonenemy2 = pokemonenemy2
         if self.pokemonenemy2 is not None:
-            self.pokemonenemy2.choosepokemon()
+            self.pokemonenemy2.choosepokemon(self.pokemonenemy2.chosenpokemon)
             self.pokemonenemy2.won = True
             self.pokemonenemy2.level -= 1
         self.pokemonenemy3 = pokemonenemy3
         if self.pokemonenemy3 is not None:
-            self.pokemonenemy3.choosepokemon()
+            self.pokemonenemy3.choosepokemon(self.pokemonenemy3.chosenpokemon)
             self.pokemonenemy3.won = True
             self.pokemonenemy3.level -= 1
         self.pokemonenemy4 = pokemonenemy4
         if self.pokemonenemy4 is not None:
-            self.pokemonenemy4.choosepokemon()
+            self.pokemonenemy4.choosepokemon(self.pokemonenemy4.chosenpokemon)
             self.pokemonenemy4.won = True
             self.pokemonenemy4.level -= 1
         self.pokemonenemy5 = pokemonenemy5
         if self.pokemonenemy5 is not None:
-            self.pokemonenemy5.choosepokemon()
+            self.pokemonenemy5.choosepokemon(self.pokemonenemy5.chosenpokemon)
             self.pokemonenemy5.won = True
             self.pokemonenemy5.level -= 1
         self.pokemonenemy6 = pokemonenemy6
         if self.pokemonenemy6 is not None:
-            self.pokemonenemy6.choosepokemon()
+            self.pokemonenemy6.choosepokemon(self.pokemonenemy6.chosenpokemon)
             self.pokemonenemy6.won = True
             self.pokemonenemy6.level -= 1
         self.pokemonbattleenemy = pokemonbattleenemy
@@ -733,6 +869,7 @@ class Pokemon(Entity):
         return tempstring
         
     def choosepokemon(self, chosenpokemon=None):
+        _LOGGER.info("POKEMON: pokemon id= %s level= %s", self.chosenpokemon, self.level)
         if chosenpokemon is None:
             if floor(self.person1.badges / 8) == 0:
                 chosenpokemon = random.choice(list(POKEMONDICTIONARYGEN1))
@@ -748,9 +885,6 @@ class Pokemon(Entity):
                 chosenpokemon = random.choice(list(POKEMONDICTIONARYGEN6))
             else:
                 chosenpokemon = random.choice(list(POKEMONDICTIONARY))
-            self.level = 5
-        else:
-            self.levelup()
         self.chosenpokemon = chosenpokemon
         _LOGGER.info("POKEMON: chosenpokemon: %s", self.chosenpokemon)
         if self.chosenpokemon in POKEMONDICTIONARY:
@@ -871,6 +1005,11 @@ class Pokemon(Entity):
                 if moveInfo[15] != '' and moveInfo[14] not in self.movedictionary:
                     self.movedictionary[moveInfo[15]] = Move(moveInfo[15])
             x += 1
+            
+        if chosenpokemon is None:
+            self.level = 5
+        else:
+            self.levelup()
             
         if not self.movedictionary:
             self.movedictionary['165'] = Move('165')
