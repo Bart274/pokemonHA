@@ -565,17 +565,17 @@ class Pokemon(Entity):
     def icon(self):
         """Return the icon to use for device if any."""
         if self.type == 'player' or self.type == 'enemy':
-            if self.pokemonleft = 6:
+            if self.pokemonleft == 6:
                 return 'mdi:dice-6'
-            elif self.pokemonleft = 5:
+            elif self.pokemonleft == 5:
                 return 'mdi:dice-5'
-            elif self.pokemonleft = 4:
+            elif self.pokemonleft == 4:
                 return 'mdi:dice-4'
-            elif self.pokemonleft = 3:
+            elif self.pokemonleft == 3:
                 return 'mdi:dice-3'
-            elif self.pokemonleft = 2:
+            elif self.pokemonleft == 2:
                 return 'mdi:dice-2'
-            elif self.pokemonleft = 1:
+            elif self.pokemonleft == 1:
                 return 'mdi:dice-1'
             else:
                 return 'mdi:account-card-details'
