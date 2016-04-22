@@ -1555,8 +1555,8 @@ class Pokemon(Entity):
             if self.resetting == 0:
                 self.battlestate = "Battle beginning"
                 self.pokemonbattleenemy.battlestate = "Battle beginning"
-                self.person1.pokemonleft = 6
-                self.person2.pokemonleft = 6
+                self.person1.pokemonleft = 7
+                self.person2.pokemonleft = 7
                 self.lastmove = None
                 if not self.pokemonplayer1.active or self.pokemonplayer1.level == 100:
                     if not self.pokemonplayer1.won or self.pokemonplayer1.level == 100:
