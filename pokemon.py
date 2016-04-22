@@ -559,7 +559,7 @@ class Pokemon(Entity):
             else:
                 return self.fainted
         elif self.type == 'battleenemy':
-            return not self.hideenemy
+            return self.hideenemy
         else:
             return False
     
