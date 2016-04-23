@@ -221,12 +221,9 @@ def setup(hass, config):
                         if pokemonentity.type == 'player' or pokemonentity.type == 'enemy':
                             pokemonentity.caughtpokemon = row['PokemonCaught'].split(",")
                             pokemonentity.seenpokemon = row['PokemonSeen'].split(",")
-<<<<<<< HEAD
                             pokemonentity.pokedexcaught = len(pokemonentity.caughtpokemon)
                             pokemonentity.pokedex = str(round(pokemonentity.pokedexcaught / TOTALPOKEDEX * 100, 2)) + '%'
                             pokemonentity.pokedexseen = len(pokemonentity.seenpokemon)
-=======
->>>>>>> origin/master
                             pokemonentity.victories = row['Victories']
                             pokemonentity.badges = row['Badges']
                         elif pokemonentity.type == 'pokemon':
