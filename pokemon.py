@@ -364,7 +364,6 @@ def setup(hass, config):
     def writedata():
         """ writes the data to the db file """
         POKEMON_DIR = hass.config.path(DOMAIN)
-<<<<<<< HEAD
 
         if not os.path.exists(POKEMON_DIR):
             os.makedirs(POKEMON_DIR)
@@ -414,57 +413,6 @@ def setup(hass, config):
         try:
             con = lite.connect(file_path)
 
-=======
-
-        if not os.path.exists(POKEMON_DIR):
-            os.makedirs(POKEMON_DIR)
-        
-        full_filename = "pokemon.db"
-        file_path = os.path.join(POKEMON_DIR, full_filename)
-        
-        playercaughtpokemon = ''
-        for caught in player.caughtpokemon:
-            if playercaughtpokemon != '':
-                playercaughtpokemon += ','
-            playercaughtpokemon += caught
-        playerseenpokemon = ''
-        for seen in player.seenpokemon:
-            if playerseenpokemon != '':
-                playerseenpokemon += ','
-            playerseenpokemon += seen
-        enemycaughtpokemon = ''
-        for caught in enemy.caughtpokemon:
-            if enemycaughtpokemon != '':
-                enemycaughtpokemon += ','
-            enemycaughtpokemon += caught
-        enemyseenpokemon = ''
-        for seen in enemy.seenpokemon:
-            if enemyseenpokemon != '':
-                enemyseenpokemon += ','
-            enemyseenpokemon += seen
-        
-        pokemondata = (
-            (player.entity_id, player.victories, player.badges, playercaughtpokemon, playerseenpokemon, 0, 0),
-            (enemy.entity_id, enemy.victories, enemy.badges, enemycaughtpokemon, playerseenpokemon, 0, 0),
-            (pokemonplayer1.entity_id, 0, 0, '', '', pokemonplayer1.chosenpokemon, pokemonplayer1.level),
-            (pokemonplayer2.entity_id, 0, 0, '', '', pokemonplayer2.chosenpokemon, pokemonplayer2.level),
-            (pokemonplayer3.entity_id, 0, 0, '', '', pokemonplayer3.chosenpokemon, pokemonplayer3.level),
-            (pokemonplayer4.entity_id, 0, 0, '', '', pokemonplayer4.chosenpokemon, pokemonplayer4.level),
-            (pokemonplayer5.entity_id, 0, 0, '', '', pokemonplayer5.chosenpokemon, pokemonplayer5.level),
-            (pokemonplayer6.entity_id, 0, 0, '', '', pokemonplayer6.chosenpokemon, pokemonplayer6.level),
-            (pokemonenemy1.entity_id, 0, 0, '', '', pokemonenemy1.chosenpokemon, pokemonenemy1.level),
-            (pokemonenemy2.entity_id, 0, 0, '', '', pokemonenemy2.chosenpokemon, pokemonenemy2.level),
-            (pokemonenemy3.entity_id, 0, 0, '', '', pokemonenemy3.chosenpokemon, pokemonenemy3.level),
-            (pokemonenemy4.entity_id, 0, 0, '', '', pokemonenemy4.chosenpokemon, pokemonenemy4.level),
-            (pokemonenemy5.entity_id, 0, 0, '', '', pokemonenemy5.chosenpokemon, pokemonenemy5.level),
-            (pokemonenemy6.entity_id, 0, 0, '', '', pokemonenemy6.chosenpokemon, pokemonenemy6.level)
-        )
-        _LOGGER.info("POKEMON: pokemondata: %s", pokemondata)
-        
-        try:
-            con = lite.connect(file_path)
-
->>>>>>> origin/master
             with con:
     
                 cur = con.cursor()    
@@ -484,7 +432,6 @@ def setup(hass, config):
     
             if con:
                 con.close()
-<<<<<<< HEAD
                 
     def updateextraentities():
         if pokemonbattle.waitinginput:
@@ -527,9 +474,6 @@ def setup(hass, config):
                             },
                         })
         
-=======
->>>>>>> origin/master
-        
     def update(now):
         """ Keeps the api logged in of all account """
         pokemonbattle.update()
@@ -549,10 +493,7 @@ def setup(hass, config):
         pokemonenemy5.update()
         pokemonenemy6.update()
         writedata()
-<<<<<<< HEAD
         updateextraentities()
-=======
->>>>>>> origin/master
             
     track_utc_time_change(
         hass, update,
