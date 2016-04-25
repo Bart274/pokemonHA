@@ -32,6 +32,7 @@ _LOGGER = logging.getLogger(__name__)
 DEFAULT_NAME = "Ash"
 DEFAULT_ENEMY = "Gary"
 DEFAULT_HIDE_ENEMY = True
+DEFAULT_TIMEOUT = 15
 
 DOMAIN = "pokemon"
 
@@ -228,7 +229,7 @@ def setup(hass, config):
                             pokemonentity.badges = row['Badges']
                         elif pokemonentity.type == 'pokemon':
                             pokemonentity.chosenpokemon = str(row['PokemonID'])
-                            pokemonentity.level = row['PokemonLevel'] - 1
+                            pokemonentity.level = row['PokemonLevel'] - 2
 
         except lite.Error as e:
     
@@ -244,6 +245,7 @@ def setup(hass, config):
     playername = pokemon_config.get('playername', DEFAULT_NAME)
     enemyname = pokemon_config.get('enemyname', DEFAULT_ENEMY)
     hideenemy = pokemon_config.get('hide_enemy', DEFAULT_HIDE_ENEMY)
+    timeout = pokemon_config.get('timeout', DEFAULT_TIMEOUT)
         
     player = Pokemon(hass, 'player', playername, hideenemy, picture_dir)
     player.update_ha_state()
@@ -434,45 +436,22 @@ def setup(hass, config):
                 con.close()
                 
     def updateextraentities():
-        if pokemonbattle.waitinginput:
+        if pokemonbattle.waitinginput and pokemonbattle.timer < timeout:
+            pokemonbattle.timer += 1
+        elif pokemonbattle.waitinginput and pokemonbattle.timer == timeout:
             if pokemonbattle.attacker.person1.type == 'player':
-                state_1 = hass.states.get('input_boolean.pokemonplayer')
-                if state_1.state == STATE_OFF:
-                    options = ['']
-                    if pokemonbattle.activepokemonplayer is not None:
-                        move = ''
-                        for key in pokemonbattle.activepokemonplayer.movedictionary:
-                            move = pokemonbattle.activepokemonplayer.movedictionary[key].name + ' PP ' + str(pokemonbattle.activepokemonplayer.movedictionary[key].pp)
-                            options.append(move)
-                    input_select.setup(hass, {
-                        'input_select': {
-                            'pokemonplayer': {
-                                'name': player.name,
-                                'options': options,
-                                'initial': '',
-                            },
-                        },
-                    })
-            
-            if pokemonbattle.attacker.person1.type == 'enemy':
-                if not hideenemy:
-                    state_2 = hass.states.get('input_boolean.pokemonenemy')
-                    if state_2.state == STATE_OFF:
-                        options = ['']
-                        if pokemonbattle.activepokemonenemy is not None:
-                            move = ''
-                            for key in pokemonbattle.activepokemonenemy.movedictionary:
-                                move = pokemonbattle.activepokemonenemy.movedictionary[key].name + ' PP ' + str(pokemonbattle.activepokemonenemy.movedictionary[key].pp)
-                                options.append(move)
-                        input_select.setup(hass, {
-                            'input_select': {
-                                'pokemonenemy': {
-                                    'name': enemy.name,
-                                    'options': options,
-                                    'initial': '',
-                                },
-                            },
-                        })
+                hass.services.call('input_boolean', 'turn_on', {
+                    'entity_id': 'input_boolean.pokemonplayer',
+                })
+            elif pokemonbattle.attacker.person1.type == 'enemy':
+                hass.services.call('input_boolean', 'turn_on', {
+                    'entity_id': 'input_boolean.pokemonenemy',
+                })
+            pokemonbattle.timer = 0
+            pokemonbattle.waitinginput = False
+        else:
+            pokemonbattle.timer = 0
+            pokemonbattle.waitinginput = False
         
     def update(now):
         """ Keeps the api logged in of all account """
@@ -534,6 +513,7 @@ class Pokemon(Entity):
         self.caughtpokemon = []
         self.seenpokemon = []
         self.level = 5
+        self.timer = 0 
         self.won = False
         self.attacker = None
         self.victim = None
@@ -545,62 +525,98 @@ class Pokemon(Entity):
         if self.pokemonplayer1 is not None:
             self.pokemonplayer1.choosepokemon(self.pokemonplayer1.chosenpokemon)
             self.pokemonplayer1.won = True
-            self.pokemonplayer1.level -= 1
+            if self.pokemonplayer1.chosenpokemon is None:
+                self.pokemonplayer1.level -= 2
+            else:
+                self.pokemonplayer1.level -= 1
         self.pokemonplayer2 = pokemonplayer2
         if self.pokemonplayer2 is not None:
             self.pokemonplayer2.choosepokemon(self.pokemonplayer2.chosenpokemon)
             self.pokemonplayer2.won = True
-            self.pokemonplayer2.level -= 1
+            if self.pokemonplayer2.chosenpokemon is None:
+                self.pokemonplayer2.level -= 2
+            else:
+                self.pokemonplayer2.level -= 1
         self.pokemonplayer3 = pokemonplayer3
         if self.pokemonplayer3 is not None:
             self.pokemonplayer3.choosepokemon(self.pokemonplayer3.chosenpokemon)
             self.pokemonplayer3.won = True
-            self.pokemonplayer3.level -= 1
+            if self.pokemonplayer3.chosenpokemon is None:
+                self.pokemonplayer3.level -= 2
+            else:
+                self.pokemonplayer3.level -= 1
         self.pokemonplayer4 = pokemonplayer4
         if self.pokemonplayer4 is not None:
             self.pokemonplayer4.choosepokemon(self.pokemonplayer4.chosenpokemon)
             self.pokemonplayer4.won = True
-            self.pokemonplayer4.level -= 1
+            if self.pokemonplayer4.chosenpokemon is None:
+                self.pokemonplayer4.level -= 2
+            else:
+                self.pokemonplayer4.level -= 1
         self.pokemonplayer5 = pokemonplayer5
         if self.pokemonplayer5 is not None:
             self.pokemonplayer5.choosepokemon(self.pokemonplayer5.chosenpokemon)
             self.pokemonplayer5.won = True
-            self.pokemonplayer5.level -= 1
+            if self.pokemonplayer5.chosenpokemon is None:
+                self.pokemonplayer5.level -= 2
+            else:
+                self.pokemonplayer5.level -= 1
         self.pokemonplayer6 = pokemonplayer6
         if self.pokemonplayer6 is not None:
             self.pokemonplayer6.choosepokemon(self.pokemonplayer6.chosenpokemon)
             self.pokemonplayer6.won = True
-            self.pokemonplayer6.level -= 1
+            if self.pokemonplayer6.chosenpokemon is None:
+                self.pokemonplayer6.level -= 2
+            else:
+                self.pokemonplayer6.level -= 1
         self.pokemonenemy1 = pokemonenemy1
         if self.pokemonenemy1 is not None:
             self.pokemonenemy1.choosepokemon(self.pokemonenemy1.chosenpokemon)
             self.pokemonenemy1.won = True
-            self.pokemonenemy1.level -= 1
+            if self.pokemonenemy1.chosenpokemon is None:
+                self.pokemonenemy1.level -= 2
+            else:
+                self.pokemonenemy1.level -= 1
         self.pokemonenemy2 = pokemonenemy2
         if self.pokemonenemy2 is not None:
             self.pokemonenemy2.choosepokemon(self.pokemonenemy2.chosenpokemon)
             self.pokemonenemy2.won = True
-            self.pokemonenemy2.level -= 1
+            if self.pokemonenemy2.chosenpokemon is None:
+                self.pokemonenemy2.level -= 2
+            else:
+                self.pokemonenemy2.level -= 1
         self.pokemonenemy3 = pokemonenemy3
         if self.pokemonenemy3 is not None:
             self.pokemonenemy3.choosepokemon(self.pokemonenemy3.chosenpokemon)
             self.pokemonenemy3.won = True
-            self.pokemonenemy3.level -= 1
+            if self.pokemonenemy3.chosenpokemon is None:
+                self.pokemonenemy3.level -= 2
+            else:
+                self.pokemonenemy3.level -= 1
         self.pokemonenemy4 = pokemonenemy4
         if self.pokemonenemy4 is not None:
             self.pokemonenemy4.choosepokemon(self.pokemonenemy4.chosenpokemon)
             self.pokemonenemy4.won = True
-            self.pokemonenemy4.level -= 1
+            if self.pokemonenemy4.chosenpokemon is None:
+                self.pokemonenemy4.level -= 2
+            else:
+                self.pokemonenemy4.level -= 1
         self.pokemonenemy5 = pokemonenemy5
         if self.pokemonenemy5 is not None:
             self.pokemonenemy5.choosepokemon(self.pokemonenemy5.chosenpokemon)
             self.pokemonenemy5.won = True
-            self.pokemonenemy5.level -= 1
+            if self.pokemonenemy5.chosenpokemon is None:
+                self.pokemonenemy5.level -= 2
+            else:
+                self.pokemonenemy5.level -= 1
         self.pokemonenemy6 = pokemonenemy6
         if self.pokemonenemy6 is not None:
             self.pokemonenemy6.choosepokemon(self.pokemonenemy6.chosenpokemon)
             self.pokemonenemy6.won = True
-            self.pokemonenemy6.level -= 1
+            if self.pokemonenemy6.chosenpokemon is None:
+                self.pokemonenemy6.level -= 2
+            else:
+                self.pokemonenemy6.level -= 1
         self.pokemonbattleenemy = pokemonbattleenemy
         
         self.fainted = True
@@ -2021,6 +2037,24 @@ class Pokemon(Entity):
                 state_1 = self.hass.states.get('input_select.pokemonplayer')
                 if state_1 is None or state_1.state == '':
                     self.waitinginput = True
+                    
+                    if state_1 is None:
+                        options = ['']
+                        if self.activepokemonplayer is not None:
+                            move = ''
+                            for key in self.activepokemonplayer.movedictionary:
+                                move = self.activepokemonplayer.movedictionary[key].name + ' PP ' + str(self.activepokemonplayer.movedictionary[key].pp)
+                                options.append(move)
+                        input_select.setup(self.hass, {
+                            'input_select': {
+                                'pokemonplayer': {
+                                'name': self.attacker.person1.name,
+                                'options': options,
+                                'initial': '',
+                                },
+                            },
+                        })
+            
                 else:
                     self.waitinginput = False
         elif self.attacker.person1.type == 'enemy' and not self.hideenemy:
@@ -2029,6 +2063,23 @@ class Pokemon(Entity):
                 state_1 = self.hass.states.get('input_select.pokemonenemy')
                 if state_1 is None or state_1.state == '':
                     self.waitinginput = True
+                    
+                    if state_1 is None:
+                        options = ['']
+                        if self.activepokemonenemy is not None:
+                            move = ''
+                            for key in self.activepokemonenemy.movedictionary:
+                                move = self.activepokemonenemy.movedictionary[key].name + ' PP ' + str(self.activepokemonenemy.movedictionary[key].pp)
+                                options.append(move)
+                        input_select.setup(self.hass, {
+                            'input_select': {
+                                'pokemonenemy': {
+                                    'name': self.attacker.person1.name,
+                                    'options': options,
+                                    'initial': '',
+                                },
+                            },
+                        })
                 else:
                     self.waitinginput = False
         
