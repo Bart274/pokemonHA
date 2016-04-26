@@ -34,6 +34,7 @@ DEFAULT_NAME = "Ash"
 DEFAULT_ENEMY = "Gary"
 DEFAULT_HIDE_ENEMY = True
 DEFAULT_TIMEOUT = 15
+DEFAULT_INTERVAL = 60
 
 DOMAIN = "pokemon"
 
@@ -247,6 +248,7 @@ def setup(hass, config):
     enemyname = pokemon_config.get('enemyname', DEFAULT_ENEMY)
     hideenemy = pokemon_config.get('hide_enemy', DEFAULT_HIDE_ENEMY)
     timeout = pokemon_config.get('timeout', DEFAULT_TIMEOUT)
+    interval = pokemon_config.get('interval', DEFAULT_INTERVAL)
         
     player = Pokemon(hass, 'player', playername, hideenemy, picture_dir)
     player.update_ha_state()
@@ -477,7 +479,7 @@ def setup(hass, config):
             
     track_utc_time_change(
         hass, update,
-        second=0
+        second=range(0, 60, interval)
     )
     
     def check_state_change(entity, old_state, new_state):
