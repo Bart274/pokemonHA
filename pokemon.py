@@ -1782,12 +1782,16 @@ class Pokemon(Entity):
         
         if autoattack:
             tempdictionary = {}
-            for move in self.attacker.movedictionary:
-                x = 1
-                while x <= int(self.attacker.movedictionary[move].pp):
-                    key = move + str(x)
-                    tempdictionary[key] = move
-                    x += 1
+            if len(self.attacker.movedictionary) == 1:
+                for move in self.attacker.movedictionary:
+                    tempdictionary[move] = move
+            else:
+                for move in self.attacker.movedictionary:
+                    x = 1
+                    while x <= int(self.attacker.movedictionary[move].pp):
+                        key = move + str(x)
+                        tempdictionary[key] = move
+                        x += 1
         
             cpu_choice = random.choice(list(tempdictionary.keys()))
             cpu_choice = tempdictionary[cpu_choice]
