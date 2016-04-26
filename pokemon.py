@@ -21,6 +21,7 @@ from homeassistant.helpers.entity import Entity
 from homeassistant.components import input_boolean, input_select
 from homeassistant.util import Throttle
 from homeassistant.helpers.event import track_utc_time_change
+from homeassistant.helpers.event import track_state_change
 from homeassistant.helpers.entity import generate_entity_id
 import homeassistant.loader as loader
 
@@ -479,6 +480,20 @@ def setup(hass, config):
         second=0
     )
     
+    def check_state_change(entity, old_state, new_state):
+        _LOGGER.info("POKEMON: state of input_select has changed from %s to %s", old_state, new_state)
+        if new_state is not None and new_state != '':
+            update(None)
+    
+    if hideenemy:
+        track_state_change(hass, 'input_select.pokemonplayer',
+                           check_state_change)
+    else:
+        track_state_change(hass, 'input_select.pokemonplayer',
+                           check_state_change)
+        track_state_change(hass, 'input_select.pokemonenemy',
+                           check_state_change)
+            
     # Tells the bootstrapper that the component was successfully initialized
     return True
 
