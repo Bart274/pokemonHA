@@ -231,7 +231,7 @@ def setup(hass, config):
                             pokemonentity.badges = row['Badges']
                         elif pokemonentity.type == 'pokemon':
                             pokemonentity.chosenpokemon = str(row['PokemonID'])
-                            pokemonentity.level = row['PokemonLevel'] - 2
+                            pokemonentity.level = row['PokemonLevel']
 
         except lite.Error as e:
     
@@ -542,99 +542,53 @@ class Pokemon(Entity):
         if self.pokemonplayer1 is not None:
             self.pokemonplayer1.choosepokemon(self.pokemonplayer1.chosenpokemon)
             self.pokemonplayer1.won = True
-            if self.pokemonplayer1.chosenpokemon is None:
-                self.pokemonplayer1.level -= 2
-            else:
-                self.pokemonplayer1.level -= 1
         self.pokemonplayer2 = pokemonplayer2
         if self.pokemonplayer2 is not None:
             self.pokemonplayer2.choosepokemon(self.pokemonplayer2.chosenpokemon)
             self.pokemonplayer2.won = True
-            if self.pokemonplayer2.chosenpokemon is None:
-                self.pokemonplayer2.level -= 2
-            else:
-                self.pokemonplayer2.level -= 1
         self.pokemonplayer3 = pokemonplayer3
         if self.pokemonplayer3 is not None:
             self.pokemonplayer3.choosepokemon(self.pokemonplayer3.chosenpokemon)
             self.pokemonplayer3.won = True
-            if self.pokemonplayer3.chosenpokemon is None:
-                self.pokemonplayer3.level -= 2
-            else:
-                self.pokemonplayer3.level -= 1
         self.pokemonplayer4 = pokemonplayer4
         if self.pokemonplayer4 is not None:
             self.pokemonplayer4.choosepokemon(self.pokemonplayer4.chosenpokemon)
             self.pokemonplayer4.won = True
-            if self.pokemonplayer4.chosenpokemon is None:
-                self.pokemonplayer4.level -= 2
-            else:
-                self.pokemonplayer4.level -= 1
         self.pokemonplayer5 = pokemonplayer5
         if self.pokemonplayer5 is not None:
             self.pokemonplayer5.choosepokemon(self.pokemonplayer5.chosenpokemon)
             self.pokemonplayer5.won = True
-            if self.pokemonplayer5.chosenpokemon is None:
-                self.pokemonplayer5.level -= 2
-            else:
-                self.pokemonplayer5.level -= 1
         self.pokemonplayer6 = pokemonplayer6
         if self.pokemonplayer6 is not None:
             self.pokemonplayer6.choosepokemon(self.pokemonplayer6.chosenpokemon)
             self.pokemonplayer6.won = True
-            if self.pokemonplayer6.chosenpokemon is None:
-                self.pokemonplayer6.level -= 2
-            else:
-                self.pokemonplayer6.level -= 1
         self.pokemonenemy1 = pokemonenemy1
         if self.pokemonenemy1 is not None:
             self.pokemonenemy1.choosepokemon(self.pokemonenemy1.chosenpokemon)
             self.pokemonenemy1.won = True
-            if self.pokemonenemy1.chosenpokemon is None:
-                self.pokemonenemy1.level -= 2
-            else:
-                self.pokemonenemy1.level -= 1
         self.pokemonenemy2 = pokemonenemy2
         if self.pokemonenemy2 is not None:
             self.pokemonenemy2.choosepokemon(self.pokemonenemy2.chosenpokemon)
             self.pokemonenemy2.won = True
-            if self.pokemonenemy2.chosenpokemon is None:
-                self.pokemonenemy2.level -= 2
-            else:
-                self.pokemonenemy2.level -= 1
         self.pokemonenemy3 = pokemonenemy3
         if self.pokemonenemy3 is not None:
             self.pokemonenemy3.choosepokemon(self.pokemonenemy3.chosenpokemon)
             self.pokemonenemy3.won = True
-            if self.pokemonenemy3.chosenpokemon is None:
-                self.pokemonenemy3.level -= 2
-            else:
-                self.pokemonenemy3.level -= 1
         self.pokemonenemy4 = pokemonenemy4
         if self.pokemonenemy4 is not None:
             self.pokemonenemy4.choosepokemon(self.pokemonenemy4.chosenpokemon)
             self.pokemonenemy4.won = True
-            if self.pokemonenemy4.chosenpokemon is None:
-                self.pokemonenemy4.level -= 2
-            else:
-                self.pokemonenemy4.level -= 1
         self.pokemonenemy5 = pokemonenemy5
         if self.pokemonenemy5 is not None:
             self.pokemonenemy5.choosepokemon(self.pokemonenemy5.chosenpokemon)
             self.pokemonenemy5.won = True
-            if self.pokemonenemy5.chosenpokemon is None:
-                self.pokemonenemy5.level -= 2
-            else:
-                self.pokemonenemy5.level -= 1
         self.pokemonenemy6 = pokemonenemy6
         if self.pokemonenemy6 is not None:
             self.pokemonenemy6.choosepokemon(self.pokemonenemy6.chosenpokemon)
             self.pokemonenemy6.won = True
-            if self.pokemonenemy6.chosenpokemon is None:
-                self.pokemonenemy6.level -= 2
-            else:
-                self.pokemonenemy6.level -= 1
         self.pokemonbattleenemy = pokemonbattleenemy
+        
+        self.firstbattle = True
         
         self.fainted = True
         self.active = False
@@ -1114,9 +1068,7 @@ class Pokemon(Entity):
             
         if chosenpokemon is None:
             self.level = 5
-        else:
-            self.levelup()
-            
+        
         if not self.movedictionary:
             self.movedictionary['165'] = Move('165')
             
@@ -1825,6 +1777,7 @@ class Pokemon(Entity):
             self.pokemonbattleenemy.victim = self.victim
             self.pokemonbattleenemy.activepokemonplayer = self.activepokemonplayer
             self.pokemonbattleenemy.activepokemonenemy = self.activepokemonenemy
+            self.firstbattle = True
             self.update_ha_state()
             return
             
@@ -1843,67 +1796,92 @@ class Pokemon(Entity):
                         self.pokemonplayer1.choosepokemon()
                     else:
                         self.pokemonplayer1.choosepokemon(self.pokemonplayer1.chosenpokemon)
+                        if not self.firstbattle:
+                            self.pokemonplayer1.levelup()
                 if not self.pokemonplayer2.active or self.pokemonplayer2.level == 100:
                     if not self.pokemonplayer2.won or self.pokemonplayer2.level == 100:
                         self.pokemonplayer2.choosepokemon()
                     else:
                         self.pokemonplayer2.choosepokemon(self.pokemonplayer2.chosenpokemon)
+                        if not self.firstbattle:
+                            self.pokemonplayer2.levelup()
                 if not self.pokemonplayer3.active or self.pokemonplayer3.level == 100:
                     if not self.pokemonplayer3.won or self.pokemonplayer3.level == 100:
                         self.pokemonplayer3.choosepokemon()
                     else:
                         self.pokemonplayer3.choosepokemon(self.pokemonplayer3.chosenpokemon)
+                        if not self.firstbattle:
+                            self.pokemonplayer3.levelup()
                 if not self.pokemonplayer4.active or self.pokemonplayer4.level == 100:
                     if not self.pokemonplayer4.won or self.pokemonplayer4.level == 100:
                         self.pokemonplayer4.choosepokemon()
                     else:
                         self.pokemonplayer4.choosepokemon(self.pokemonplayer4.chosenpokemon)
+                        if not self.firstbattle:
+                            self.pokemonplayer4.levelup()
                 if not self.pokemonplayer5.active or self.pokemonplayer5.level == 100:
                     if not self.pokemonplayer5.won or self.pokemonplayer5.level == 100:
                         self.pokemonplayer5.choosepokemon()
                     else:
                         self.pokemonplayer5.choosepokemon(self.pokemonplayer5.chosenpokemon)
+                        if not self.firstbattle:
+                            self.pokemonplayer5.levelup()
                 if not self.pokemonplayer6.active or self.pokemonplayer6.level == 100:
                     if not self.pokemonplayer6.won or self.pokemonplayer6.level == 100:
                         self.pokemonplayer6.choosepokemon()
                     else:
                         self.pokemonplayer6.choosepokemon(self.pokemonplayer6.chosenpokemon)
+                        if not self.firstbattle:
+                            self.pokemonplayer6.levelup()
                 if not self.pokemonenemy1.active or self.pokemonenemy1.level == 100:
                     if not self.pokemonenemy1.won or self.pokemonenemy1.level == 100:
                         self.pokemonenemy1.choosepokemon()
                     else:
                         self.pokemonenemy1.choosepokemon(self.pokemonenemy1.chosenpokemon)
+                        if not self.firstbattle:
+                            self.pokemonenemy1.levelup()
                 if not self.pokemonenemy2.active or self.pokemonenemy2.level == 100:
                     if not self.pokemonenemy2.won or self.pokemonenemy2.level == 100:
                         self.pokemonenemy2.choosepokemon()
                     else:
                         self.pokemonenemy2.choosepokemon(self.pokemonenemy2.chosenpokemon)
+                        if not self.firstbattle:
+                            self.pokemonenemy2.levelup()
                 if not self.pokemonenemy3.active or self.pokemonenemy3.level == 100:
                     if not self.pokemonenemy3.won or self.pokemonenemy3.level == 100:
                         self.pokemonenemy3.choosepokemon()
                     else:
                         self.pokemonenemy3.choosepokemon(self.pokemonenemy3.chosenpokemon)
+                        if not self.firstbattle:
+                            self.pokemonenemy3.levelup()
                 if not self.pokemonenemy4.active or self.pokemonenemy4.level == 100:
                     if not self.pokemonenemy4.won or self.pokemonenemy4.level == 100:
                         self.pokemonenemy4.choosepokemon()
                     else:
                         self.pokemonenemy4.choosepokemon(self.pokemonenemy4.chosenpokemon)
+                        if not self.firstbattle:
+                            self.pokemonenemy4.levelup()
                 if not self.pokemonenemy5.active or self.pokemonenemy5.level == 100:
                     if not self.pokemonenemy5.won or self.pokemonenemy5.level == 100:
                         self.pokemonenemy5.choosepokemon()
                     else:
                         self.pokemonenemy5.choosepokemon(self.pokemonenemy5.chosenpokemon)
+                        if not self.firstbattle:
+                            self.pokemonenemy5.levelup()
                 if not self.pokemonenemy6.active or self.pokemonenemy6.level == 100:
                     if not self.pokemonenemy6.won or self.pokemonenemy6.level == 100:
                         self.pokemonenemy6.choosepokemon()
                     else:
                         self.pokemonenemy6.choosepokemon(self.pokemonenemy6.chosenpokemon)
+                        if not self.firstbattle:
+                            self.pokemonenemy6.levelup()
                 self.activepokemonplayer = None
                 self.activepokemonenemy = None
             self.pokemonbattleenemy.attacker = self.attacker
             self.pokemonbattleenemy.victim = self.victim
             self.pokemonbattleenemy.activepokemonplayer = self.activepokemonplayer
             self.pokemonbattleenemy.activepokemonenemy = self.activepokemonenemy
+            self.firstbattle = False
             self.update_ha_state()
             return
                 
