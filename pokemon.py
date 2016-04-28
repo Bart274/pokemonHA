@@ -945,6 +945,7 @@ class Pokemon(Entity):
                 chosenpokemon = random.choice(list(POKEMONDICTIONARYGEN6))
             else:
                 chosenpokemon = random.choice(list(POKEMONDICTIONARY))
+            self.level = 5
         self.chosenpokemon = chosenpokemon
         _LOGGER.info("POKEMON: chosenpokemon: %s", self.chosenpokemon)
         if self.chosenpokemon in POKEMONDICTIONARY:
@@ -1066,9 +1067,6 @@ class Pokemon(Entity):
                     self.movedictionary[moveInfo[15]] = Move(moveInfo[15])
             x += 1
             
-        if chosenpokemon is None:
-            self.level = 5
-        
         if not self.movedictionary:
             self.movedictionary['165'] = Move('165')
             
