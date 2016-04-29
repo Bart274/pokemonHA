@@ -257,9 +257,7 @@ def setup(hass, config):
     enemy.update_ha_state()
         
     pokemonplayer1 = Pokemon(hass, 'pokemon', '1', hideenemy, picture_dir, player, enemy)
-    _LOGGER.info("POKEMON: pokemonplayer1 id= %s level= %s", pokemonplayer1.chosenpokemon, pokemonplayer1.level)
     readdata(pokemonplayer1)
-    _LOGGER.info("POKEMON: pokemonplayer1 id= %s level= %s", pokemonplayer1.chosenpokemon, pokemonplayer1.level)
     pokemonplayer1.update_ha_state()
         
     pokemonplayer2 = Pokemon(hass, 'pokemon', '2', hideenemy, picture_dir, player, enemy)
@@ -413,7 +411,6 @@ def setup(hass, config):
             (pokemonenemy5.entity_id, 0, 0, '', '', pokemonenemy5.chosenpokemon, pokemonenemy5.level),
             (pokemonenemy6.entity_id, 0, 0, '', '', pokemonenemy6.chosenpokemon, pokemonenemy6.level)
         )
-        _LOGGER.info("POKEMON: pokemondata: %s", pokemondata)
         
         try:
             con = lite.connect(file_path)
@@ -483,7 +480,6 @@ def setup(hass, config):
     )
     
     def check_state_change(entity, old_state, new_state):
-        _LOGGER.info("POKEMON: state of input_select has changed from %s to %s", old_state, new_state)
         if new_state is not None and new_state != '':
             update(None)
     
@@ -929,7 +925,6 @@ class Pokemon(Entity):
         return tempstring
         
     def choosepokemon(self, chosenpokemon=None):
-        _LOGGER.info("POKEMON: pokemon id= %s level= %s", self.chosenpokemon, self.level)
         if chosenpokemon is None:
             if floor(self.person1.badges / 8) == 0:
                 chosenpokemon = random.choice(list(POKEMONDICTIONARYGEN1))
@@ -947,7 +942,6 @@ class Pokemon(Entity):
                 chosenpokemon = random.choice(list(POKEMONDICTIONARY))
             self.level = 5
         self.chosenpokemon = chosenpokemon
-        _LOGGER.info("POKEMON: chosenpokemon: %s", self.chosenpokemon)
         if self.chosenpokemon in POKEMONDICTIONARY:
             pokemonInfo = POKEMONDICTIONARY[self.chosenpokemon]
         
@@ -1070,8 +1064,6 @@ class Pokemon(Entity):
         if not self.movedictionary:
             self.movedictionary['165'] = Move('165')
             
-        _LOGGER.info("POKEMON: movelist: %s", list(self.movedictionary.keys()))
-        
         self.generation = pokemonInfo[14]
         
         self.height = int(pokemonInfo[15])
@@ -1701,8 +1693,6 @@ class Pokemon(Entity):
         return msg
         
     def createattack(self):
-        _LOGGER.info('POKEMON: %s will attack %s', self.attacker.pokemonname, self.victim.pokemonname)
-        
         autoattack = True
         cpu_choice = None
         if self.attacker.person1.type == 'player':
@@ -1716,7 +1706,6 @@ class Pokemon(Entity):
                         if state_1.state == move:
                             cpu_choice = key
                             autoattack = False
-                            _LOGGER.info('POKEMON: %s will attack with %s', self.attacker.pokemonname, cpu_choice)
         elif self.attacker.person1.type == 'enemy' and not self.hideenemy:
             state_1 = self.hass.states.get('input_boolean.pokemonenemy')
             if state_1.state == STATE_OFF:
@@ -1728,7 +1717,6 @@ class Pokemon(Entity):
                         if state_1.state == move:
                             cpu_choice = key
                             autoattack = False
-                            _LOGGER.info('POKEMON: %s will attack with %s', self.attacker.pokemonname, cpu_choice)
         
         if autoattack:
             tempdictionary = {}
@@ -1762,7 +1750,6 @@ class Pokemon(Entity):
         
     def update(self):
         """Get the latest data and updates the state."""
-        _LOGGER.info("POKEMON: update called for: %s", self.entity_id)
         if self.type != 'battle':
             self.update_ha_state()
             return
@@ -2026,8 +2013,6 @@ class Pokemon(Entity):
                     self.attacker = self.activepokemonplayer
                 self.lastmove = None
         
-        _LOGGER.info('POKEMON: attacking')
-        
         if self.attacker.person1.type == 'player':
             state_1 = self.hass.states.get('input_boolean.pokemonplayer')
             if state_1.state == STATE_OFF:
@@ -2089,12 +2074,6 @@ class Pokemon(Entity):
             self.battlestate = "Waiting for " + self.attacker.person1.name + " to choose a move..."
             self.pokemonbattleenemy.battlestate = "Waiting for " + self.attacker.person1.name + " to choose a move..."
             
-            _LOGGER.info('POKEMON: attack calculated')
-        # if self.attacker.person1.type == 'player':
-        #     self.battlestate = self.battlestate + "\n" + self.attacker.pokemonname + " attacked foe's " + self.victim.pokemonname + " with " + self.attackedwith + " doing " + str(self.damage) + " damage"
-        # else:
-        #     self.battlestate = self.battlestate + "\nFoe's " + self.attacker.pokemonname + " attacked " + self.victim.pokemonname + " with " + self.attackedwith + " doing " + str(self.damage) + " damage"
-
         self.pokemonbattleenemy.attacker = self.attacker
         self.pokemonbattleenemy.victim = self.victim
         self.pokemonbattleenemy.activepokemonplayer = self.activepokemonplayer
@@ -2107,7 +2086,6 @@ class Move(object):
     def __init__(self, move):
         moveInfo = [None, None, None, None, 0, '', '']
         # Only reading through the file if no information is stored in the Moves Dictionary
-        _LOGGER.info("POKEMON: selected new Move: %s", move)
         # Finding the matching key in the dictionary, then assigning the list to a variable called moveInfo
         if move in MOVES_DICTIONARY:
             moveInfo = MOVES_DICTIONARY[move]
